@@ -16,8 +16,9 @@ export default function AboutSection() {
               <div className="bg-accent rounded-lg absolute -top-4 -left-4 w-full h-full -z-10"></div>
               <img 
                 src="https://images.unsplash.com/photo-1617419086540-518c5b847b88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1024&q=80" 
-                alt="AMIX International Group Office" 
+                alt="AMIX International Group Headquarters in Hanoi - Your Gateway to ASEAN Business Opportunities" 
                 className="rounded-lg w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
           </motion.div>

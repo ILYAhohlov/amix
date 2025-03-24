@@ -58,7 +58,7 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
             <div className="md:w-1/2">
               <img
                 src={service.imageUrl}
-                alt={service.title}
+                alt={`${service.title} - ${service.subtitle} | AMIX International Group`}
                 className="rounded-lg w-full h-64 object-cover"
               />
             </div>
