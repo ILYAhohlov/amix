@@ -8,6 +8,7 @@ import PartnersSection from "./components/PartnersSection";
 import AboutSection from "./components/AboutSection";
 import SocialMediaSection from "./components/SocialMediaSection";
 import ExhibitionsSection from "./components/ExhibitionsSection";
+import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import { services } from "./data/serviceData";
@@ -48,6 +49,7 @@ function App() {
       <AboutSection />
       <SocialMediaSection />
       <ExhibitionsSection />
+      <FAQSection />
       <ContactSection />
       <Footer />
       

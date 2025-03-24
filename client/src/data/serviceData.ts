@@ -1,11 +1,11 @@
 import { Ship, Building, Laptop, Handshake, ShoppingCart, Megaphone } from "lucide-react";
-import { IconType } from "react-icons";
 
+// Fix the icon type definition to work with Lucide icons
 export interface ServiceType {
   id: string;
   title: string;
   subtitle: string;
-  icon: IconType;
+  icon: any; // Using 'any' here to accommodate Lucide icons
   shortDescription: string;
   description: string;
   imageUrl: string;
