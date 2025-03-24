@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ServicesSection from "./components/ServicesSection";
@@ -41,27 +42,55 @@ function App() {
   );
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden font-inter">
-      <Navbar isScrolled={isScrolled} />
-      <HeroSection />
-      <ServicesSection onServiceClick={handleServiceClick} />
-      <PartnersSection />
-      <AboutSection />
-      <SocialMediaSection />
-      <ExhibitionsSection />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
-      
-      <AnimatePresence>
-        {selectedService && currentService && (
-          <ServiceDetail
-            service={currentService}
-            onClose={handleCloseDetail}
-          />
-        )}
-      </AnimatePresence>
-    </div>
+    <HelmetProvider>
+      <div className="relative min-h-screen overflow-x-hidden font-inter">
+        <Helmet>
+          <title>AMIX International Group - Your Gateway to ASEAN Opportunities</title>
+          <meta name="description" content="AMIX International Group connects global businesses with opportunities across ASEAN countries, specializing in import/export, IT solutions, real estate, and strategic partnerships." />
+          
+          {/* Schema.org structured data for Organization */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "AMIX International Group",
+              "url": "https://amixgroup.com",
+              "description": "AMIX International Group connects global businesses with opportunities across ASEAN countries, specializing in import/export, IT solutions, real estate, and strategic partnerships.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Hanoi",
+                "addressCountry": "Vietnam"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "contact@amixgroup.com"
+              }
+            })}
+          </script>
+        </Helmet>
+        
+        <Navbar isScrolled={isScrolled} />
+        <HeroSection />
+        <ServicesSection onServiceClick={handleServiceClick} />
+        <PartnersSection />
+        <AboutSection />
+        <SocialMediaSection />
+        <ExhibitionsSection />
+        <FAQSection />
+        <ContactSection />
+        <Footer />
+        
+        <AnimatePresence>
+          {selectedService && currentService && (
+            <ServiceDetail
+              service={currentService}
+              onClose={handleCloseDetail}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </HelmetProvider>
   );
 }
 

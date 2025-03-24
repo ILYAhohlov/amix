@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { ServiceType } from "../data/serviceData";
 
 interface ServiceDetailProps {
@@ -33,6 +34,10 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
+      <Helmet>
+        <title>{`${service.title} - AMIX International Group`}</title>
+        <meta name="description" content={`${service.subtitle}. ${service.shortDescription}`} />
+      </Helmet>
       <motion.div
         className="gradient-marine glass rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
         initial={{ scale: 0.9, y: 20 }}
