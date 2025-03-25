@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "./LanguageSelector";
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -8,6 +10,7 @@ interface NavbarProps {
 
 export default function Navbar({ isScrolled }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -54,37 +57,46 @@ export default function Navbar({ isScrolled }: NavbarProps) {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden lg:flex space-x-10">
-            <button
-              onClick={() => handleNavClick("about")}
-              className="font-montserrat text-white hover:text-accent transition-colors"
-            >
-              About
-            </button>
-            <button
-              onClick={() => handleNavClick("services")}
-              className="font-montserrat text-white hover:text-accent transition-colors"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => handleNavClick("partners")}
-              className="font-montserrat text-white hover:text-accent transition-colors"
-            >
-              Partners
-            </button>
-            <button
-              onClick={() => handleNavClick("exhibitions")}
-              className="font-montserrat text-white hover:text-accent transition-colors"
-            >
-              Exhibitions
-            </button>
-            <button
-              onClick={() => handleNavClick("contact")}
-              className="font-montserrat text-white hover:text-accent transition-colors"
-            >
-              Contact
-            </button>
+          <div className="hidden lg:flex items-center space-x-6">
+            <div className="flex space-x-6">
+              <button
+                onClick={() => handleNavClick("about")}
+                className="font-montserrat text-white hover:text-accent transition-colors"
+              >
+                {t('navbar.about')}
+              </button>
+              <button
+                onClick={() => handleNavClick("services")}
+                className="font-montserrat text-white hover:text-accent transition-colors"
+              >
+                {t('navbar.services')}
+              </button>
+              <button
+                onClick={() => handleNavClick("partners")}
+                className="font-montserrat text-white hover:text-accent transition-colors"
+              >
+                {t('navbar.partners')}
+              </button>
+              <button
+                onClick={() => handleNavClick("exhibitions")}
+                className="font-montserrat text-white hover:text-accent transition-colors"
+              >
+                {t('navbar.exhibitions')}
+              </button>
+              <button
+                onClick={() => handleNavClick("faq")}
+                className="font-montserrat text-white hover:text-accent transition-colors"
+              >
+                {t('navbar.faq')}
+              </button>
+              <button
+                onClick={() => handleNavClick("contact")}
+                className="font-montserrat text-white hover:text-accent transition-colors"
+              >
+                {t('navbar.contact')}
+              </button>
+            </div>
+            <LanguageSelector />
           </div>
         </div>
 
