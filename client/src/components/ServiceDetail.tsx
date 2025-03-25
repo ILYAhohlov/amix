@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ServiceType } from "../data/serviceData";
+import { useTranslation } from "react-i18next";
 
 interface ServiceDetailProps {
   service: ServiceType;
@@ -9,6 +10,8 @@ interface ServiceDetailProps {
 }
 
 export default function ServiceDetail({ service, onClose }: ServiceDetailProps) {
+  const { t } = useTranslation();
+  
   const handleContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
@@ -79,13 +82,13 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
                   onClick={onClose}
                   className="bg-accent hover:bg-opacity-90 text-white py-2 px-5 rounded-md font-medium transition-all"
                 >
-                  Back
+                  {t('serviceDetail.back')}
                 </button>
                 <button
                   onClick={scrollToContact}
                   className="glass text-white py-2 px-5 rounded-md font-medium inline-block text-center hover:bg-white hover:bg-opacity-20 transition-all"
                 >
-                  Contact Us
+                  {t('serviceDetail.contactUs')}
                 </button>
               </div>
             </div>

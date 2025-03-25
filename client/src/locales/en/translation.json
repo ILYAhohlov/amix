@@ -17,7 +17,9 @@
   "services": {
     "title": "Our Services",
     "subtitle": "We provide comprehensive solutions to help your business grow in the ASEAN region.",
-    "learnMore": "Learn More",
+    "learnMore": "Learn More"
+  },
+  "serviceDetail": {
     "back": "Back",
     "contactUs": "Contact Us"
   },

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function AboutSection() {
+  const { t } = useTranslation();
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-6">
@@ -30,18 +32,12 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 title-shadow">About AMIX International Group</h2>
+            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 title-shadow">{t('about.title')}</h2>
             <p className="text-slate-300 mb-6 leading-relaxed">
-              Based in Hanoi, AMIX International Group Vietnam LLC serves as a bridge connecting global businesses 
-              with opportunities in the ASEAN region. With our deep understanding of local markets and international 
-              business practices, we help companies navigate the complexities of doing business in Vietnam and 
-              neighboring countries.
+              {t('about.paragraph1')}
             </p>
             <p className="text-slate-300 mb-8 leading-relaxed">
-              Our team combines local expertise with global vision to provide comprehensive solutions 
-              across multiple sectors including import/export, IT, real estate, and strategic partnerships. 
-              We take pride in our collaboration with Vietbuild Corp and other industry leaders to deliver 
-              exceptional value to our clients.
+              {t('about.paragraph2')}
             </p>
             
             <div className="grid grid-cols-2 gap-6 mb-8">
