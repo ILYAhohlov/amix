@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function HeroSection() {
+  const { t } = useTranslation();
   const scrollToServices = () => {
     const servicesSection = document.getElementById("services");
     if (servicesSection) {
@@ -32,25 +34,23 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 leading-tight title-shadow">
-            Your Gateway to <span className="text-accent">ASEAN</span> Opportunities
+            {t('hero.title')}
           </h1>
           <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed">
-            AMIX International Group Vietnam LLC connects global businesses with ASEAN opportunities.
-            We specialize in import/export, IT solutions, Real Estate and strategic partnerships,
-            including Vietbuild Corp. collaborations. Based in Hanoi, we're your gateway to the Vietnamese market.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
               onClick={scrollToServices}
               className="btn-primary font-montserrat"
             >
-              Our Services
+              {t('hero.cta')}
             </button>
             <button 
               onClick={scrollToContact}
               className="btn-secondary font-montserrat"
             >
-              Get in Touch
+              {t('about.cta')}
             </button>
           </div>
         </motion.div>

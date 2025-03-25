@@ -115,32 +115,41 @@ export default function Navbar({ isScrolled }: NavbarProps) {
                   onClick={() => handleNavClick("about")}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  About
+                  {t('navbar.about')}
                 </button>
                 <button
                   onClick={() => handleNavClick("services")}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  Services
+                  {t('navbar.services')}
                 </button>
                 <button
                   onClick={() => handleNavClick("partners")}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  Partners
+                  {t('navbar.partners')}
                 </button>
                 <button
                   onClick={() => handleNavClick("exhibitions")}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  Exhibitions
+                  {t('navbar.exhibitions')}
+                </button>
+                <button
+                  onClick={() => handleNavClick("faq")}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  {t('navbar.faq')}
                 </button>
                 <button
                   onClick={() => handleNavClick("contact")}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  Contact
+                  {t('navbar.contact')}
                 </button>
+                <div className="pt-2">
+                  <LanguageSelector />
+                </div>
               </div>
             </motion.div>
           )}

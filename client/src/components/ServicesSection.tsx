@@ -2,12 +2,15 @@ import { motion } from "framer-motion";
 import { GlassCard } from "./ui/glass-card";
 import { services } from "../data/serviceData";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface ServicesSectionProps {
   onServiceClick: (id: string) => void;
 }
 
 export default function ServicesSection({ onServiceClick }: ServicesSectionProps) {
+  const { t } = useTranslation();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,7 +37,7 @@ export default function ServicesSection({ onServiceClick }: ServicesSectionProps
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Our Services
+            {t('services.title')}
           </motion.h2>
           <motion.p 
             className="text-slate-300 max-w-2xl mx-auto"
@@ -43,7 +46,7 @@ export default function ServicesSection({ onServiceClick }: ServicesSectionProps
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We provide comprehensive solutions to help your business grow in the ASEAN region.
+            {t('services.subtitle')}
           </motion.p>
         </div>
         
@@ -67,7 +70,7 @@ export default function ServicesSection({ onServiceClick }: ServicesSectionProps
                 <h3 className="text-xl font-montserrat font-semibold mb-3">{service.title}</h3>
                 <p className="text-slate-300 mb-4">{service.shortDescription}</p>
                 <span className="text-accent text-sm uppercase tracking-wider flex items-center">
-                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  {t('services.learnMore')} <ArrowRight className="ml-2 h-4 w-4" />
                 </span>
               </GlassCard>
             </motion.div>
