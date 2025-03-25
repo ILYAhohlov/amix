@@ -17,7 +17,7 @@ export default function AboutSection() {
             <div className="relative">
               <div className="bg-accent rounded-lg absolute -top-4 -left-4 w-full h-full -z-10"></div>
               <img 
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1024&q=80" 
+                src="https://unsplash.com/photos/gray-high-rise-buildings-under-gray-clouds-during-golden-hour-XZHK8gR1xh4" 
                 alt="AMIX International Group Headquarters in Hanoi - Your Gateway to ASEAN Business Opportunities" 
                 className="rounded-lg w-full h-auto object-cover"
                 loading="lazy"
