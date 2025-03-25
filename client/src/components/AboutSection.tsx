@@ -48,7 +48,7 @@ export default function AboutSection() {
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
                 <div className="text-accent text-3xl font-montserrat font-bold mb-2">10+</div>
-                <p className="text-slate-300">Years of Experience</p>
+                <p className="text-slate-300">{t('about.stats.years')}</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
