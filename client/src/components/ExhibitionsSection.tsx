@@ -54,7 +54,7 @@ export default function ExhibitionsSection() {
                         {mission.date}
                       </span>
                     </div>
-                    <p className="text-slate-300 mb-4">{mission.location} - {mission.description}</p>
+                    <p className="text-white mb-4">{mission.location} - {mission.description}</p>
                     <button className="text-accent text-sm uppercase tracking-wider flex items-center hover:underline">
                       Register Interest <span className="ml-2">→</span>
                     </button>
@@ -89,7 +89,7 @@ export default function ExhibitionsSection() {
                         {exhibition.date}
                       </span>
                     </div>
-                    <p className="text-slate-300 mb-4">{exhibition.location} - {exhibition.description}</p>
+                    <p className="text-white mb-4">{exhibition.location} - {exhibition.description}</p>
                     <div className="flex space-x-4">
                       <button className="text-white bg-accent hover:bg-opacity-90 px-4 py-2 rounded-md text-sm transition-all">
                         Visit
