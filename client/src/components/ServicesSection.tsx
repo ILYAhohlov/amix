@@ -62,7 +62,7 @@ export default function ServicesSection({ onServiceClick }: ServicesSectionProps
                 onClick={() => onServiceClick(service.id)}
               >
                 <div className="bg-accent bg-opacity-20 p-4 rounded-full inline-block mb-4" aria-hidden="true">
-                  <service.icon className="text-accent w-6 h-6" aria-label={`${service.title} icon`} />
+                  <service.icon className="text-white w-6 h-6" aria-label={`${service.title} icon`} />
                 </div>
                 <h3 className="text-xl font-montserrat font-semibold mb-3">{service.title}</h3>
                 <p className="text-slate-300 mb-4">{service.shortDescription}</p>
