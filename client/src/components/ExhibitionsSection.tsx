@@ -50,7 +50,7 @@ export default function ExhibitionsSection() {
                   >
                     <div className="flex justify-between items-start mb-2 flex-wrap gap-2">
                       <h4 className="font-montserrat font-medium text-lg">{mission.title}</h4>
-                      <span className="bg-accent bg-opacity-20 text-accent px-3 py-1 rounded-full text-sm">
+                      <span className="bg-accent bg-opacity-20 text-white px-3 py-1 rounded-full text-sm">
                         {mission.date}
                       </span>
                     </div>
@@ -85,7 +85,7 @@ export default function ExhibitionsSection() {
                   >
                     <div className="flex justify-between items-start mb-2 flex-wrap gap-2">
                       <h4 className="font-montserrat font-medium text-lg">{exhibition.title}</h4>
-                      <span className="bg-accent bg-opacity-20 text-accent px-3 py-1 rounded-full text-sm">
+                      <span className="bg-accent bg-opacity-20 text-white px-3 py-1 rounded-full text-sm">
                         {exhibition.date}
                       </span>
                     </div>
