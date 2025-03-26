@@ -4,11 +4,11 @@ import { FaTelegram, FaWhatsapp, FaComments } from "react-icons/fa";
 
 export default function SocialMediaSection() {
   const socialLinks = [
-    { id: "twitter", icon: Twitter, url: "#", label: "Twitter" },
-    { id: "telegram", icon: FaTelegram, url: "#", label: "Telegram" },
-    { id: "whatsapp", icon: FaWhatsapp, url: "#", label: "WhatsApp" },
-    { id: "zalo", icon: FaComments, url: "#", label: "Zalo" },
-    { id: "linkedin", icon: Linkedin, url: "#", label: "LinkedIn" },
+    { id: "twitter", icon: Twitter, url: "https://twitter.com/AMIXVietnam", label: "Twitter" },
+    { id: "telegram", icon: FaTelegram, url: "https://t.me/amix_vn", label: "Telegram" },
+    { id: "whatsapp", icon: FaWhatsapp, url: "https://wa.me/+84866769601", label: "WhatsApp" },
+    { id: "zalo", icon: FaComments, url: "https://zalo.me/+84866769601", label: "Zalo" },
+    { id: "linkedin", icon: Linkedin, url: "https://linkedin.com/groups/10072185", label: "LinkedIn" },
   ];
 
   const containerVariants = {
