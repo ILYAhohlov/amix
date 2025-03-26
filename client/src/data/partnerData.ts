@@ -9,19 +9,19 @@ export const partners: PartnerType[] = [
     name: "VietBuild Corp"
   },
   {
-    id: "techviet",
-    name: "TechViet"
+    id: "xuanmai",
+    name: "XUAN MAI"
   },
   {
-    id: "asean-trade",
-    name: "ASEAN Trade"
+    id: "viettelpost",
+    name: "Viettel Post"
   },
   {
-    id: "global-logistics",
-    name: "Global Logistics"
+    id: "vietnampost",
+    name: "Vietnam POST"
   },
   {
-    id: "hanoi-developers",
-    name: "Hanoi Developers"
+    id: "thanglongcorp",
+    name: "Thanglong Corp"
   }
 ];
