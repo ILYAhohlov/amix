@@ -16,20 +16,9 @@ export default function Navbar({ isScrolled }: NavbarProps) {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleNavClick = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: "smooth",
-      });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <motion.nav
-      className={`glass fixed w-full z-50 transition-all duration-300 ${
+      className={`glass fixed w-full z-50 transition-all duration-300 pointer-events-auto ${
         isScrolled ? "bg-primary shadow-lg" : ""
       }`}
       initial={{ y: -100 }}
@@ -38,69 +27,44 @@ export default function Navbar({ isScrolled }: NavbarProps) {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-2xl font-montserrat font-bold text-white">
+          <a href="/" className="text-2xl font-montserrat font-bold text-white">
             AMIX International Group
           </a>
 
-          {/* Mobile menu button */}
           <div className="lg:hidden">
             <button
               onClick={toggleMobileMenu}
               className="text-white focus:outline-none"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
 
-          {/* Desktop menu */}
           <div className="hidden lg:flex items-center space-x-6">
             <div className="flex space-x-6">
-              <button
-                onClick={() => handleNavClick("about")}
-                className="font-montserrat text-white hover:text-accent transition-colors"
-              >
-                {t('navbar.about')}
-              </button>
-              <button
-                onClick={() => handleNavClick("services")}
-                className="font-montserrat text-white hover:text-accent transition-colors"
-              >
-                {t('navbar.services')}
-              </button>
-              <button
-                onClick={() => handleNavClick("partners")}
-                className="font-montserrat text-white hover:text-accent transition-colors"
-              >
-                {t('navbar.partners')}
-              </button>
-              <button
-                onClick={() => handleNavClick("exhibitions")}
-                className="font-montserrat text-white hover:text-accent transition-colors"
-              >
-                {t('navbar.exhibitions')}
-              </button>
-              <button
-                onClick={() => handleNavClick("faq")}
-                className="font-montserrat text-white hover:text-accent transition-colors"
-              >
-                {t('navbar.faq')}
-              </button>
-              <button
-                onClick={() => handleNavClick("contact")}
-                className="font-montserrat text-white hover:text-accent transition-colors"
-              >
-                {t('navbar.contact')}
-              </button>
+              <a href="#about" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.about")}
+              </a>
+              <a href="#services" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.services")}
+              </a>
+              <a href="#partners" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.partners")}
+              </a>
+              <a href="#exhibitions" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.exhibitions")}
+              </a>
+              <a href="#faq" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.faq")}
+              </a>
+              <a href="#contact" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.contact")}
+              </a>
             </div>
             <LanguageSelector />
           </div>
         </div>
 
-        {/* Mobile menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -111,42 +75,48 @@ export default function Navbar({ isScrolled }: NavbarProps) {
               transition={{ duration: 0.3 }}
             >
               <div className="flex flex-col space-y-3">
-                <button
-                  onClick={() => handleNavClick("about")}
+                <a
+                  href="#about"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t('navbar.about')}
-                </button>
-                <button
-                  onClick={() => handleNavClick("services")}
+                  {t("navbar.about")}
+                </a>
+                <a
+                  href="#services"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t('navbar.services')}
-                </button>
-                <button
-                  onClick={() => handleNavClick("partners")}
+                  {t("navbar.services")}
+                </a>
+                <a
+                  href="#partners"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t('navbar.partners')}
-                </button>
-                <button
-                  onClick={() => handleNavClick("exhibitions")}
+                  {t("navbar.partners")}
+                </a>
+                <a
+                  href="#exhibitions"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t('navbar.exhibitions')}
-                </button>
-                <button
-                  onClick={() => handleNavClick("faq")}
+                  {t("navbar.exhibitions")}
+                </a>
+                <a
+                  href="#faq"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t('navbar.faq')}
-                </button>
-                <button
-                  onClick={() => handleNavClick("contact")}
+                  {t("navbar.faq")}
+                </a>
+                <a
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t('navbar.contact')}
-                </button>
+                  {t("navbar.contact")}
+                </a>
                 <div className="pt-2">
                   <LanguageSelector />
                 </div>
