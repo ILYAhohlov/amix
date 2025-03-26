@@ -61,6 +61,8 @@ export default function SocialMediaSection() {
             <motion.a
               key={social.id}
               href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass p-6 rounded-full hover:bg-white hover:bg-opacity-10 transition-all"
               aria-label={social.label}
               variants={itemVariants}
