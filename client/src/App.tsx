@@ -47,8 +47,6 @@ function App() {
         <Helmet>
           <title>AMIX International Group - Your Gateway to ASEAN Opportunities</title>
           <meta name="description" content="AMIX International Group connects global businesses with opportunities across ASEAN countries, specializing in import/export, IT solutions, real estate, and strategic partnerships." />
-          
-          {/* Schema.org structured data for Organization */}
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
@@ -71,15 +69,29 @@ function App() {
         </Helmet>
         
         <Navbar isScrolled={isScrolled} />
-        <HeroSection />
-        <ServicesSection onServiceClick={handleServiceClick} />
-        <PartnersSection />
-        <AboutSection />
-        <SocialMediaSection />
-        <ExhibitionsSection />
-        <FAQSection />
-        <ContactSection />
-        <Footer />
+        <HeroSection /> {/* Hero обычно не требует id, так как это верх страницы */}
+        <section id="services">
+          <ServicesSection onServiceClick={handleServiceClick} />
+        </section>
+        <section id="partners">
+          <PartnersSection />
+        </section>
+        <section id="about">
+          <AboutSection />
+        </section>
+        <section id="social-media"> {/* Нет в Navbar, но добавлен для порядка */}
+          <SocialMediaSection />
+        </section>
+        <section id="exhibitions">
+          <ExhibitionsSection />
+        </section>
+        <section id="faq">
+          <FAQSection />
+        </section>
+        <section id="contact">
+          <ContactSection />
+        </section>
+        <Footer /> {/* Footer обычно не требует id */}
         
         <AnimatePresence>
           {selectedService && currentService && (
