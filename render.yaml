@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: amix-website
+    env: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TELEGRAM_TOKEN
+        value: 1519701472:AAF6Z5aFZXaaw0fw9dTgYQ1U7a0AVEEDG88
+      - key: TELEGRAM_CHAT_ID
+        value: -335182799 

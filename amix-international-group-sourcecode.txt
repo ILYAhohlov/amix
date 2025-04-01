@@ -1,0 +1,2373 @@
+/*========================================
+ * AMIX INTERNATIONAL GROUP WEBSITE
+ * Complete Source Code
+ * 
+ * This file contains the complete source code
+ * of the AMIX International Group website,
+ * organized by folders and files.
+ *========================================*/
+
+/*========================================
+ * PACKAGE.JSON
+ *========================================*/
+
+{
+  "name": "rest-express",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server/index.ts"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@jridgewell/trace-mapping": "^0.3.22",
+    "@neondatabase/serverless": "^0.6.1",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-alert-dialog": "^1.0.5",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-collapsible": "^1.0.3",
+    "@radix-ui/react-context-menu": "^2.1.5",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-hover-card": "^1.0.7",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-menubar": "^1.0.4",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-radio-group": "^1.1.3",
+    "@radix-ui/react-scroll-area": "^1.0.5",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-switch": "^1.0.3",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@radix-ui/react-toast": "^1.1.5",
+    "@radix-ui/react-toggle": "^1.0.3",
+    "@radix-ui/react-toggle-group": "^1.0.4",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@replit/vite-plugin-cartographer": "^2.0.1",
+    "@replit/vite-plugin-runtime-error-modal": "^0.0.2",
+    "@replit/vite-plugin-shadcn-theme-json": "^0.0.2",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tanstack/react-query": "^5.22.2",
+    "@types/connect-pg-simple": "^7.0.3",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.17.10",
+    "@types/node": "^20.11.19",
+    "@types/passport": "^1.0.16",
+    "@types/passport-local": "^1.0.38",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "@types/ws": "^8.5.10",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "cmdk": "^0.2.0",
+    "connect-pg-simple": "^9.0.1",
+    "date-fns": "^3.3.1",
+    "drizzle-kit": "^0.20.14",
+    "drizzle-orm": "^0.29.3",
+    "drizzle-zod": "^0.5.1",
+    "embla-carousel-react": "^8.0.0-rc22",
+    "esbuild": "^0.19.12",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "framer-motion": "^11.0.5",
+    "input-otp": "^0.2.3",
+    "lucide-react": "^0.334.0",
+    "memorystore": "^1.6.7",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "postcss": "^8.4.35",
+    "react": "^18.2.0",
+    "react-day-picker": "^8.10.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.50.1",
+    "react-icons": "^5.0.1",
+    "react-resizable-panels": "^1.0.9",
+    "recharts": "^2.12.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vaul": "^0.8.0",
+    "vite": "^5.1.3",
+    "wouter": "^3.0.0-rc.3",
+    "ws": "^8.16.0",
+    "zod": "^3.22.4",
+    "zod-validation-error": "^3.0.2"
+  }
+}
+
+/*========================================
+ * TSCONFIG.JSON
+ *========================================*/
+
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["client/src/*"],
+      "@shared/*": ["shared/*"]
+    }
+  },
+  "include": ["client/src", "server", "shared"]
+}
+
+/*========================================
+ * VITE.CONFIG.TS
+ *========================================*/
+
+import path from "path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import shadcnThemeJson from "@replit/vite-plugin-shadcn-theme-json";
+import { replitRuntimeErrorModal } from "@replit/vite-plugin-runtime-error-modal";
+import { cartographer } from "@replit/vite-plugin-cartographer";
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./client/src"),
+      "@shared": path.resolve(__dirname, "./shared"),
+    },
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+    },
+  },
+  plugins: [
+    react(),
+    shadcnThemeJson(),
+    cartographer({
+      dir: "client/src",
+    }),
+    replitRuntimeErrorModal({
+      moduleMap: function (_moduleMapConfig) {
+        return {
+          reactRuntime: "react",
+          shadcnTheme: "@replit/vite-plugin-shadcn-theme-json",
+        };
+      },
+    }),
+  ],
+});
+
+/*========================================
+ * TAILWIND.CONFIG.TS
+ *========================================*/
+
+import * as path from "path";
+import { defineConfig } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
+import animate from "tailwindcss-animate";
+import { shadcnThemePlugin } from "@replit/vite-plugin-shadcn-theme-json";
+
+export default defineConfig({
+  darkMode: ["class"],
+  content: [
+    "./client/**/*.{js,ts,jsx,tsx,mdx}",
+    "./client/src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+      },
+    },
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        montserrat: ["Montserrat", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [animate, shadcnThemePlugin(), require("@tailwindcss/typography")],
+});
+
+/*========================================
+ * POSTCSS.CONFIG.JS
+ *========================================*/
+
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+/*========================================
+ * THEME.JSON
+ *========================================*/
+
+{
+  "primary": "#0c4a6e",
+  "variant": "vibrant",
+  "appearance": "dark",
+  "radius": 0.5
+}
+
+/*========================================
+ * DRIZZLE.CONFIG.TS
+ *========================================*/
+
+import { defineConfig } from "drizzle-kit";
+export default defineConfig({
+  schema: "./shared/schema.ts",
+  dialect: "pg",
+  dbCredentials: {
+    connectionString: process.env.DATABASE_URL || "",
+  },
+});
+
+/*========================================
+ * CLIENT/INDEX.HTML
+ *========================================*/
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMIX International Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/client/src/main.tsx"></script>
+  </body>
+</html>
+
+/*========================================
+ * CLIENT/SRC/MAIN.TSX
+ *========================================*/
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/queryClient";
+import { Toaster } from "@/components/ui/toaster";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+      <Toaster />
+    </QueryClientProvider>
+  </React.StrictMode>,
+);
+
+/*========================================
+ * CLIENT/SRC/INDEX.CSS
+ *========================================*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #0c4a6e 0%, #134e6f 20%, #081f2e 50%, #0c4a6e 80%, #1e3a8a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(4, 40, 68, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gradient-marine {
+  background: linear-gradient(135deg, rgba(12, 74, 110, 0.6) 0%, rgba(18, 113, 153, 0.6) 100%);
+}
+
+.title-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*========================================
+ * CLIENT/SRC/APP.TSX
+ *========================================*/
+
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import ServicesSection from "./components/ServicesSection";
+import ServiceDetail from "./components/ServiceDetail";
+import PartnersSection from "./components/PartnersSection";
+import AboutSection from "./components/AboutSection";
+import SocialMediaSection from "./components/SocialMediaSection";
+import ExhibitionsSection from "./components/ExhibitionsSection";
+import FAQSection from "./components/FAQSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
+import { services } from "./data/serviceData";
+
+function App() {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleServiceClick = (serviceId: string) => {
+    setSelectedService(serviceId);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedService(null);
+    document.body.style.overflow = "";
+  };
+
+  const currentService = services.find(
+    (service) => service.id === selectedService
+  );
+
+  return (
+    <div className="relative min-h-screen overflow-x-hidden font-inter">
+      <Navbar isScrolled={isScrolled} />
+      <HeroSection />
+      <ServicesSection onServiceClick={handleServiceClick} />
+      <PartnersSection />
+      <AboutSection />
+      <SocialMediaSection />
+      <ExhibitionsSection />
+      <FAQSection />
+      <ContactSection />
+      <Footer />
+      
+      <AnimatePresence>
+        {selectedService && currentService && (
+          <ServiceDetail
+            service={currentService}
+            onClose={handleCloseDetail}
+          />
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default App;
+
+/*========================================
+ * CLIENT/SRC/LIB/QUERYCLIENT.TS
+ *========================================*/
+
+import { QueryClient } from "@tanstack/react-query";
+
+async function throwIfResNotOk(res: Response) {
+  if (!res.ok) {
+    let errorText: string;
+    try {
+      const data = await res.json();
+      errorText = data.message || res.statusText;
+    } catch (e) {
+      errorText = res.statusText;
+    }
+    if (res.status === 401) {
+      throw new Error("Unauthorized");
+    }
+    throw new Error(errorText);
+  }
+  return res;
+}
+
+export async function apiRequest(
+  method: string,
+  url: string,
+  body?: any,
+  headers?: HeadersInit
+) {
+  const response = await fetch(url, {
+    method,
+    body: body ? JSON.stringify(body) : undefined,
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+  });
+  await throwIfResNotOk(response);
+  return response.status === 204 ? null : response.json();
+}
+
+type UnauthorizedBehavior = "returnNull" | "throw";
+export const getQueryFn: <T>(options: {
+  on401: UnauthorizedBehavior;
+}) => (url: string) => Promise<T> = (options) => {
+  return async (url: string) => {
+    try {
+      const response = await fetch(url);
+      if (response.status === 401 && options.on401 === "returnNull") {
+        return null as T;
+      }
+      await throwIfResNotOk(response);
+      return response.json();
+    } catch (e) {
+      throw e;
+    }
+  };
+};
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      queryFn: getQueryFn<unknown>({ on401: "throw" }),
+      staleTime: 1000 * 60 * 1, // 1 minute
+      retry: false,
+      refetchOnWindowFocus: true,
+    },
+  },
+});
+
+/*========================================
+ * CLIENT/SRC/LIB/MOTION.TS
+ *========================================*/
+
+export const fadeIn = (direction: string, delay: number) => {
+  return {
+    hidden: {
+      y: direction === 'up' ? 80 : direction === 'down' ? -80 : 0,
+      opacity: 0,
+      x: direction === 'left' ? 80 : direction === 'right' ? -80 : 0,
+    },
+    show: {
+      y: 0,
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: 'tween',
+        duration: 1.2,
+        delay: delay,
+        ease: [0.25, 0.25, 0.25, 0.75],
+      },
+    },
+  };
+};
+
+export const staggerContainer = (staggerChildren: number, delayChildren: number) => {
+  return {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: staggerChildren,
+        delayChildren: delayChildren || 0,
+      },
+    },
+  };
+};
+
+export const zoomIn = (delay: number, duration: number) => {
+  return {
+    hidden: {
+      scale: 0,
+      opacity: 0,
+    },
+    show: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: 'tween',
+        delay: delay,
+        duration: duration,
+        ease: 'easeOut',
+      },
+    },
+  };
+};
+
+export const slideIn = (direction: string, type: string, delay: number, duration: number) => {
+  return {
+    hidden: {
+      x: direction === 'left' ? '-100%' : direction === 'right' ? '100%' : 0,
+      y: direction === 'up' ? '100%' : direction === 'down' ? '100%' : 0,
+    },
+    show: {
+      x: 0,
+      y: 0,
+      transition: {
+        type: type,
+        delay: delay,
+        duration: duration,
+        ease: 'easeOut',
+      },
+    },
+  };
+};
+
+/*========================================
+ * CLIENT/SRC/LIB/UTILS.TS
+ *========================================*/
+
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+/*========================================
+ * CLIENT/SRC/HOOKS/USE-MOBILE.TSX
+ *========================================*/
+
+import { useState, useEffect } from "react";
+
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
+
+  return isMobile;
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/UI/GLASS-CARD.TSX
+ *========================================*/
+
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
+
+interface GlassCardProps {
+  children: ReactNode;
+  className?: string;
+  hoverEffect?: boolean;
+  onClick?: () => void;
+}
+
+export function GlassCard({ 
+  children, 
+  className = "", 
+  hoverEffect = false,
+  onClick
+}: GlassCardProps) {
+  return (
+    <motion.div
+      className={`glass rounded-xl ${hoverEffect ? "hover:-translate-y-1 hover:shadow-lg" : ""} ${className}`}
+      whileHover={hoverEffect ? { y: -5 } : {}}
+      transition={{ type: "spring", stiffness: 300 }}
+      onClick={onClick}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/NAVBAR.TSX
+ *========================================*/
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+interface NavbarProps {
+  isScrolled: boolean;
+}
+
+export default function Navbar({ isScrolled }: NavbarProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleNavClick = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+    <motion.nav
+      className={`glass fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-primary shadow-lg" : ""
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 50 }}
+    >
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <a href="#" className="text-2xl font-montserrat font-bold text-white">
+            AMIX International Group
+          </a>
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-white focus:outline-none"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+
+          {/* Desktop menu */}
+          <div className="hidden lg:flex space-x-10">
+            <button
+              onClick={() => handleNavClick("about")}
+              className="font-montserrat text-white hover:text-accent transition-colors"
+            >
+              About
+            </button>
+            <button
+              onClick={() => handleNavClick("services")}
+              className="font-montserrat text-white hover:text-accent transition-colors"
+            >
+              Services
+            </button>
+            <button
+              onClick={() => handleNavClick("partners")}
+              className="font-montserrat text-white hover:text-accent transition-colors"
+            >
+              Partners
+            </button>
+            <button
+              onClick={() => handleNavClick("exhibitions")}
+              className="font-montserrat text-white hover:text-accent transition-colors"
+            >
+              Exhibitions
+            </button>
+            <button
+              onClick={() => handleNavClick("contact")}
+              className="font-montserrat text-white hover:text-accent transition-colors"
+            >
+              Contact
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="lg:hidden pt-4 pb-2"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-col space-y-3">
+                <button
+                  onClick={() => handleNavClick("about")}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => handleNavClick("services")}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  Services
+                </button>
+                <button
+                  onClick={() => handleNavClick("partners")}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  Partners
+                </button>
+                <button
+                  onClick={() => handleNavClick("exhibitions")}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  Exhibitions
+                </button>
+                <button
+                  onClick={() => handleNavClick("contact")}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  Contact
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.nav>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/HERO-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+export default function HeroSection() {
+  const handleScrollToServices = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      window.scrollTo({
+        top: servicesSection.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  return (
+    <section className="relative min-h-screen flex items-center">
+      <div className="container mx-auto px-6 py-20">
+        <div className="max-w-3xl">
+          <motion.h1
+            className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold mb-6 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Your Gateway to <span className="text-accent">ASEAN</span> Opportunities
+          </motion.h1>
+          
+          <motion.p
+            className="text-xl md:text-2xl text-slate-300 mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            AMIX International Group connects global businesses with opportunities across ASEAN countries, specializing in import/export, IT solutions, real estate, and strategic partnerships.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <button 
+              onClick={handleScrollToServices}
+              className="bg-accent hover:bg-opacity-90 text-white py-3 px-6 rounded-md font-montserrat font-medium flex items-center space-x-2"
+            >
+              <span>Explore Our Services</span>
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </motion.div>
+        </div>
+      </div>
+      
+      {/* Background decoration elements */}
+      <motion.div
+        className="absolute bottom-0 right-0 w-1/3 h-64 bg-accent bg-opacity-10 rounded-tl-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      />
+      
+      <motion.div
+        className="absolute top-1/4 right-1/4 w-24 h-24 bg-white bg-opacity-5 rounded-full"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+      />
+      
+      <motion.div
+        className="absolute bottom-1/3 left-1/4 w-16 h-16 bg-white bg-opacity-5 rounded-full"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+      />
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/SERVICES-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+import { services } from "../data/serviceData";
+import { ArrowRight } from "lucide-react";
+
+interface ServicesSectionProps {
+  onServiceClick: (id: string) => void;
+}
+
+export default function ServicesSection({ onServiceClick }: ServicesSectionProps) {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <section id="services" className="py-20">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Our Services
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            We provide comprehensive solutions to help your business grow in the ASEAN region.
+          </motion.p>
+        </div>
+        
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {services.map((service) => (
+            <motion.div key={service.id} variants={itemVariants}>
+              <GlassCard 
+                hoverEffect={true} 
+                className="p-6 cursor-pointer"
+                onClick={() => onServiceClick(service.id)}
+              >
+                <div className="bg-accent bg-opacity-20 p-4 rounded-full inline-block mb-4">
+                  <service.icon className="text-accent w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-montserrat font-semibold mb-3">{service.title}</h3>
+                <p className="text-slate-300 mb-4">{service.shortDescription}</p>
+                <span className="text-accent text-sm uppercase tracking-wider flex items-center">
+                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                </span>
+              </GlassCard>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/SERVICE-DETAIL.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { X, Check } from "lucide-react";
+import { ServiceType } from "../data/serviceData";
+
+interface ServiceDetailProps {
+  service: ServiceType;
+  onClose: () => void;
+}
+
+export default function ServiceDetail({ service, onClose }: ServiceDetailProps) {
+  const handleContentClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
+  const scrollToContact = () => {
+    onClose();
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        window.scrollTo({
+          top: contactSection.offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    }, 300);
+  };
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-primary bg-opacity-90 p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="gradient-marine glass rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.9, y: 20 }}
+        transition={{ type: "spring", damping: 25 }}
+        onClick={handleContentClick}
+      >
+        <div className="relative p-8">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-white hover:text-accent transition-colors"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="md:w-1/2">
+              <img
+                src={service.imageUrl}
+                alt={service.title}
+                className="rounded-lg w-full h-64 object-cover"
+              />
+            </div>
+            <div className="md:w-1/2">
+              <h3 className="text-2xl font-montserrat font-bold mb-3">{service.title}</h3>
+              <h4 className="text-accent text-lg mb-4">{service.subtitle}</h4>
+              <p className="text-slate-300 mb-4">{service.description}</p>
+              <ul className="text-slate-300 mb-6 space-y-2">
+                {service.features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                    <Check className="text-accent mt-1 mr-2 h-4 w-4 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex space-x-4">
+                <button
+                  onClick={onClose}
+                  className="bg-accent hover:bg-opacity-90 text-white py-2 px-5 rounded-md font-medium transition-all"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={scrollToContact}
+                  className="glass text-white py-2 px-5 rounded-md font-medium inline-block text-center hover:bg-white hover:bg-opacity-20 transition-all"
+                >
+                  Contact Us
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/PARTNERS-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+import { partners } from "../data/partnerData";
+
+export default function PartnersSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <section id="partners" className="py-20 bg-primary bg-opacity-30">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Our Partners
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            We collaborate with leading companies across industries to bring you the best services and solutions.
+          </motion.p>
+        </div>
+        
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {partners.map((partner) => (
+            <motion.div key={partner.id} variants={itemVariants}>
+              <GlassCard className="p-6 flex flex-col items-center justify-center h-40">
+                <div className="text-5xl text-white mb-3">
+                  {/* Placeholder for partner logo */}
+                  <div className="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                    <span className="text-lg font-bold">{partner.name.substring(0, 2)}</span>
+                  </div>
+                </div>
+                <h3 className="text-center font-montserrat font-medium">{partner.name}</h3>
+              </GlassCard>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/ABOUT-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import { GlassCard } from "./ui/glass-card";
+
+export default function AboutSection() {
+  return (
+    <section id="about" className="py-20">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 title-shadow">
+              About AMIX International Group
+            </h2>
+            <p className="text-slate-300 mb-6">
+              AMIX International Group is a leading business facilitator specializing in connecting global enterprises with opportunities in the ASEAN region, particularly in Vietnam. Since our establishment, we have been dedicated to building bridges between international businesses and the dynamic markets of Southeast Asia.
+            </p>
+            <p className="text-slate-300 mb-6">
+              Our team of industry experts and local specialists provides invaluable insights and support, helping companies navigate the complexities of doing business in the region while capitalizing on its immense growth potential.
+            </p>
+            
+            <ul className="space-y-3 mb-8">
+              <li className="flex">
+                <Check className="text-accent mr-3 h-5 w-5 flex-shrink-0 mt-1" />
+                <span className="text-slate-300">
+                  Deep understanding of local markets and business cultures
+                </span>
+              </li>
+              <li className="flex">
+                <Check className="text-accent mr-3 h-5 w-5 flex-shrink-0 mt-1" />
+                <span className="text-slate-300">
+                  Extensive network of partners and industry connections
+                </span>
+              </li>
+              <li className="flex">
+                <Check className="text-accent mr-3 h-5 w-5 flex-shrink-0 mt-1" />
+                <span className="text-slate-300">
+                  Comprehensive range of business development services
+                </span>
+              </li>
+              <li className="flex">
+                <Check className="text-accent mr-3 h-5 w-5 flex-shrink-0 mt-1" />
+                <span className="text-slate-300">
+                  Strong track record of successful market entries
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <GlassCard className="p-8">
+              <h3 className="text-2xl font-montserrat font-semibold mb-6">Why Choose Us?</h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="glass rounded-lg p-5">
+                  <div className="w-12 h-12 rounded-full bg-accent bg-opacity-20 flex items-center justify-center mb-4">
+                    <span className="text-accent text-xl font-bold">1</span>
+                  </div>
+                  <h4 className="text-lg font-montserrat font-medium mb-2">Local Expertise</h4>
+                  <p className="text-slate-300 text-sm">
+                    Our team understands the nuances of local markets, regulations, and business practices.
+                  </p>
+                </div>
+                
+                <div className="glass rounded-lg p-5">
+                  <div className="w-12 h-12 rounded-full bg-accent bg-opacity-20 flex items-center justify-center mb-4">
+                    <span className="text-accent text-xl font-bold">2</span>
+                  </div>
+                  <h4 className="text-lg font-montserrat font-medium mb-2">Global Perspective</h4>
+                  <p className="text-slate-300 text-sm">
+                    International experience allows us to bridge cultural and business gaps effectively.
+                  </p>
+                </div>
+                
+                <div className="glass rounded-lg p-5">
+                  <div className="w-12 h-12 rounded-full bg-accent bg-opacity-20 flex items-center justify-center mb-4">
+                    <span className="text-accent text-xl font-bold">3</span>
+                  </div>
+                  <h4 className="text-lg font-montserrat font-medium mb-2">Comprehensive Support</h4>
+                  <p className="text-slate-300 text-sm">
+                    End-to-end solutions from market entry strategy to operational implementation.
+                  </p>
+                </div>
+                
+                <div className="glass rounded-lg p-5">
+                  <div className="w-12 h-12 rounded-full bg-accent bg-opacity-20 flex items-center justify-center mb-4">
+                    <span className="text-accent text-xl font-bold">4</span>
+                  </div>
+                  <h4 className="text-lg font-montserrat font-medium mb-2">Strong Networks</h4>
+                  <p className="text-slate-300 text-sm">
+                    Access to key decision-makers, partners, and industry leaders across ASEAN.
+                  </p>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/SOCIAL-MEDIA-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+import { Twitter, Linkedin } from "lucide-react";
+import { FaTelegram, FaWhatsapp, FaZhihu } from "react-icons/fa";
+
+export default function SocialMediaSection() {
+  const socialLinks = [
+    {
+      name: "X (Twitter)",
+      icon: Twitter,
+      url: "#",
+      description: "Follow us for the latest business updates and market insights"
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "#",
+      description: "Connect with our professional network and business opportunities"
+    },
+    {
+      name: "Telegram",
+      icon: FaTelegram,
+      url: "#",
+      description: "Join our channel for immediate updates and communication"
+    },
+    {
+      name: "WhatsApp",
+      icon: FaWhatsapp,
+      url: "#",
+      description: "Reach us directly for business inquiries and consultations"
+    },
+    {
+      name: "Zalo",
+      icon: FaZhihu, // Using a similar icon as placeholder for Zalo
+      url: "#",
+      description: "Connect with us on Vietnam's popular messaging platform"
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <section id="social-media" className="py-20">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Connect With Us
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Stay updated with our latest news, insights, and opportunities across our social media channels
+          </motion.p>
+        </div>
+        
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {socialLinks.map((social, index) => (
+            <motion.div key={index} variants={itemVariants}>
+              <GlassCard className="p-6 h-full flex flex-col items-center text-center">
+                <a 
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-accent transition-colors"
+                >
+                  <div className="mb-4 flex justify-center">
+                    <social.icon className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-lg font-montserrat font-semibold mb-2">{social.name}</h3>
+                  <p className="text-slate-300 text-sm">{social.description}</p>
+                </a>
+              </GlassCard>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/EXHIBITIONS-SECTION.TSX
+ *========================================*/
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+import { businessMissions, vietbuildExhibitions } from "../data/exhibitionData";
+import { Calendar, MapPin } from "lucide-react";
+
+export default function ExhibitionsSection() {
+  const [activeTab, setActiveTab] = useState<'business-missions' | 'vietbuild'>('business-missions');
+  
+  return (
+    <section id="exhibitions" className="py-20 bg-primary bg-opacity-30">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Events & Exhibitions
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Join us at upcoming business missions and exhibitions to explore opportunities in the ASEAN market
+          </motion.p>
+        </div>
+        
+        <div className="mb-8 flex justify-center">
+          <div className="glass rounded-lg inline-flex p-1">
+            <button
+              className={`py-2 px-6 rounded-md transition-all ${
+                activeTab === 'business-missions' 
+                  ? 'bg-accent text-white' 
+                  : 'text-white hover:bg-white hover:bg-opacity-10'
+              }`}
+              onClick={() => setActiveTab('business-missions')}
+            >
+              Business Missions
+            </button>
+            <button
+              className={`py-2 px-6 rounded-md transition-all ${
+                activeTab === 'vietbuild' 
+                  ? 'bg-accent text-white' 
+                  : 'text-white hover:bg-white hover:bg-opacity-10'
+              }`}
+              onClick={() => setActiveTab('vietbuild')}
+            >
+              Vietbuild Exhibitions
+            </button>
+          </div>
+        </div>
+        
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          {activeTab === 'business-missions' 
+            ? businessMissions.map(mission => (
+                <GlassCard key={mission.id} className="p-6">
+                  <h3 className="text-xl font-montserrat font-semibold mb-3">{mission.title}</h3>
+                  <div className="flex items-center text-slate-300 mb-3">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    <span>{mission.date}</span>
+                  </div>
+                  <div className="flex items-center text-slate-300 mb-4">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    <span>{mission.location}</span>
+                  </div>
+                  <p className="text-slate-300">{mission.description}</p>
+                </GlassCard>
+              ))
+            : vietbuildExhibitions.map(exhibition => (
+                <GlassCard key={exhibition.id} className="p-6">
+                  <h3 className="text-xl font-montserrat font-semibold mb-3">{exhibition.title}</h3>
+                  <div className="flex items-center text-slate-300 mb-3">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    <span>{exhibition.date}</span>
+                  </div>
+                  <div className="flex items-center text-slate-300 mb-4">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    <span>{exhibition.location}</span>
+                  </div>
+                  <p className="text-slate-300">{exhibition.description}</p>
+                </GlassCard>
+              ))
+          }
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/FAQ-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+// FAQ data
+const faqs = [
+  {
+    question: "How can AMIX International Group help my business enter the ASEAN market?",
+    answer: "We provide comprehensive market entry services including market research, partner identification, regulatory compliance assistance, and business strategy development. Our local expertise and established networks help streamline your entry into the ASEAN region, particularly Vietnam."
+  },
+  {
+    question: "What types of businesses do you typically work with?",
+    answer: "We work with businesses of all sizes across various industries. From startups looking to establish their first international presence to established companies seeking to expand their operations in the ASEAN region, our services are tailored to meet the specific needs of each client."
+  },
+  {
+    question: "Do you offer services for specific industries?",
+    answer: "Yes, we have specialized expertise in several key industries including technology, construction materials, manufacturing, consumer goods, and real estate. However, our services can be adapted to most business sectors looking to enter or expand in the ASEAN markets."
+  },
+  {
+    question: "What is the typical timeframe for establishing business operations in Vietnam?",
+    answer: "The timeframe varies depending on the nature and scale of your business. Simple market entry strategies can be implemented within 2-3 months, while more complex operations involving manufacturing or significant investments may take 6-12 months. We work with you to establish realistic timelines based on your specific requirements."
+  },
+  {
+    question: "How do your exhibition services work?",
+    answer: "Our exhibition services include securing premium booth spaces at major trade shows like Vietbuild, designing and setting up your exhibition presence, arranging logistics, providing translators and local staff, and facilitating business matchmaking during the event. We handle the entire exhibition process so you can focus on making valuable business connections."
+  }
+];
+
+export default function FAQSection() {
+  return (
+    <section id="faq" className="py-20 bg-primary bg-opacity-30">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Frequently Asked Questions
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Find answers to common questions about our services and operations
+          </motion.p>
+        </div>
+        
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <GlassCard className="p-8">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-b border-white border-opacity-10">
+                  <AccordionTrigger className="text-left font-montserrat text-lg py-4">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 py-4">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </GlassCard>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/CONTACT-SECTION.TSX
+ *========================================*/
+
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useToast } from "@/hooks/use-toast";
+import { Send } from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { apiRequest } from "@/lib/queryClient";
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().min(5, { message: "Please enter a valid phone number." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+export default function ContactSection() {
+  const { toast } = useToast();
+  
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      await apiRequest("POST", "/api/contact", data);
+      toast({
+        title: "Message sent!",
+        description: "We will get back to you as soon as possible.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  return (
+    <section id="contact" className="py-20">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Contact Us
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Have questions or want to discuss a potential collaboration? Get in touch with our team.
+          </motion.p>
+        </div>
+        
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <GlassCard className="p-8">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-white">Name</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="Your name" 
+                            {...field} 
+                            className="bg-white bg-opacity-10 border-white border-opacity-20 text-white placeholder:text-slate-400"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-white">Email</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="Your email" 
+                            type="email" 
+                            {...field} 
+                            className="bg-white bg-opacity-10 border-white border-opacity-20 text-white placeholder:text-slate-400"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Phone</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your phone number" 
+                          {...field} 
+                          className="bg-white bg-opacity-10 border-white border-opacity-20 text-white placeholder:text-slate-400"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="How can we help you?" 
+                          rows={5} 
+                          {...field} 
+                          className="bg-white bg-opacity-10 border-white border-opacity-20 text-white placeholder:text-slate-400"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <button 
+                  type="submit" 
+                  className="bg-accent hover:bg-opacity-90 text-white py-3 px-6 rounded-md font-medium flex items-center justify-center w-full md:w-auto"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <Send className="ml-2 h-4 w-4" />
+                    </>
+                  )}
+                </button>
+              </form>
+            </Form>
+          </GlassCard>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/COMPONENTS/FOOTER.TSX
+ *========================================*/
+
+import { Twitter, Linkedin, MapPin, Mail, Phone } from "lucide-react";
+import { FaTelegram, FaWhatsapp, FaZhihu } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-primary py-12">
+      <div className="container mx-auto px-6">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Company Info */}
+          <div>
+            <a href="#" className="text-xl font-montserrat font-bold text-white">
+              AMIX International Group
+            </a>
+            <p className="text-slate-300 mt-2 mb-4">Your Gateway to ASEAN Opportunities</p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                <FaTelegram className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                <FaWhatsapp className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                <FaZhihu className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+          
+          {/* Get in Touch */}
+          <div>
+            <h3 className="font-montserrat font-bold text-lg mb-4">Get in Touch</h3>
+            <ul className="space-y-4">
+              <li className="flex">
+                <MapPin className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
+                <span className="text-slate-300">Hoan Kiem District, Hanoi, Vietnam</span>
+              </li>
+              <li className="flex">
+                <Mail className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
+                <span className="text-slate-300">contact@amixgroup.com</span>
+              </li>
+              <li className="flex">
+                <Phone className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
+                <span className="text-slate-300">+84 123 456 789</span>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-montserrat font-bold text-lg mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#services" className="text-slate-300 hover:text-white transition-colors">Our Services</a>
+              </li>
+              <li>
+                <a href="#exhibitions" className="text-slate-300 hover:text-white transition-colors">Events & Exhibitions</a>
+              </li>
+              <li>
+                <a href="#faq" className="text-slate-300 hover:text-white transition-colors">FAQs</a>
+              </li>
+              <li>
+                <a href="#contact" className="text-slate-300 hover:text-white transition-colors">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Office Hours */}
+          <div>
+            <h3 className="font-montserrat font-bold text-lg mb-4">Office Hours</h3>
+            <ul className="space-y-2">
+              <li className="text-slate-300">Monday - Friday: 9:00 AM - 6:00 PM</li>
+              <li className="text-slate-300">Saturday: 9:00 AM - 12:00 PM</li>
+              <li className="text-slate-300">Sunday: Closed</li>
+            </ul>
+          </div>
+        </motion.div>
+        
+        <motion.div 
+          className="border-t border-white border-opacity-10 pt-8 flex flex-col md:flex-row justify-between"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="text-slate-300 text-sm mb-4 md:mb-0">
+            &copy; {currentYear} AMIX International Group. All rights reserved.
+          </div>
+          
+          <div className="flex flex-wrap gap-4">
+            <a href="#" className="text-slate-300 text-sm hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="text-slate-300 text-sm hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="text-slate-300 text-sm hover:text-white transition-colors">Sitemap</a>
+          </div>
+        </motion.div>
+      </div>
+    </footer>
+  );
+}
+
+/*========================================
+ * CLIENT/SRC/DATA/SERVICE-DATA.TS
+ *========================================*/
+
+import { Ship, Building, Laptop, Handshake, ShoppingCart, Megaphone } from "lucide-react";
+
+// Fix the icon type definition to work with Lucide icons
+export interface ServiceType {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: any; // Using 'any' here to accommodate Lucide icons
+  shortDescription: string;
+  description: string;
+  imageUrl: string;
+  features: string[];
+}
+
+export const services: ServiceType[] = [
+  {
+    id: "import-export",
+    title: "Import/Export",
+    subtitle: "Global Trade Made Simple",
+    icon: Ship,
+    shortDescription: "Seamless international trade solutions connecting global markets.",
+    description: "AMIX International Group facilitates seamless international trade between ASEAN countries and global markets. Our import/export services include:",
+    imageUrl: "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    features: [
+      "Trade compliance and customs regulations management",
+      "Supply chain optimization and logistics solutions",
+      "Market research and international trade strategy",
+      "Documentation and regulatory compliance assistance"
+    ]
+  },
+  {
+    id: "real-estate",
+    title: "Real Estate",
+    subtitle: "Premium Property Solutions",
+    icon: Building,
+    shortDescription: "Premium property opportunities in Vietnam's growing market.",
+    description: "AMIX International Group offers comprehensive real estate services in Vietnam's growing market, helping investors and businesses find the perfect property solutions:",
+    imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    features: [
+      "Commercial and residential property acquisition",
+      "Real estate investment consulting and market analysis",
+      "Property management and development opportunities",
+      "Legal guidance for foreign investors in Vietnamese real estate"
+    ]
+  },
+  {
+    id: "it-solutions",
+    title: "IT Solutions",
+    subtitle: "Innovative Technology Services",
+    icon: Laptop,
+    shortDescription: "Cutting-edge technology services for businesses of all sizes.",
+    description: "AMIX International Group delivers cutting-edge IT solutions tailored to your business needs in the ASEAN region:",
+    imageUrl: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    features: [
+      "Custom software development and integration",
+      "Cloud infrastructure and digital transformation",
+      "IT outsourcing and managed services",
+      "Cybersecurity and data protection solutions"
+    ]
+  },
+  {
+    id: "strategic-partnership",
+    title: "Strategic Partnership",
+    subtitle: "Building Business Alliances",
+    icon: Handshake,
+    shortDescription: "Building valuable business relationships across ASEAN markets.",
+    description: "AMIX International Group helps businesses establish strategic partnerships across the ASEAN region, expanding your network and opportunities:",
+    imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    features: [
+      "Partner identification and matchmaking services",
+      "Joint venture and collaboration facilitation",
+      "Due diligence and partner verification",
+      "Long-term partnership management and support"
+    ]
+  },
+  {
+    id: "e-commerce",
+    title: "E-Commerce",
+    subtitle: "Digital Retail Excellence",
+    icon: ShoppingCart,
+    shortDescription: "Digital retail solutions and marketplace integration services.",
+    description: "AMIX International Group provides comprehensive e-commerce solutions to help your business thrive in the digital marketplace:",
+    imageUrl: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    features: [
+      "E-commerce platform development and optimization",
+      "Marketplace integration and management",
+      "Cross-border e-commerce solutions",
+      "Digital payment and logistics coordination"
+    ]
+  },
+  {
+    id: "marketing",
+    title: "Marketing",
+    subtitle: "Local Market Expertise",
+    icon: Megaphone,
+    shortDescription: "Tailored marketing strategies for the Vietnamese marketplace.",
+    description: "AMIX International Group develops targeted marketing strategies to help your business connect with the Vietnamese and ASEAN markets:",
+    imageUrl: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    features: [
+      "Localized digital marketing campaigns",
+      "Brand development and positioning",
+      "Market research and competitive analysis",
+      "Social media and content marketing strategies"
+    ]
+  }
+];
+
+/*========================================
+ * CLIENT/SRC/DATA/PARTNER-DATA.TS
+ *========================================*/
+
+export interface PartnerType {
+  id: string;
+  name: string;
+}
+
+export const partners: PartnerType[] = [
+  {
+    id: "partner-1",
+    name: "TechViet Solutions"
+  },
+  {
+    id: "partner-2",
+    name: "Hanoi Trade Corporation"
+  },
+  {
+    id: "partner-3",
+    name: "Global Ventures Asia"
+  },
+  {
+    id: "partner-4",
+    name: "Vietnam Export Alliance"
+  },
+  {
+    id: "partner-5",
+    name: "ASEAN Business Council"
+  },
+  {
+    id: "partner-6",
+    name: "Digital Commerce Partners"
+  },
+  {
+    id: "partner-7",
+    name: "Pacific Trade Network"
+  },
+  {
+    id: "partner-8",
+    name: "Saigon Real Estate Group"
+  }
+];
+
+/*========================================
+ * CLIENT/SRC/DATA/EXHIBITION-DATA.TS
+ *========================================*/
+
+export interface BusinessMissionType {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+}
+
+export interface VietbuildExhibitionType {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+}
+
+export const businessMissions: BusinessMissionType[] = [
+  {
+    id: "mission-1",
+    title: "Vietnam Technology Trade Mission",
+    date: "March 15-20, 2025",
+    location: "Hanoi, Vietnam",
+    description: "Connect with leading Vietnamese technology companies and explore partnership opportunities in software development, IT outsourcing, and digital transformation services."
+  },
+  {
+    id: "mission-2",
+    title: "ASEAN Manufacturing Expo",
+    date: "April 5-10, 2025",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "Meet with manufacturers across various sectors including electronics, textiles, and automotive components to establish supply chain relationships and sourcing opportunities."
+  },
+  {
+    id: "mission-3",
+    title: "Vietnam Real Estate Investment Forum",
+    date: "May 18-22, 2025",
+    location: "Da Nang, Vietnam",
+    description: "Explore commercial and residential real estate opportunities in Vietnam's fastest-growing regions with site visits, investor meetings, and regulatory guidance."
+  },
+  {
+    id: "mission-4",
+    title: "ASEAN E-Commerce & Digital Trade Mission",
+    date: "June 12-17, 2025",
+    location: "Bangkok, Thailand & Hanoi, Vietnam",
+    description: "Connect with e-commerce platforms, digital payment providers, and logistics companies to establish your digital presence in the rapidly growing ASEAN online marketplace."
+  },
+  {
+    id: "mission-5",
+    title: "Vietnam-EU Business Forum",
+    date: "July 8-12, 2025",
+    location: "Hanoi, Vietnam",
+    description: "Take advantage of the EU-Vietnam Free Trade Agreement with guided sessions on tariff reductions, import/export procedures, and matchmaking with potential partners."
+  },
+  {
+    id: "mission-6",
+    title: "Sustainable Business Practices Mission",
+    date: "September 15-19, 2025",
+    location: "Ho Chi Minh City & Mekong Delta, Vietnam",
+    description: "Explore green business opportunities and sustainable practices in manufacturing, agriculture, and energy sectors with a focus on ESG compliance."
+  }
+];
+
+export const vietbuildExhibitions: VietbuildExhibitionType[] = [
+  {
+    id: "vietbuild-1",
+    title: "Vietbuild Hanoi 2025 - Phase 1",
+    date: "March 25-29, 2025",
+    location: "National Exhibition Construction Center, Hanoi",
+    description: "Showcase your construction materials, real estate projects, and interior design products to over 200,000 visitors including contractors, architects, and property developers."
+  },
+  {
+    id: "vietbuild-2",
+    title: "Vietbuild Ho Chi Minh City 2025 - Phase 1",
+    date: "April 15-19, 2025",
+    location: "Saigon Exhibition and Convention Center, Ho Chi Minh City",
+    description: "Present your building products and solutions at Vietnam's largest construction exhibition with participation from over 1,500 domestic and international companies."
+  },
+  {
+    id: "vietbuild-3",
+    title: "Vietbuild Da Nang 2025",
+    date: "May 8-12, 2025",
+    location: "Da Nang Exhibition Fair Center, Da Nang",
+    description: "Connect with the Central Vietnam market's growing construction and real estate sectors, focusing on sustainable and green building materials and technologies."
+  },
+  {
+    id: "vietbuild-4",
+    title: "Vietbuild Hanoi 2025 - Phase 2",
+    date: "July 20-24, 2025",
+    location: "National Exhibition Construction Center, Hanoi",
+    description: "Highlight your interior design products, smart home solutions, and decorative materials at this specialized exhibition focused on housing and home decoration."
+  },
+  {
+    id: "vietbuild-5",
+    title: "Vietbuild Ho Chi Minh City 2025 - Phase 2",
+    date: "August 10-14, 2025",
+    location: "Saigon Exhibition and Convention Center, Ho Chi Minh City",
+    description: "Showcase real estate projects, property technologies, and investment opportunities to qualified investors and home buyers in Southern Vietnam."
+  },
+  {
+    id: "vietbuild-6",
+    title: "Vietbuild Hanoi 2025 - Phase 3",
+    date: "November 5-9, 2025",
+    location: "National Exhibition Construction Center, Hanoi",
+    description: "Present your latest building materials, architectural designs, and construction technologies at the year-end exhibition serving northern Vietnam's construction industry."
+  }
+];
+
+/*========================================
+ * SERVER/INDEX.TS
+ *========================================*/
+
+import express, { Request, Response, NextFunction } from "express";
+import { registerRoutes } from "./routes";
+import { setupVite, serveStatic, log } from "./vite";
+import http from "http";
+
+async function startServer() {
+  const app = express();
+
+  app.use(express.json());
+
+  // For API routes
+  const server = await registerRoutes(app);
+
+  // Development server with Vite
+  await setupVite(app, server);
+
+  // Static file serving
+  serveStatic(app);
+
+  // Error handler
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || 500;
+    const message = err.message || "Something went wrong";
+    log(`Error: ${message}`, "error");
+    res.status(status).json({ message });
+  });
+
+  // Start the server
+  const PORT = process.env.PORT || 5000;
+  server.listen(PORT, "0.0.0.0", () => {
+    log(`serving on port ${PORT}`);
+  });
+}
+
+startServer().catch((err) => {
+  console.error("Failed to start server:", err);
+});
+
+/*========================================
+ * SERVER/ROUTES.TS
+ *========================================*/
+
+import { Express, Request, Response } from "express";
+import { Server } from "http";
+import { storage } from "./storage";
+import { log } from "./vite";
+
+export async function registerRoutes(app: Express): Promise<Server> {
+  const server = new Server(app);
+
+  // Add API routes here
+  app.get("/api/health", (_req: Request, res: Response) => {
+    res.json({ status: "ok" });
+  });
+
+  // Handle contact form submissions
+  app.post("/api/contact", async (req: Request, res: Response) => {
+    const { name, email, phone, message } = req.body;
+
+    if (!name || !email || !phone || !message) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    try {
+      // In a real application, you would save this data to a database
+      // or send an email notification
+      log(`Contact form submission from ${name} (${email})`, "express");
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      res.status(200).json({ message: "Message received" });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to send message" });
+    }
+  });
+
+  return server;
+}
+
+/*========================================
+ * SERVER/STORAGE.TS
+ *========================================*/
+
+import { User, InsertUser } from "../shared/schema";
+
+export interface IStorage {
+  getUser(id: number): Promise<User | undefined>;
+  getUserByUsername(username: string): Promise<User | undefined>;
+  createUser(user: InsertUser): Promise<User>;
+}
+
+export class MemStorage implements IStorage {
+  private users: Map<number, User>;
+  currentId: number;
+
+  constructor() {
+    this.users = new Map();
+    this.currentId = 1;
+  }
+
+  async getUser(id: number): Promise<User | undefined> {
+    return this.users.get(id);
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    for (const user of this.users.values()) {
+      if (user.username === username) {
+        return user;
+      }
+    }
+    return undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const id = this.currentId++;
+    const user: User = { ...insertUser, id };
+    this.users.set(id, user);
+    return user;
+  }
+}
+
+export const storage = new MemStorage();
+
+/*========================================
+ * SERVER/VITE.TS
+ *========================================*/
+
+import express, { Express } from "express";
+import { Server } from "http";
+import path from "path";
+import { createServer as createViteServer } from "vite";
+
+export function log(message: string, source = "express") {
+  const time = new Date().toLocaleTimeString();
+  console.log(`${time} [${source}] ${message}`);
+}
+
+export async function setupVite(app: Express, server: Server) {
+  const vite = await createViteServer({
+    server: { middlewareMode: true },
+    appType: "spa",
+  });
+
+  app.use(vite.middlewares);
+
+  return { app, server, vite };
+}
+
+export function serveStatic(app: Express) {
+  app.use(express.static(path.resolve("client", "dist")));
+  app.get("*", (_req, res) => {
+    res.sendFile(path.resolve("client", "dist", "index.html"));
+  });
+}
+
+/*========================================
+ * SHARED/SCHEMA.TS
+ *========================================*/
+
+import { pgTable, serial, text, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
+
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  username: varchar("username", { length: 255 }).notNull().unique(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  password: text("password").notNull(),
+});
+
+export const insertUserSchema = createInsertSchema(users).pick({
+  username: true,
+  email: true,
+  password: true,
+});
+
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type User = typeof users.$inferSelect;
+
+/*========================================
+ * CODE EXPLANATION
+ *========================================*/
+
+/*
+This file contains the complete source code for the AMIX International Group website.
+
+To set up the project on your local machine:
+
+1. Create a new directory for your project
+2. Inside the project directory, create the file and folder structure as shown in the comments
+3. Copy the code sections into their respective files
+4. Run `npm install` to install the required dependencies
+5. Run `npm run dev` to start the development server
+
+The project is built with:
+- React + TypeScript frontend
+- Express backend for handling API requests
+- Framer Motion for animations
+- Tailwind CSS + shadcn/ui for styling
+- A glass-style UI with marine theme
+
+The website features:
+- Responsive design that works on mobile and desktop
+- Animated glass-style UI components
+- Interactive service cards that expand to show details
+- Contact form with validation
+- Exhibition schedule section
+- FAQ section with accordion
+- Social media links section
+- Custom styling with marine-themed gradient backgrounds
+*/

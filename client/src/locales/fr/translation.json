@@ -1,0 +1,81 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "services": "Services",
+    "partners": "Partenaires",
+    "about": "À propos",
+    "social": "Réseaux sociaux",
+    "exhibitions": "Expositions",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Votre porte d'entrée vers les opportunités de l'ASEAN",
+    "subtitle": "Connecter les entreprises mondiales aux marchés émergents d'Asie du Sud-Est",
+    "cta": "Explorer nos services"
+  },
+  "services": {
+    "title": "Nos services",
+    "subtitle": "Nous fournissons des solutions complètes pour aider votre entreprise à se développer dans la région de l'ASEAN.",
+    "learnMore": "En savoir plus",
+    "back": "Retour",
+    "contactUs": "Contactez-nous"
+  },
+  "partners": {
+    "title": "Nos partenaires",
+    "subtitle": "Nous collaborons avec des entreprises de premier plan pour offrir des résultats exceptionnels."
+  },
+  "about": {
+    "title": "À propos d'AMIX International Group",
+    "paragraph1": "Basée à Hanoï, AMIX International Group Vietnam LLC sert de pont reliant les entreprises mondiales aux opportunités de la région de l'ASEAN. Grâce à notre compréhension approfondie des marchés locaux et des pratiques commerciales internationales, nous aidons les entreprises à naviguer dans les complexités des affaires au Vietnam et dans les pays voisins.",
+    "paragraph2": "Notre équipe allie expertise locale et vision globale pour fournir des solutions complètes dans de multiples secteurs, notamment l'import/export, l'informatique, l'immobilier et les partenariats stratégiques. Nous sommes fiers de notre collaboration avec Vietbuild Corp et d'autres leaders de l'industrie pour offrir une valeur exceptionnelle à nos clients.",
+    "stats": {
+      "years": "Années d'expérience",
+      "projects": "Projets réussis",
+      "partners": "Partenaires mondiaux",
+      "countries": "Pays de l'ASEAN"
+    },
+    "cta": "Contactez-nous"
+  },
+  "social": {
+    "title": "Connectez-vous avec nous",
+    "subtitle": "Suivez-nous sur les réseaux sociaux pour rester informé de nos dernières actualités et événements."
+  },
+  "exhibitions": {
+    "title": "Expositions à venir",
+    "subtitle": "Rejoignez-nous lors de ces événements industriels pour explorer de nouvelles opportunités.",
+    "business": "Missions commerciales",
+    "vietbuild": "Expositions Vietbuild",
+    "viewDetails": "Voir les détails",
+    "date": "Date",
+    "location": "Lieu"
+  },
+  "faq": {
+    "title": "Foire aux questions",
+    "subtitle": "Trouvez des réponses aux questions courantes sur nos services et nos opérations."
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Vous avez une question ou souhaitez collaborer? Envoyez-nous un message.",
+    "name": "Votre nom",
+    "email": "Votre email",
+    "message": "Votre message",
+    "submit": "Envoyer le message",
+    "success": "Merci! Votre message a été envoyé avec succès.",
+    "error": "Oups! Une erreur s'est produite. Veuillez réessayer plus tard."
+  },
+  "footer": {
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "email": "Email",
+    "copyright": "© 2025 AMIX International Group. Tous droits réservés."
+  },
+  "language": {
+    "en": "Anglais",
+    "vi": "Vietnamien",
+    "ru": "Russe",
+    "fr": "Français",
+    "de": "Allemand", 
+    "pt": "Portugais"
+  }
+}

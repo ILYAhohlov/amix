@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 213 74% 23%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --accent: 213 100% 62%;
+    --accent-foreground: 210 40% 98%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    
+    --radius: 0.5rem;
+    
+    --chart-1: 222.2 47.4% 11.2%;
+    --chart-2: 221 83.2% 53.3%;
+    --chart-3: 226 70.7% 40.2%;
+    --chart-4: 215 27.9% 16.9%;
+    --chart-5: 217.2 32.6% 17.5%;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+    background: linear-gradient(135deg, #0a192f 0%, #0f3460 50%, #164e87 100%);
+    color: #e6f1ff;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .glass:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+  }
+  
+  .gradient-marine {
+    background: linear-gradient(135deg, #0a192f 0%, #0f3460 40%, #1a5f9e 100%);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+  
+  .hover-lift {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent hover:bg-opacity-90 text-white py-3 px-8 rounded-md font-medium transition-all hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply glass text-white py-3 px-8 rounded-md font-medium hover:bg-white hover:bg-opacity-15 transition-all hover:shadow-lg;
+  }
+  
+  .title-shadow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card {
+    @apply glass rounded-lg p-6 hover:shadow-xl transition-all duration-300;
+  }
+}
+
+/* Font families */
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}

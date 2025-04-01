@@ -1,0 +1,81 @@
+{
+  "navbar": {
+    "home": "Trang chủ",
+    "services": "Dịch vụ",
+    "partners": "Đối tác",
+    "about": "Giới thiệu",
+    "social": "Mạng xã hội",
+    "exhibitions": "Triển lãm",
+    "faq": "Hỏi đáp",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "title": "Cửa ngõ đến cơ hội tại ASEAN",
+    "subtitle": "Kết nối doanh nghiệp toàn cầu với thị trường mới nổi ở Đông Nam Á",
+    "cta": "Khám phá dịch vụ của chúng tôi"
+  },
+  "services": {
+    "title": "Dịch vụ của chúng tôi",
+    "subtitle": "Chúng tôi cung cấp giải pháp toàn diện để giúp doanh nghiệp của bạn phát triển trong khu vực ASEAN.",
+    "learnMore": "Tìm hiểu thêm",
+    "back": "Quay lại",
+    "contactUs": "Liên hệ với chúng tôi"
+  },
+  "partners": {
+    "title": "Đối tác của chúng tôi",
+    "subtitle": "Chúng tôi hợp tác với các công ty hàng đầu để mang lại kết quả vượt trội."
+  },
+  "about": {
+    "title": "Về AMIX International Group",
+    "paragraph1": "Đặt tại Hà Nội, AMIX International Group Vietnam LLC đóng vai trò cầu nối giữa doanh nghiệp toàn cầu với cơ hội tại khu vực ASEAN. Với hiểu biết sâu sắc về thị trường địa phương và thông lệ kinh doanh quốc tế, chúng tôi giúp các công ty vượt qua sự phức tạp của việc kinh doanh tại Việt Nam và các nước láng giềng.",
+    "paragraph2": "Đội ngũ của chúng tôi kết hợp chuyên môn địa phương với tầm nhìn toàn cầu để cung cấp giải pháp toàn diện trên nhiều lĩnh vực bao gồm xuất nhập khẩu, CNTT, bất động sản và hợp tác chiến lược. Chúng tôi tự hào về sự hợp tác với Vietbuild Corp và các đơn vị dẫn đầu ngành khác để mang lại giá trị vượt trội cho khách hàng.",
+    "stats": {
+      "years": "Năm kinh nghiệm",
+      "projects": "Dự án thành công",
+      "partners": "Đối tác toàn cầu",
+      "countries": "Quốc gia ASEAN"
+    },
+    "cta": "Liên hệ ngay"
+  },
+  "social": {
+    "title": "Kết nối với chúng tôi",
+    "subtitle": "Theo dõi chúng tôi trên mạng xã hội để cập nhật tin tức và sự kiện mới nhất."
+  },
+  "exhibitions": {
+    "title": "Triển lãm sắp tới",
+    "subtitle": "Tham gia cùng chúng tôi tại các sự kiện ngành để khám phá cơ hội mới.",
+    "business": "Đoàn công tác thương mại",
+    "vietbuild": "Triển lãm Vietbuild",
+    "viewDetails": "Xem chi tiết",
+    "date": "Ngày",
+    "location": "Địa điểm"
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp",
+    "subtitle": "Tìm câu trả lời cho các câu hỏi phổ biến về dịch vụ và hoạt động của chúng tôi."
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Có câu hỏi hoặc muốn hợp tác? Gửi tin nhắn cho chúng tôi.",
+    "name": "Tên của bạn",
+    "email": "Email của bạn",
+    "message": "Tin nhắn của bạn",
+    "submit": "Gửi tin nhắn",
+    "success": "Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công.",
+    "error": "Rất tiếc! Đã xảy ra lỗi. Vui lòng thử lại sau."
+  },
+  "footer": {
+    "address": "Địa chỉ",
+    "phone": "Điện thoại",
+    "email": "Email",
+    "copyright": "© 2025 AMIX International Group. Đã đăng ký bản quyền."
+  },
+  "language": {
+    "en": "Tiếng Anh",
+    "vi": "Tiếng Việt",
+    "ru": "Tiếng Nga",
+    "fr": "Tiếng Pháp",
+    "de": "Tiếng Đức", 
+    "pt": "Tiếng Bồ Đào Nha"
+  }
+}
