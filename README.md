@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # AMIX Website
 
-The official website for AMIX International Group, connecting global businesses with opportunities across ASEAN countries.
+The official website for AMIX International Group (amix.pro), connecting global businesses with opportunities across ASEAN countries.
 
 ## Telegram Bot Integration
 
@@ -27,8 +26,6 @@ The Telegram integration uses the following environment variables:
 - `TELEGRAM_TOKEN` - The token for your Telegram bot
 - `TELEGRAM_CHAT_ID` - The ID of the chat where messages should be sent
 
-These values are set in the `render.yaml` file for deployment on Render.com, but they can also be configured as environment variables in any hosting environment.
-
 ### Development Setup
 
 1. Clone the repository
@@ -37,7 +34,7 @@ These values are set in the `render.yaml` file for deployment on Render.com, but
 
 ### Deployment
 
-The website is configured for deployment on Render.com using the `render.yaml` configuration file. To deploy, simply connect your GitHub repository to Render.com and it will automatically build and deploy the application.
+The website is configured for deployment on Render.com using the `render.yaml` configuration file.
 
 ## Technology Stack
 
@@ -52,9 +49,5 @@ The website is configured for deployment on Render.com using the `render.yaml` c
 All forms include:
 - Client-side validation
 - Server-side validation
-- Real-time feedback on submission status
-- Telegram notifications for new submissions 
-=======
-# amix
-amix.pro 
->>>>>>> da593360ae7829ab736d40c87832c8f614e0ea98
+- Real-time feedback
+- Telegram notifications
