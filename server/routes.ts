@@ -6,7 +6,8 @@ import {
   sendTelegramMessage,
   formatContactMessage,
   formatVisitorMessage,
-  formatParticipantMessage
+  formatParticipantMessage,
+  formatBusinessMissionMessage
 } from "./telegram";
 
 const contactFormSchema = z.object({
@@ -34,6 +35,14 @@ const participantFormSchema = z.object({
   industry: z.string().min(1, "Industry is required"),
   registrationAssistance: z.string().min(1, "Registration assistance selection is required"),
   logistics: z.string().min(1, "Logistics selection is required"),
+  comments: z.string().optional(),
+  exhibition: z.string().optional(),
+});
+
+const businessMissionFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  country: z.string().min(1, "Country is required"),
   comments: z.string().optional(),
   exhibition: z.string().optional(),
 });
@@ -137,6 +146,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ 
         success: false, 
         message: "An error occurred while submitting your participation request. Please try again later." 
+      });
+    }
+  });
+
+  // Business Mission form submission endpoint
+  app.post("/api/business-mission", async (req: Request, res: Response) => {
+    try {
+      // Validate the request body
+      const validatedData = businessMissionFormSchema.parse(req.body);
+      
+      // Send notification to Telegram
+      const telegramMessage = formatBusinessMissionMessage(validatedData);
+      await sendTelegramMessage(telegramMessage);
+      
+      // For demo purposes, simulate a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      res.status(200).json({ 
+        success: true, 
+        message: "Thank you for your interest! Your registration has been received." 
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      }
+      
+      console.error("Business Mission form error:", error);
+      res.status(500).json({ 
+        success: false, 
+        message: "An error occurred while submitting your registration. Please try again later." 
       });
     }
   });

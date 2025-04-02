@@ -4,14 +4,38 @@ import { Briefcase, Building } from "lucide-react";
 import GlassCard from "./ui/glass-card";
 import VisitorForm from "./VisitorForm";
 import ParticipantForm from "./ParticipantForm";
+import { BusinessMissionForm, BusinessMissionFormData } from "./BusinessMissionForm";
 import { businessMissions, vietbuildExhibitions } from "../data/exhibitionData";
 import { apiRequest } from "@/lib/queryClient";
+import { useTranslation } from "react-i18next";
+
+// Типы данных форм
+type VisitorFormData = {
+  name: string;
+  email: string;
+  country: string;
+  purpose: string;
+  comments: string;
+};
+
+type ParticipantFormData = {
+  name: string;
+  email: string;
+  company: string;
+  country: string;
+  participationType: string;
+  industry: string;
+  registrationAssistance: string;
+  logistics: string;
+  comments: string;
+};
+
+// Добавляем новый тип модального окна
+type ModalType = "visitor" | "participant" | "business-mission";
 
 export default function ExhibitionsSection() {
-  const [activeModal, setActiveModal] = useState<{
-    type: "visitor" | "participant";
-    exhibitionId: string;
-  } | null>(null);
+  const { t } = useTranslation();
+  const [activeModal, setActiveModal] = useState<{ type: ModalType; exhibitionId: number } | null>(null);
 
   // Success or error messages
   const [formStatus, setFormStatus] = useState<{
@@ -39,16 +63,24 @@ export default function ExhibitionsSection() {
     comments: "",
   });
 
+  // Добавляем состояние для данных формы бизнес-миссий
+  const [businessMissionFormData, setBusinessMissionFormData] = useState<BusinessMissionFormData>({
+    name: "",
+    email: "",
+    country: "",
+    comments: "",
+  });
+
   const selectedExhibition = activeModal
     ? [...vietbuildExhibitions, ...businessMissions].find(
         (ex) => ex.id === activeModal.exhibitionId
       )
     : null;
 
-  const openModal = (type: "visitor" | "participant", exhibitionId: string) => {
+  const openModal = (type: ModalType, exhibitionId: string) => {
     // Reset status when opening a new form
     setFormStatus({});
-    setActiveModal({ type, exhibitionId });
+    setActiveModal({ type, exhibitionId: parseInt(exhibitionId) });
   };
 
   const closeModal = () => {
@@ -73,6 +105,12 @@ export default function ExhibitionsSection() {
       logistics: "",
       comments: "",
     });
+    setBusinessMissionFormData({
+      name: "",
+      email: "",
+      country: "",
+      comments: "",
+    });
   };
 
   const handleVisitorChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -81,6 +119,10 @@ export default function ExhibitionsSection() {
 
   const handleParticipantChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setParticipantFormData({ ...participantFormData, [e.target.id]: e.target.value });
+  };
+
+  const handleBusinessMissionChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setBusinessMissionFormData({ ...businessMissionFormData, [e.target.id]: e.target.value });
   };
 
   const handleVisitorSubmit = async (e: React.FormEvent) => {
@@ -181,23 +223,78 @@ export default function ExhibitionsSection() {
     }
   };
 
+  const handleBusinessMissionSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus({ message: "Submitting..." });
+    
+    try {
+      // Add the exhibition title if available
+      const formDataWithExhibition = {
+        ...businessMissionFormData,
+        exhibition: selectedExhibition?.title
+      };
+      
+      // Use the API endpoint
+      const response = await fetch('/api/business-mission', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataWithExhibition),
+      });
+      
+      // Parse the JSON response
+      const data = await response.json();
+      
+      if (response.ok) {
+        setFormStatus({ 
+          success: true, 
+          message: data.message || "Registration successful!" 
+        });
+        
+        // Clear form after successful submission
+        setTimeout(() => {
+          closeModal();
+        }, 2000);
+      } else {
+        // Handle error responses
+        setFormStatus({ 
+          success: false, 
+          message: data.message || "An error occurred. Please try again." 
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting business mission form:", error);
+      setFormStatus({ 
+        success: false, 
+        message: "An error occurred. Please try again." 
+      });
+    }
+  };
+
   return (
     <section id="exhibitions" className="py-20 bg-primary/30">
-      <div className="container mx-auto px-4">
-        {/* Заголовок секции */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Business Events & Exhibitions
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join us at upcoming business missions and exhibitions
-          </p>
-        </motion.div>
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            {t("exhibitions.title")}
+          </motion.h2>
+          <motion.p 
+            className="text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {t("exhibitions.subtitle")}
+          </motion.p>
+        </div>
 
         {/* Основной контент */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -229,7 +326,7 @@ export default function ExhibitionsSection() {
                       {mission.location}
                     </p>
                     <button
-                      onClick={() => openModal("visitor", mission.id)}
+                      onClick={() => openModal("business-mission", mission.id)}
                       className="bg-blue-500 hover:bg-opacity-90 text-white py-3 px-6 rounded-md font-medium transition-all"
                     >
                       Register interest
@@ -316,6 +413,18 @@ export default function ExhibitionsSection() {
               onSubmit={handleParticipantSubmit}
               selectedExhibition={selectedExhibition}
               formStatus={formStatus}
+            />
+          )}
+
+          {activeModal?.type === "business-mission" && (
+            <BusinessMissionForm
+              isOpen={true}
+              onClose={closeModal}
+              onSubmit={handleBusinessMissionSubmit}
+              formData={businessMissionFormData}
+              onChange={handleBusinessMissionChange}
+              formStatus={formStatus}
+              selectedExhibition={selectedExhibition}
             />
           )}
         </AnimatePresence>

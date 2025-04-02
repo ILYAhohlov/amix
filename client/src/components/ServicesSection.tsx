@@ -65,12 +65,12 @@ export default function ServicesSection({ onServiceClick }: ServicesSectionProps
                 onClick={() => onServiceClick(service.id)}
               >
                 <div className="bg-accent bg-opacity-20 p-4 rounded-full inline-block mb-4" aria-hidden="true">
-                  <service.icon className="text-white w-6 h-6" aria-label={`${service.title} icon`} />
+                  <service.icon className="text-white w-6 h-6" aria-label={`${t(`services.items.${service.id}.title`, service.title)} icon`} />
                 </div>
-                <h3 className="text-xl font-montserrat font-semibold mb-3">{service.title}</h3>
-                <p className="text-slate-300 mb-4">{service.shortDescription}</p>
+                <h3 className="text-xl font-montserrat font-semibold mb-3">{t(`services.items.${service.id}.title`, service.title)}</h3>
+                <p className="text-slate-300 mb-4">{t(`services.items.${service.id}.shortDescription`, service.shortDescription)}</p>
                 <span className="text-accent text-sm uppercase tracking-wider flex items-center">
-                  {t('services.learnMore')} <ArrowRight className="ml-2 h-4 w-4" />
+                  {t('services.learnMore', 'Learn More')} <ArrowRight className="ml-2 h-4 w-4" />
                 </span>
               </GlassCard>
             </motion.div>

@@ -6,36 +6,114 @@
     "about": "Giới thiệu",
     "social": "Mạng xã hội",
     "exhibitions": "Triển lãm",
-    "faq": "Hỏi đáp",
+    "faq": "Câu hỏi thường gặp",
     "contact": "Liên hệ"
   },
   "hero": {
-    "title": "Cửa ngõ đến cơ hội tại ASEAN",
+    "title": "Cổng kết nối cơ hội kinh doanh tại ASEAN",
     "subtitle": "Kết nối doanh nghiệp toàn cầu với thị trường mới nổi ở Đông Nam Á",
     "cta": "Khám phá dịch vụ của chúng tôi"
   },
   "services": {
     "title": "Dịch vụ của chúng tôi",
-    "subtitle": "Chúng tôi cung cấp giải pháp toàn diện để giúp doanh nghiệp của bạn phát triển trong khu vực ASEAN.",
+    "subtitle": "Chúng tôi cung cấp các giải pháp toàn diện để giúp doanh nghiệp của bạn phát triển trong khu vực ASEAN.",
     "learnMore": "Tìm hiểu thêm",
+    "back": "Quay lại",
+    "contactUs": "Liên hệ với chúng tôi",
+    "items": {
+      "import-export": {
+        "title": "Xuất/Nhập khẩu",
+        "subtitle": "Dịch vụ thương mại quốc tế",
+        "shortDescription": "Giải pháp xuất nhập khẩu toàn diện cho thị trường ASEAN.",
+        "description": "AMIX International Group cung cấp dịch vụ xuất nhập khẩu toàn diện để hỗ trợ thương mại của bạn trong khu vực ASEAN:",
+        "features": [
+          "Quản lý chuỗi cung ứng và logistics",
+          "Tuân thủ quy định và tài liệu",
+          "Tư vấn thị trường và phân tích xu hướng",
+          "Hỗ trợ đàm phán thương mại"
+        ]
+      },
+      "real-estate": {
+        "title": "Bất động sản",
+        "subtitle": "Đầu tư bất động sản",
+        "shortDescription": "Cơ hội đầu tư bất động sản tại khu vực ASEAN.",
+        "description": "AMIX International Group tạo điều kiện thuận lợi cho các khoản đầu tư bất động sản chiến lược tại khu vực ASEAN, cung cấp:",
+        "features": [
+          "Xác định và đánh giá bất động sản",
+          "Quản lý đầu tư bất động sản",
+          "Tư vấn phát triển dự án",
+          "Hỗ trợ giao dịch bất động sản"
+        ]
+      },
+      "it-solutions": {
+        "title": "Giải pháp CNTT",
+        "subtitle": "Dịch vụ công nghệ đổi mới",
+        "shortDescription": "Dịch vụ công nghệ tiên tiến cho doanh nghiệp mọi quy mô.",
+        "description": "AMIX International Group cung cấp giải pháp CNTT tiên tiến được thiết kế riêng cho nhu cầu kinh doanh của bạn tại khu vực ASEAN:",
+        "features": [
+          "Phát triển và tích hợp phần mềm tùy chỉnh",
+          "Cơ sở hạ tầng đám mây và chuyển đổi số",
+          "Thuê ngoài CNTT và dịch vụ quản lý",
+          "Giải pháp bảo mật và bảo vệ dữ liệu"
+        ]
+      },
+      "strategic-partnership": {
+        "title": "Đối tác chiến lược",
+        "subtitle": "Xây dựng liên minh kinh doanh",
+        "shortDescription": "Xây dựng mối quan hệ kinh doanh có giá trị trên thị trường ASEAN.",
+        "description": "AMIX International Group giúp doanh nghiệp thiết lập quan hệ đối tác chiến lược trên khắp khu vực ASEAN, mở rộng mạng lưới và cơ hội của bạn:",
+        "features": [
+          "Dịch vụ xác định và kết nối đối tác",
+          "Hỗ trợ liên doanh và hợp tác",
+          "Thẩm định và xác minh đối tác",
+          "Quản lý và hỗ trợ quan hệ đối tác dài hạn"
+        ]
+      },
+      "e-commerce": {
+        "title": "Thương mại điện tử",
+        "subtitle": "Giải pháp bán lẻ kỹ thuật số",
+        "shortDescription": "Giải pháp bán lẻ kỹ thuật số và dịch vụ tích hợp sàn thương mại điện tử.",
+        "description": "AMIX International Group cung cấp giải pháp thương mại điện tử toàn diện để giúp doanh nghiệp của bạn phát triển mạnh mẽ trong thị trường kỹ thuật số:",
+        "features": [
+          "Phát triển và tối ưu hóa nền tảng thương mại điện tử",
+          "Tích hợp và quản lý sàn thương mại điện tử",
+          "Giải pháp thương mại điện tử xuyên biên giới",
+          "Điều phối thanh toán kỹ thuật số và hậu cần"
+        ]
+      },
+      "marketing": {
+        "title": "Marketing",
+        "subtitle": "Chuyên môn thị trường địa phương",
+        "shortDescription": "Chiến lược tiếp thị tùy chỉnh cho thị trường Việt Nam.",
+        "description": "AMIX International Group phát triển chiến lược tiếp thị có mục tiêu để giúp doanh nghiệp của bạn kết nối với thị trường Việt Nam và ASEAN:",
+        "features": [
+          "Chiến dịch tiếp thị kỹ thuật số địa phương hóa",
+          "Phát triển và định vị thương hiệu",
+          "Nghiên cứu thị trường và phân tích cạnh tranh",
+          "Chiến lược tiếp thị trên mạng xã hội và tiếp thị nội dung"
+        ]
+      }
+    }
+  },
+  "serviceDetail": {
     "back": "Quay lại",
     "contactUs": "Liên hệ với chúng tôi"
   },
   "partners": {
     "title": "Đối tác của chúng tôi",
-    "subtitle": "Chúng tôi hợp tác với các công ty hàng đầu để mang lại kết quả vượt trội."
+    "subtitle": "Chúng tôi hợp tác với các công ty hàng đầu để mang lại kết quả xuất sắc."
   },
   "about": {
-    "title": "Về AMIX International Group",
-    "paragraph1": "Đặt tại Hà Nội, AMIX International Group Vietnam LLC đóng vai trò cầu nối giữa doanh nghiệp toàn cầu với cơ hội tại khu vực ASEAN. Với hiểu biết sâu sắc về thị trường địa phương và thông lệ kinh doanh quốc tế, chúng tôi giúp các công ty vượt qua sự phức tạp của việc kinh doanh tại Việt Nam và các nước láng giềng.",
-    "paragraph2": "Đội ngũ của chúng tôi kết hợp chuyên môn địa phương với tầm nhìn toàn cầu để cung cấp giải pháp toàn diện trên nhiều lĩnh vực bao gồm xuất nhập khẩu, CNTT, bất động sản và hợp tác chiến lược. Chúng tôi tự hào về sự hợp tác với Vietbuild Corp và các đơn vị dẫn đầu ngành khác để mang lại giá trị vượt trội cho khách hàng.",
+    "title": "Giới thiệu về AMIX International Group",
+    "paragraph1": "Có trụ sở tại Hà Nội, AMIX International Group Vietnam LLC đóng vai trò như cầu nối giữa doanh nghiệp toàn cầu với cơ hội trong khu vực ASEAN. Với hiểu biết sâu sắc về thị trường địa phương và thực tiễn kinh doanh quốc tế, chúng tôi giúp các công ty điều hướng qua sự phức tạp của việc kinh doanh tại Việt Nam và các quốc gia lân cận.",
+    "paragraph2": "Đội ngũ của chúng tôi kết hợp chuyên môn địa phương với tầm nhìn toàn cầu để cung cấp giải pháp toàn diện trong nhiều lĩnh vực, bao gồm xuất/nhập khẩu, CNTT, bất động sản và quan hệ đối tác chiến lược. Chúng tôi tự hào về sự hợp tác với Vietbuild Corp và các công ty hàng đầu khác trong ngành để mang lại giá trị đặc biệt cho khách hàng.",
     "stats": {
       "years": "Năm kinh nghiệm",
       "projects": "Dự án thành công",
       "partners": "Đối tác toàn cầu",
       "countries": "Quốc gia ASEAN"
     },
-    "cta": "Liên hệ ngay"
+    "cta": "Liên hệ với chúng tôi"
   },
   "social": {
     "title": "Kết nối với chúng tôi",
@@ -44,7 +122,7 @@
   "exhibitions": {
     "title": "Triển lãm sắp tới",
     "subtitle": "Tham gia cùng chúng tôi tại các sự kiện ngành để khám phá cơ hội mới.",
-    "business": "Đoàn công tác thương mại",
+    "business": "Phái đoàn doanh nghiệp",
     "vietbuild": "Triển lãm Vietbuild",
     "viewDetails": "Xem chi tiết",
     "date": "Ngày",
@@ -55,7 +133,7 @@
     "subtitle": "Tìm câu trả lời cho các câu hỏi phổ biến về dịch vụ và hoạt động của chúng tôi."
   },
   "contact": {
-    "title": "Liên hệ",
+    "title": "Liên hệ với chúng tôi",
     "subtitle": "Có câu hỏi hoặc muốn hợp tác? Gửi tin nhắn cho chúng tôi.",
     "name": "Tên của bạn",
     "email": "Email của bạn",
@@ -75,7 +153,59 @@
     "vi": "Tiếng Việt",
     "ru": "Tiếng Nga",
     "fr": "Tiếng Pháp",
-    "de": "Tiếng Đức", 
+    "de": "Tiếng Đức",
     "pt": "Tiếng Bồ Đào Nha"
+  },
+  "forms": {
+    "visitor": {
+      "title": "Đăng ký làm khách tham quan",
+      "name": "Tên",
+      "email": "Email",
+      "country": "Quốc gia",
+      "purpose": "Mục đích",
+      "comments": "Bình luận",
+      "cancel": "Hủy bỏ",
+      "submit": "Gửi",
+      "success": "Đăng ký thành công!",
+      "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+      "selectCountry": "Chọn quốc gia",
+      "selectPurpose": "Chọn mục đích",
+      "submitting": "Đang gửi..."
+    },
+    "participant": {
+      "title": "Đăng ký làm người tham gia",
+      "name": "Tên",
+      "email": "Email",
+      "company": "Công ty",
+      "country": "Quốc gia",
+      "participationType": "Loại tham gia",
+      "industry": "Ngành công nghiệp",
+      "registrationAssistance": "Cần hỗ trợ đăng ký?",
+      "logistics": "Cần hỗ trợ hậu cần?",
+      "comments": "Bình luận",
+      "cancel": "Hủy bỏ",
+      "submit": "Gửi",
+      "success": "Đăng ký thành công!",
+      "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+      "selectCountry": "Chọn quốc gia",
+      "selectParticipationType": "Chọn loại tham gia",
+      "selectIndustry": "Chọn ngành công nghiệp",
+      "submitting": "Đang gửi...",
+      "yes": "Có",
+      "no": "Không"
+    },
+    "businessMission": {
+      "title": "Đăng ký quan tâm đến phái đoàn doanh nghiệp",
+      "name": "Tên",
+      "email": "Email",
+      "country": "Quốc gia",
+      "comments": "Bình luận",
+      "cancel": "Hủy bỏ",
+      "submit": "Gửi",
+      "success": "Đăng ký thành công!",
+      "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+      "selectCountry": "Chọn quốc gia",
+      "submitting": "Đang gửi..."
+    }
   }
 }

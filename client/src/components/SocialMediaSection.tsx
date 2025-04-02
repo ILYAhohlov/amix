@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Twitter, Linkedin } from "lucide-react";
 import { FaTelegram, FaWhatsapp, FaComments } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function SocialMediaSection() {
+  const { t } = useTranslation();
+  
   const socialLinks = [
     { id: "twitter", icon: Twitter, url: "https://twitter.com/AMIXVietnam", label: "Twitter" },
     { id: "telegram", icon: FaTelegram, url: "https://t.me/amix_vn", label: "Telegram" },
@@ -37,7 +40,7 @@ export default function SocialMediaSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Connect with Us
+            {t("social.title")}
           </motion.h2>
           <motion.p 
             className="text-slate-300 max-w-2xl mx-auto"
@@ -46,7 +49,7 @@ export default function SocialMediaSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Follow us on social media to stay updated with our latest news and opportunities.
+            {t("social.subtitle")}
           </motion.p>
         </div>
         

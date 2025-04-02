@@ -10,25 +10,103 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Votre porte d'entrée vers les opportunités de l'ASEAN",
-    "subtitle": "Connecter les entreprises mondiales aux marchés émergents d'Asie du Sud-Est",
+    "title": "Votre passerelle vers les opportunités de l'ASEAN",
+    "subtitle": "Connecter les entreprises mondiales aux marchés émergents de l'Asie du Sud-Est",
     "cta": "Explorer nos services"
   },
   "services": {
-    "title": "Nos services",
-    "subtitle": "Nous fournissons des solutions complètes pour aider votre entreprise à se développer dans la région de l'ASEAN.",
+    "title": "Nos Services",
+    "subtitle": "Nous offrons des solutions complètes pour aider votre entreprise à se développer dans la région de l'ASEAN.",
     "learnMore": "En savoir plus",
+    "back": "Retour",
+    "contactUs": "Contactez-nous",
+    "items": {
+      "import-export": {
+        "title": "Import/Export",
+        "subtitle": "Services de commerce international",
+        "shortDescription": "Solutions complètes d'import-export pour le marché de l'ASEAN.",
+        "description": "AMIX International Group offre des services complets d'import-export pour faciliter votre commerce dans la région de l'ASEAN :",
+        "features": [
+          "Gestion de la chaîne d'approvisionnement et logistique",
+          "Conformité réglementaire et documentation",
+          "Conseil en marché et analyse des tendances",
+          "Support aux négociations commerciales"
+        ]
+      },
+      "real-estate": {
+        "title": "Immobilier",
+        "subtitle": "Investissements immobiliers",
+        "shortDescription": "Opportunités d'investissement immobilier dans la région de l'ASEAN.",
+        "description": "AMIX International Group facilite les investissements immobiliers stratégiques dans la région de l'ASEAN, offrant :",
+        "features": [
+          "Identification et évaluation des propriétés",
+          "Gestion des investissements immobiliers",
+          "Conseil en développement de projets",
+          "Support aux transactions immobilières"
+        ]
+      },
+      "it-solutions": {
+        "title": "Solutions IT",
+        "subtitle": "Services technologiques innovants",
+        "shortDescription": "Services technologiques de pointe pour les entreprises de toutes tailles.",
+        "description": "AMIX International Group fournit des solutions IT sur mesure adaptées aux besoins de votre entreprise dans la région de l'ASEAN :",
+        "features": [
+          "Développement et intégration de logiciels personnalisés",
+          "Infrastructure cloud et transformation numérique",
+          "Externalisation IT et services gérés",
+          "Solutions de cybersécurité et de protection des données"
+        ]
+      },
+      "strategic-partnership": {
+        "title": "Partenariat Stratégique",
+        "subtitle": "Construction d'alliances commerciales",
+        "shortDescription": "Établir des relations commerciales précieuses sur les marchés de l'ASEAN.",
+        "description": "AMIX International Group aide les entreprises à établir des partenariats stratégiques dans toute la région de l'ASEAN, élargissant votre réseau et vos opportunités :",
+        "features": [
+          "Services d'identification et de mise en relation avec des partenaires",
+          "Facilitation de coentreprises et de collaborations",
+          "Diligence raisonnable et vérification des partenaires",
+          "Gestion et support de partenariats à long terme"
+        ]
+      },
+      "e-commerce": {
+        "title": "E-Commerce",
+        "subtitle": "Excellence en commerce numérique",
+        "shortDescription": "Solutions de vente au détail numérique et services d'intégration de places de marché.",
+        "description": "AMIX International Group fournit des solutions e-commerce complètes pour aider votre entreprise à prospérer sur le marché numérique :",
+        "features": [
+          "Développement et optimisation de plateformes e-commerce",
+          "Intégration et gestion de places de marché",
+          "Solutions e-commerce transfrontalières",
+          "Coordination des paiements numériques et de la logistique"
+        ]
+      },
+      "marketing": {
+        "title": "Marketing",
+        "subtitle": "Expertise du marché local",
+        "shortDescription": "Stratégies marketing sur mesure pour le marché vietnamien.",
+        "description": "AMIX International Group développe des stratégies marketing ciblées pour aider votre entreprise à se connecter avec les marchés vietnamien et ASEAN :",
+        "features": [
+          "Campagnes de marketing numérique localisées",
+          "Développement et positionnement de marque",
+          "Études de marché et analyse concurrentielle",
+          "Stratégies de médias sociaux et de marketing de contenu"
+        ]
+      }
+    }
+  },
+  "serviceDetail": {
     "back": "Retour",
     "contactUs": "Contactez-nous"
   },
   "partners": {
-    "title": "Nos partenaires",
-    "subtitle": "Nous collaborons avec des entreprises de premier plan pour offrir des résultats exceptionnels."
+    "title": "Nos Partenaires",
+    "subtitle": "Nous collaborons avec des entreprises leaders pour obtenir des résultats exceptionnels."
   },
   "about": {
     "title": "À propos d'AMIX International Group",
-    "paragraph1": "Basée à Hanoï, AMIX International Group Vietnam LLC sert de pont reliant les entreprises mondiales aux opportunités de la région de l'ASEAN. Grâce à notre compréhension approfondie des marchés locaux et des pratiques commerciales internationales, nous aidons les entreprises à naviguer dans les complexités des affaires au Vietnam et dans les pays voisins.",
-    "paragraph2": "Notre équipe allie expertise locale et vision globale pour fournir des solutions complètes dans de multiples secteurs, notamment l'import/export, l'informatique, l'immobilier et les partenariats stratégiques. Nous sommes fiers de notre collaboration avec Vietbuild Corp et d'autres leaders de l'industrie pour offrir une valeur exceptionnelle à nos clients.",
+    "paragraph1": "Basé à Hanoï, AMIX International Group Vietnam LLC sert de pont connectant les entreprises mondiales aux opportunités de la région de l'ASEAN. Avec notre compréhension approfondie des marchés locaux et des pratiques commerciales internationales, nous aidons les entreprises à naviguer dans les complexités de faire des affaires au Vietnam et dans les pays voisins.",
+    "paragraph2": "Notre équipe combine l'expertise locale avec une vision globale pour fournir des solutions complètes dans divers secteurs, notamment l'import/export, l'IT, l'immobilier et les partenariats stratégiques. Nous sommes fiers de notre collaboration avec Vietbuild Corp et d'autres leaders du secteur pour offrir une valeur exceptionnelle à nos clients.",
     "stats": {
       "years": "Années d'expérience",
       "projects": "Projets réussis",
@@ -77,5 +155,57 @@
     "fr": "Français",
     "de": "Allemand", 
     "pt": "Portugais"
+  },
+  "forms": {
+    "visitor": {
+      "title": "S'inscrire en tant que visiteur",
+      "name": "Nom",
+      "email": "Email",
+      "country": "Pays",
+      "purpose": "Objectif",
+      "comments": "Commentaires",
+      "cancel": "Annuler",
+      "submit": "Soumettre",
+      "success": "Inscription réussie!",
+      "error": "Une erreur s'est produite. Veuillez réessayer.",
+      "selectCountry": "Sélectionner un pays",
+      "selectPurpose": "Sélectionner un objectif",
+      "submitting": "Soumission en cours..."
+    },
+    "participant": {
+      "title": "S'inscrire en tant que participant",
+      "name": "Nom",
+      "email": "Email",
+      "company": "Entreprise",
+      "country": "Pays",
+      "participationType": "Type de participation",
+      "industry": "Industrie",
+      "registrationAssistance": "Besoin d'aide pour l'inscription?",
+      "logistics": "Besoin de support logistique?",
+      "comments": "Commentaires",
+      "cancel": "Annuler",
+      "submit": "Soumettre",
+      "success": "Inscription réussie!",
+      "error": "Une erreur s'est produite. Veuillez réessayer.",
+      "selectCountry": "Sélectionner un pays",
+      "selectParticipationType": "Sélectionner le type de participation",
+      "selectIndustry": "Sélectionner une industrie",
+      "submitting": "Soumission en cours...",
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "businessMission": {
+      "title": "Manifester un intérêt pour une mission commerciale",
+      "name": "Nom",
+      "email": "Email",
+      "country": "Pays",
+      "comments": "Commentaires",
+      "cancel": "Annuler",
+      "submit": "Soumettre",
+      "success": "Inscription réussie!",
+      "error": "Une erreur s'est produite. Veuillez réessayer.",
+      "selectCountry": "Sélectionner un pays",
+      "submitting": "Soumission en cours..."
+    }
   }
 }

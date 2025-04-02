@@ -1,7 +1,7 @@
 {
   "navbar": {
     "home": "Startseite",
-    "services": "Dienstleistungen",
+    "services": "Leistungen",
     "partners": "Partner",
     "about": "Über uns",
     "social": "Soziale Medien",
@@ -11,13 +11,91 @@
   },
   "hero": {
     "title": "Ihr Tor zu ASEAN-Möglichkeiten",
-    "subtitle": "Globale Unternehmen mit aufstrebenden Märkten in Südostasien verbinden",
-    "cta": "Unsere Dienstleistungen entdecken"
+    "subtitle": "Wir verbinden globale Unternehmen mit aufstrebenden Märkten in Südostasien",
+    "cta": "Entdecken Sie unsere Leistungen"
   },
   "services": {
-    "title": "Unsere Dienstleistungen",
-    "subtitle": "Wir bieten umfassende Lösungen, um Ihrem Unternehmen beim Wachstum in der ASEAN-Region zu helfen.",
+    "title": "Unsere Leistungen",
+    "subtitle": "Wir bieten umfassende Lösungen, um Ihr Unternehmen in der ASEAN-Region zu fördern.",
     "learnMore": "Mehr erfahren",
+    "back": "Zurück",
+    "contactUs": "Kontaktieren Sie uns",
+    "items": {
+      "import-export": {
+        "title": "Import/Export",
+        "subtitle": "Internationale Handelsdienstleistungen",
+        "shortDescription": "Umfassende Import- und Exportlösungen für den ASEAN-Markt.",
+        "description": "AMIX International Group bietet umfassende Import- und Exportdienstleistungen, um Ihren Handel in der ASEAN-Region zu erleichtern:",
+        "features": [
+          "Supply-Chain-Management und Logistik",
+          "Regulatorische Compliance und Dokumentation",
+          "Marktberatung und Trendanalyse",
+          "Unterstützung bei Handelsverhandlungen"
+        ]
+      },
+      "real-estate": {
+        "title": "Immobilien",
+        "subtitle": "Immobilieninvestitionen",
+        "shortDescription": "Immobilien-Investitionsmöglichkeiten in der ASEAN-Region.",
+        "description": "AMIX International Group erleichtert strategische Immobilieninvestitionen in der ASEAN-Region und bietet:",
+        "features": [
+          "Identifikation und Bewertung von Immobilien",
+          "Verwaltung von Immobilieninvestitionen",
+          "Beratung zur Projektentwicklung",
+          "Unterstützung bei Immobilientransaktionen"
+        ]
+      },
+      "it-solutions": {
+        "title": "IT-Lösungen",
+        "subtitle": "Innovative Technologiedienstleistungen",
+        "shortDescription": "Hochmoderne Technologiedienstleistungen für Unternehmen aller Größenordnungen.",
+        "description": "AMIX International Group liefert modernste IT-Lösungen, die auf die Bedürfnisse Ihres Unternehmens in der ASEAN-Region zugeschnitten sind:",
+        "features": [
+          "Maßgeschneiderte Softwareentwicklung und -integration",
+          "Cloud-Infrastruktur und digitale Transformation",
+          "IT-Outsourcing und Managed Services",
+          "Cybersicherheits- und Datenschutzlösungen"
+        ]
+      },
+      "strategic-partnership": {
+        "title": "Strategische Partnerschaft",
+        "subtitle": "Aufbau von Geschäftsallianzen",
+        "shortDescription": "Aufbau wertvoller Geschäftsbeziehungen in den ASEAN-Märkten.",
+        "description": "AMIX International Group hilft Unternehmen, strategische Partnerschaften in der gesamten ASEAN-Region zu etablieren und erweitert Ihr Netzwerk und Ihre Möglichkeiten:",
+        "features": [
+          "Partner-Identifikations- und Vermittlungsdienste",
+          "Erleichterung von Joint Ventures und Kooperationen",
+          "Due Diligence und Partnerüberprüfung",
+          "Langfristige Partnerschaftsverwaltung und -unterstützung"
+        ]
+      },
+      "e-commerce": {
+        "title": "E-Commerce",
+        "subtitle": "Digitale Einzelhandelsexzellenz",
+        "shortDescription": "Digitale Einzelhandelslösungen und Marketplace-Integrationsdienste.",
+        "description": "AMIX International Group bietet umfassende E-Commerce-Lösungen, um Ihrem Unternehmen zum Erfolg im digitalen Marktplatz zu verhelfen:",
+        "features": [
+          "Entwicklung und Optimierung von E-Commerce-Plattformen",
+          "Marketplace-Integration und -Management",
+          "Grenzüberschreitende E-Commerce-Lösungen",
+          "Koordination von digitalen Zahlungen und Logistik"
+        ]
+      },
+      "marketing": {
+        "title": "Marketing",
+        "subtitle": "Lokale Marktexpertise",
+        "shortDescription": "Maßgeschneiderte Marketingstrategien für den vietnamesischen Markt.",
+        "description": "AMIX International Group entwickelt zielgerichtete Marketingstrategien, um Ihrem Unternehmen zu helfen, sich mit den vietnamesischen und ASEAN-Märkten zu verbinden:",
+        "features": [
+          "Lokalisierte digitale Marketingkampagnen",
+          "Markenentwicklung und -positionierung",
+          "Marktforschung und Wettbewerbsanalyse",
+          "Social Media- und Content-Marketing-Strategien"
+        ]
+      }
+    }
+  },
+  "serviceDetail": {
     "back": "Zurück",
     "contactUs": "Kontaktieren Sie uns"
   },
@@ -27,15 +105,15 @@
   },
   "about": {
     "title": "Über AMIX International Group",
-    "paragraph1": "Mit Sitz in Hanoi dient AMIX International Group Vietnam LLC als Brücke, die globale Unternehmen mit Möglichkeiten in der ASEAN-Region verbindet. Mit unserem tiefen Verständnis lokaler Märkte und internationaler Geschäftspraktiken helfen wir Unternehmen, die Komplexität des Geschäfts in Vietnam und den Nachbarländern zu bewältigen.",
-    "paragraph2": "Unser Team kombiniert lokale Expertise mit globaler Vision, um umfassende Lösungen in mehreren Sektoren anzubieten, darunter Import/Export, IT, Immobilien und strategische Partnerschaften. Wir sind stolz auf unsere Zusammenarbeit mit Vietbuild Corp und anderen Branchenführern, um unseren Kunden außergewöhnlichen Mehrwert zu bieten.",
+    "paragraph1": "Mit Sitz in Hanoi dient AMIX International Group Vietnam LLC als Brücke, die globale Unternehmen mit Chancen in der ASEAN-Region verbindet. Mit unserem tiefgreifenden Verständnis lokaler Märkte und internationaler Geschäftspraktiken helfen wir Unternehmen, die Komplexitäten der Geschäftstätigkeit in Vietnam und den Nachbarländern zu bewältigen.",
+    "paragraph2": "Unser Team kombiniert lokale Expertise mit globaler Vision, um umfassende Lösungen in verschiedenen Sektoren zu liefern, darunter Import/Export, IT, Immobilien und strategische Partnerschaften. Wir sind stolz auf unsere Zusammenarbeit mit Vietbuild Corp und anderen Branchenführern, um unseren Kunden außergewöhnlichen Mehrwert zu bieten.",
     "stats": {
       "years": "Jahre Erfahrung",
       "projects": "Erfolgreiche Projekte",
       "partners": "Globale Partner",
       "countries": "ASEAN-Länder"
     },
-    "cta": "Kontakt aufnehmen"
+    "cta": "Kontaktieren Sie uns"
   },
   "social": {
     "title": "Mit uns verbinden",
@@ -77,5 +155,57 @@
     "fr": "Französisch",
     "de": "Deutsch", 
     "pt": "Portugiesisch"
+  },
+  "forms": {
+    "visitor": {
+      "title": "Als Besucher registrieren",
+      "name": "Name",
+      "email": "E-Mail",
+      "country": "Land",
+      "purpose": "Zweck",
+      "comments": "Kommentare",
+      "cancel": "Abbrechen",
+      "submit": "Absenden",
+      "success": "Registrierung erfolgreich!",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "selectCountry": "Land auswählen",
+      "selectPurpose": "Zweck auswählen",
+      "submitting": "Wird gesendet..."
+    },
+    "participant": {
+      "title": "Als Teilnehmer registrieren",
+      "name": "Name",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "country": "Land",
+      "participationType": "Teilnahmeart",
+      "industry": "Branche",
+      "registrationAssistance": "Benötigen Sie Hilfe bei der Registrierung?",
+      "logistics": "Benötigen Sie logistische Unterstützung?",
+      "comments": "Kommentare",
+      "cancel": "Abbrechen",
+      "submit": "Absenden",
+      "success": "Registrierung erfolgreich!",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "selectCountry": "Land auswählen",
+      "selectParticipationType": "Teilnahmeart auswählen",
+      "selectIndustry": "Branche auswählen",
+      "submitting": "Wird gesendet...",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "businessMission": {
+      "title": "Interesse an Geschäftsmission registrieren",
+      "name": "Name",
+      "email": "E-Mail",
+      "country": "Land",
+      "comments": "Kommentare",
+      "cancel": "Abbrechen",
+      "submit": "Absenden",
+      "success": "Registrierung erfolgreich!",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "selectCountry": "Land auswählen",
+      "submitting": "Wird gesendet..."
+    }
   }
 }

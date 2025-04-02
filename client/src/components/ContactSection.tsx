@@ -5,6 +5,7 @@ import { z } from "zod";
 import GlassCard from "./ui/glass-card";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -16,6 +17,7 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   
   const {
@@ -76,10 +78,9 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 title-shadow">Get in Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 title-shadow">{t("contact.title")}</h2>
             <p className="text-slate-300 mb-8 max-w-lg">
-              Interested in our services or want to explore collaboration opportunities? 
-              Fill out the form and our team will get back to you shortly.
+              {t("contact.subtitle")}
             </p>
             
             <div className="space-y-6 mb-8">
@@ -88,7 +89,7 @@ export default function ContactSection() {
                   <MapPin className="text-white h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-medium mb-1">Location</h4>
+                  <h4 className="font-montserrat font-medium mb-1">{t("footer.address")}</h4>
                   <p className="text-slate-300">Vietnam. Hanoi City. Office A-303, 35 Cu Loc street. Thanh Xuan district.</p>
                 </div>
               </div>
@@ -98,8 +99,8 @@ export default function ContactSection() {
                   <Mail className="text-white h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-medium mb-1">Email</h4>
-                  <p className="text-slate-300">amix@gmail.com</p>
+                  <h4 className="font-montserrat font-medium mb-1">{t("footer.email")}</h4>
+                  <p className="text-slate-300">amixint@gmail.com</p>
                 </div>
               </div>
               
@@ -108,7 +109,7 @@ export default function ContactSection() {
                   <Phone className="text-white h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-medium mb-1">Phone</h4>
+                  <h4 className="font-montserrat font-medium mb-1">{t("footer.phone")}</h4>
                   <p className="text-slate-300">+84 8 66769601</p>
                 </div>
               </div>
@@ -126,12 +127,12 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-montserrat mb-2">Name</label>
+                    <label htmlFor="name" className="block text-sm font-montserrat mb-2">{t("contact.name")}</label>
                     <input
                       type="text"
                       id="name"
                       className={`w-full bg-white bg-opacity-10 border ${errors.name ? 'border-red-500' : 'border-white border-opacity-20'} rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent`}
-                      placeholder="Your Name"
+                      placeholder={t("contact.name")}
                       {...register("name")}
                     />
                     {errors.name && (
@@ -140,7 +141,7 @@ export default function ContactSection() {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-montserrat mb-2">Email</label>
+                    <label htmlFor="email" className="block text-sm font-montserrat mb-2">{t("contact.email")}</label>
                     <input
                       type="email"
                       id="email"
@@ -155,12 +156,12 @@ export default function ContactSection() {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="subject" className="block text-sm font-montserrat mb-2">Subject</label>
+                  <label htmlFor="subject" className="block text-sm font-montserrat mb-2">{t("contact.subject")}</label>
                   <input
                     type="text"
                     id="subject"
                     className={`w-full bg-white bg-opacity-10 border ${errors.subject ? 'border-red-500' : 'border-white border-opacity-20'} rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent`}
-                    placeholder="How can we help?"
+                    placeholder={t("contact.subjectPlaceholder")}
                     {...register("subject")}
                   />
                   {errors.subject && (
@@ -169,12 +170,12 @@ export default function ContactSection() {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-montserrat mb-2">Message</label>
+                  <label htmlFor="message" className="block text-sm font-montserrat mb-2">{t("contact.message")}</label>
                   <textarea
                     id="message"
                     rows={5}
                     className={`w-full bg-white bg-opacity-10 border ${errors.message ? 'border-red-500' : 'border-white border-opacity-20'} rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent`}
-                    placeholder="Your message..."
+                    placeholder={t("contact.messagePlaceholder")}
                     {...register("message")}
                   />
                   {errors.message && (
@@ -187,10 +188,10 @@ export default function ContactSection() {
                   disabled={submitStatus === "submitting"}
                   className="w-full bg-accent hover:bg-opacity-90 text-white py-3 rounded-md font-montserrat font-medium transition-all disabled:opacity-70"
                 >
-                  {submitStatus === "submitting" ? "Sending..." : 
-                   submitStatus === "success" ? "Message Sent!" : 
-                   submitStatus === "error" ? "Error! Try Again" : 
-                   "Send Message"}
+                  {submitStatus === "submitting" ? t("contact.submitting") : 
+                   submitStatus === "success" ? t("contact.success") : 
+                   submitStatus === "error" ? t("contact.error") : 
+                   t("contact.submit")}
                 </button>
               </form>
             </GlassCard>

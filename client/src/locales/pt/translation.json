@@ -10,14 +10,92 @@
     "contact": "Contato"
   },
   "hero": {
-    "title": "Seu portal para oportunidades na ASEAN",
-    "subtitle": "Conectando empresas globais com mercados emergentes no Sudeste Asiático",
+    "title": "Seu Portal para Oportunidades na ASEAN",
+    "subtitle": "Conectando negócios globais com mercados emergentes no Sudeste Asiático",
     "cta": "Explore Nossos Serviços"
   },
   "services": {
     "title": "Nossos Serviços",
-    "subtitle": "Oferecemos soluções abrangentes para ajudar seu negócio a crescer na região da ASEAN.",
+    "subtitle": "Oferecemos soluções abrangentes para ajudar seu negócio a crescer na região ASEAN.",
     "learnMore": "Saiba Mais",
+    "back": "Voltar",
+    "contactUs": "Entre em Contato",
+    "items": {
+      "import-export": {
+        "title": "Importação/Exportação",
+        "subtitle": "Serviços de Comércio Internacional",
+        "shortDescription": "Soluções completas de importação e exportação para o mercado ASEAN.",
+        "description": "A AMIX International Group oferece serviços abrangentes de importação e exportação para facilitar seu comércio na região ASEAN:",
+        "features": [
+          "Gestão de cadeia de suprimentos e logística",
+          "Conformidade regulatória e documentação",
+          "Consultoria de mercado e análise de tendências",
+          "Suporte a negociações comerciais"
+        ]
+      },
+      "real-estate": {
+        "title": "Imóveis",
+        "subtitle": "Investimentos em Propriedades",
+        "shortDescription": "Oportunidades de investimento imobiliário na região ASEAN.",
+        "description": "A AMIX International Group facilita investimentos imobiliários estratégicos na região ASEAN, oferecendo:",
+        "features": [
+          "Identificação e avaliação de propriedades",
+          "Gestão de investimentos imobiliários",
+          "Consultoria de desenvolvimento de projetos",
+          "Suporte a transações imobiliárias"
+        ]
+      },
+      "it-solutions": {
+        "title": "Soluções em TI",
+        "subtitle": "Serviços de Tecnologia Inovadores",
+        "shortDescription": "Serviços de tecnologia de ponta para empresas de todos os portes.",
+        "description": "A AMIX International Group oferece soluções de TI personalizadas para suas necessidades empresariais na região ASEAN:",
+        "features": [
+          "Desenvolvimento e integração de software personalizado",
+          "Infraestrutura em nuvem e transformação digital",
+          "Terceirização e serviços gerenciados de TI",
+          "Soluções de cibersegurança e proteção de dados"
+        ]
+      },
+      "strategic-partnership": {
+        "title": "Parceria Estratégica",
+        "subtitle": "Construindo Alianças Empresariais",
+        "shortDescription": "Construindo relacionamentos comerciais valiosos nos mercados ASEAN.",
+        "description": "A AMIX International Group ajuda empresas a estabelecer parcerias estratégicas em toda a região ASEAN, expandindo sua rede e oportunidades:",
+        "features": [
+          "Serviços de identificação e correspondência de parceiros",
+          "Facilitação de joint ventures e colaborações",
+          "Due diligence e verificação de parceiros",
+          "Gestão e suporte a parcerias de longo prazo"
+        ]
+      },
+      "e-commerce": {
+        "title": "Comércio Eletrônico",
+        "subtitle": "Excelência em Varejo Digital",
+        "shortDescription": "Soluções de varejo digital e serviços de integração com marketplaces.",
+        "description": "A AMIX International Group fornece soluções abrangentes de comércio eletrônico para ajudar seu negócio a prosperar no mercado digital:",
+        "features": [
+          "Desenvolvimento e otimização de plataformas de e-commerce",
+          "Integração e gerenciamento de marketplaces",
+          "Soluções de comércio eletrônico transfronteiriço",
+          "Coordenação de pagamentos digitais e logística"
+        ]
+      },
+      "marketing": {
+        "title": "Marketing",
+        "subtitle": "Expertise em Mercado Local",
+        "shortDescription": "Estratégias de marketing personalizadas para o mercado vietnamita.",
+        "description": "A AMIX International Group desenvolve estratégias de marketing direcionadas para ajudar seu negócio a se conectar com os mercados vietnamita e ASEAN:",
+        "features": [
+          "Campanhas de marketing digital localizadas",
+          "Desenvolvimento e posicionamento de marca",
+          "Pesquisa de mercado e análise competitiva",
+          "Estratégias de marketing em mídias sociais e conteúdo"
+        ]
+      }
+    }
+  },
+  "serviceDetail": {
     "back": "Voltar",
     "contactUs": "Entre em Contato"
   },
@@ -26,40 +104,66 @@
     "subtitle": "Colaboramos com empresas líderes para entregar resultados excepcionais."
   },
   "about": {
-    "title": "Sobre o AMIX International Group",
-    "paragraph1": "Com sede em Hanói, a AMIX International Group Vietnam LLC serve como ponte conectando empresas globais com oportunidades na região da ASEAN. Com nosso profundo entendimento dos mercados locais e práticas de negócios internacionais, ajudamos as empresas a navegar pelas complexidades de fazer negócios no Vietnã e países vizinhos.",
-    "paragraph2": "Nossa equipe combina expertise local com visão global para fornecer soluções abrangentes em múltiplos setores, incluindo importação/exportação, TI, imobiliário e parcerias estratégicas. Temos orgulho de nossa colaboração com a Vietbuild Corp e outros líderes do setor para entregar valor excepcional aos nossos clientes.",
+    "title": "Sobre AMIX International Group",
+    "paragraph1": "Com sede em Hanói, a AMIX International Group Vietnam LLC serve como uma ponte conectando negócios globais com oportunidades na região ASEAN. Com nossa profunda compreensão dos mercados locais e práticas de negócios internacionais, ajudamos empresas a navegar pelas complexidades de fazer negócios no Vietnã e países vizinhos.",
+    "paragraph2": "Nossa equipe combina experiência local com visão global para fornecer soluções abrangentes em diversos setores, incluindo importação/exportação, TI, imóveis e parcerias estratégicas. Orgulhamo-nos de nossa colaboração com a Vietbuild Corp e outros líderes do setor para entregar valor excepcional aos nossos clientes.",
     "stats": {
       "years": "Anos de Experiência",
       "projects": "Projetos Bem-sucedidos",
       "partners": "Parceiros Globais",
-      "countries": "Países da ASEAN"
+      "countries": "Países ASEAN"
     },
     "cta": "Entre em Contato"
   },
   "social": {
     "title": "Conecte-se Conosco",
-    "subtitle": "Siga-nos nas redes sociais para ficar atualizado com nossas últimas notícias e eventos."
+    "subtitle": "Siga-nos nas redes sociais para se manter atualizado com nossas últimas notícias e eventos."
   },
   "exhibitions": {
     "title": "Próximas Exposições",
-    "subtitle": "Junte-se a nós nestes próximos eventos do setor para explorar novas oportunidades.",
+    "subtitle": "Junte-se a nós nesses eventos do setor para explorar novas oportunidades.",
     "business": "Missões Empresariais",
     "vietbuild": "Exposições Vietbuild",
     "viewDetails": "Ver Detalhes",
     "date": "Data",
-    "location": "Local"
+    "location": "Localização"
   },
   "faq": {
     "title": "Perguntas Frequentes",
-    "subtitle": "Encontre respostas para perguntas comuns sobre nossos serviços e operações."
+    "subtitle": "Encontre respostas para perguntas comuns sobre nossos serviços e operações.",
+    "questions": [
+      {
+        "question": "Como a AMIX International Group pode ajudar minha empresa a entrar no mercado da ASEAN?",
+        "answer": "Fornecemos serviços abrangentes de entrada no mercado, incluindo pesquisa de mercado, identificação de parceiros, assistência em conformidade regulatória e desenvolvimento de estratégias de negócios. Nossa expertise local e redes estabelecidas ajudam a simplificar sua entrada na região da ASEAN, particularmente no Vietnã."
+      },
+      {
+        "question": "Com quais tipos de empresas você normalmente trabalha?",
+        "answer": "Trabalhamos com empresas de todos os tamanhos em várias indústrias. Desde startups que buscam estabelecer sua primeira presença internacional até empresas estabelecidas que buscam expandir suas operações na região da ASEAN, nossos serviços são adaptados para atender às necessidades específicas de cada cliente."
+      },
+      {
+        "question": "Vocês oferecem serviços para indústrias específicas?",
+        "answer": "Sim, temos expertise especializada em várias indústrias-chave, incluindo tecnologia, materiais de construção, manufatura, bens de consumo e imóveis. No entanto, nossos serviços podem ser adaptados para a maioria dos setores empresariais que desejam entrar ou expandir nos mercados da ASEAN."
+      },
+      {
+        "question": "Qual é o prazo típico para estabelecer operações comerciais no Vietnã?",
+        "answer": "O prazo varia dependendo da natureza e escala do seu negócio. Estratégias simples de entrada no mercado podem ser implementadas em 2-3 meses, enquanto operações mais complexas envolvendo manufatura ou investimentos significativos podem levar 6-12 meses. Trabalhamos com você para estabelecer cronogramas realistas com base em seus requisitos específicos."
+      },
+      {
+        "question": "Como funcionam seus serviços de exposição?",
+        "answer": "Nossos serviços de exposição incluem a garantia de espaços premium em estandes em grandes feiras comerciais como Vietbuild, projetando e montando sua presença na exposição, organizando logística, fornecendo tradutores e equipe local, e facilitando encontros de negócios durante o evento. Lidamos com todo o processo de exposição para que você possa se concentrar em fazer conexões comerciais valiosas."
+      }
+    ]
   },
   "contact": {
     "title": "Entre em Contato",
-    "subtitle": "Tem uma pergunta ou quer colaborar? Envie-nos uma mensagem.",
+    "subtitle": "Interessado em nossos serviços ou quer explorar oportunidades de colaboração? Preencha o formulário e nossa equipe entrará em contato em breve.",
     "name": "Seu Nome",
     "email": "Seu Email",
+    "subject": "Assunto",
+    "subjectPlaceholder": "Como podemos ajudar?",
     "message": "Sua Mensagem",
+    "messagePlaceholder": "Sua mensagem...",
+    "submitting": "Enviando...",
     "submit": "Enviar Mensagem",
     "success": "Obrigado! Sua mensagem foi enviada com sucesso.",
     "error": "Ops! Algo deu errado. Por favor, tente novamente mais tarde."
@@ -68,14 +172,74 @@
     "address": "Endereço",
     "phone": "Telefone",
     "email": "Email",
-    "copyright": "© 2025 AMIX International Group. Todos os direitos reservados."
+    "copyright": "© 2025 AMIX International Group. Todos os direitos reservados.",
+    "quickLinks": "Links Rápidos",
+    "officeHours": "Horário de Funcionamento",
+    "workingDays": "Segunda a Sexta: 9:00 - 18:00",
+    "saturday": "Sábado: 9:00 - 12:00",
+    "sunday": "Domingo: Fechado",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "sitemap": "Mapa do Site"
   },
   "language": {
     "en": "Inglês",
     "vi": "Vietnamita",
     "ru": "Russo",
     "fr": "Francês",
-    "de": "Alemão", 
+    "de": "Alemão",
     "pt": "Português"
+  },
+  "forms": {
+    "visitor": {
+      "title": "Registrar como Visitante",
+      "name": "Nome",
+      "email": "Email",
+      "country": "País",
+      "purpose": "Propósito",
+      "comments": "Comentários",
+      "cancel": "Cancelar",
+      "submit": "Enviar",
+      "success": "Registro bem-sucedido!",
+      "error": "Ocorreu um erro. Por favor, tente novamente.",
+      "selectCountry": "Selecione o País",
+      "selectPurpose": "Selecione o Propósito",
+      "submitting": "Enviando..."
+    },
+    "participant": {
+      "title": "Registrar como Participante",
+      "name": "Nome",
+      "email": "Email",
+      "company": "Empresa",
+      "country": "País",
+      "participationType": "Tipo de Participação",
+      "industry": "Indústria",
+      "registrationAssistance": "Precisa de Ajuda com o Registro?",
+      "logistics": "Precisa de Suporte Logístico?",
+      "comments": "Comentários",
+      "cancel": "Cancelar",
+      "submit": "Enviar",
+      "success": "Registro bem-sucedido!",
+      "error": "Ocorreu um erro. Por favor, tente novamente.",
+      "selectCountry": "Selecione o País",
+      "selectParticipationType": "Selecione o Tipo de Participação",
+      "selectIndustry": "Selecione a Indústria",
+      "submitting": "Enviando...",
+      "yes": "Sim",
+      "no": "Não"
+    },
+    "businessMission": {
+      "title": "Registrar Interesse em Missão Empresarial",
+      "name": "Nome",
+      "email": "Email",
+      "country": "País",
+      "comments": "Comentários",
+      "cancel": "Cancelar",
+      "submit": "Enviar",
+      "success": "Registro bem-sucedido!",
+      "error": "Ocorreu um erro. Por favor, tente novamente.",
+      "selectCountry": "Selecione o País",
+      "submitting": "Enviando..."
+    }
   }
 }

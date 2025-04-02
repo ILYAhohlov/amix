@@ -190,9 +190,9 @@ export default function ParticipantForm({
               className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent"
               required
             >
-              <option value="" className="text-white">Select Country</option>
+              <option value="" className="bg-gray-800 text-white">Select Country</option>
               {COUNTRIES.map((country) => (
-                <option key={country} value={country} className="text-white">
+                <option key={country} value={country} className="bg-gray-800 text-white">
                   {country}
                 </option>
               ))}
@@ -211,9 +211,9 @@ export default function ParticipantForm({
               className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent"
               required
             >
-              <option value="" className="text-white">Select Participation Type</option>
+              <option value="" className="bg-gray-800 text-white">Select Participation Type</option>
               {PARTICIPATION_TYPES.map((type) => (
-                <option key={type} value={type} className="text-white">
+                <option key={type} value={type} className="bg-gray-800 text-white">
                   {type}
                 </option>
               ))}
@@ -232,9 +232,9 @@ export default function ParticipantForm({
               className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent"
               required
             >
-              <option value="" className="text-white">Select Industry</option>
+              <option value="" className="bg-gray-800 text-white">Select Industry</option>
               {INDUSTRIES.map((industry) => (
-                <option key={industry} value={industry} className="text-white">
+                <option key={industry} value={industry} className="bg-gray-800 text-white">
                   {industry}
                 </option>
               ))}

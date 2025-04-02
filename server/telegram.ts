@@ -1,9 +1,15 @@
 import axios from 'axios';
 
 // Telegram configuration
-const telegramToken = process.env.TELEGRAM_TOKEN || "1519701472:AAF6Z5aFZXaaw0fw9dTgYQ1U7a0AVEEDG88";
-const chatId = process.env.TELEGRAM_CHAT_ID || "-335182799";
-const baseUrl = `https://api.telegram.org/bot${telegramToken}`;
+const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
+const chatId = process.env.TELEGRAM_CHAT_ID;
+
+// Проверка наличия необходимых переменных окружения
+if (!telegramToken || !chatId) {
+  console.warn('Warning: Telegram token or chat ID not provided in environment variables.');
+}
+
+const baseUrl = telegramToken ? `https://api.telegram.org/bot${telegramToken}` : '';
 
 /**
  * Sends a message to the Telegram chat
@@ -12,6 +18,12 @@ const baseUrl = `https://api.telegram.org/bot${telegramToken}`;
  */
 export async function sendTelegramMessage(message: string): Promise<boolean> {
   try {
+    // Если токены не настроены, логируем сообщение и возвращаем ошибку
+    if (!telegramToken || !chatId || !baseUrl) {
+      console.error('Telegram configuration is missing. Check your environment variables.');
+      return false;
+    }
+    
     const url = `${baseUrl}/sendMessage`;
     await axios.post(url, {
       chat_id: chatId,
@@ -52,7 +64,7 @@ export function formatVisitorMessage(data: {
   email: string;
   country: string;
   purpose: string;
-  comments: string;
+  comments?: string;
   exhibition?: string;
 }): string {
   return `
@@ -78,7 +90,7 @@ export function formatParticipantMessage(data: {
   industry: string;
   registrationAssistance: string;
   logistics: string;
-  comments: string;
+  comments?: string;
   exhibition?: string;
 }): string {
   return `
@@ -92,6 +104,26 @@ ${data.exhibition ? `<b>Exhibition:</b> ${data.exhibition}\n` : ''}
 <b>Industry:</b> ${data.industry}
 <b>Registration Assistance:</b> ${data.registrationAssistance}
 <b>Logistics Support:</b> ${data.logistics}
+<b>Comments:</b> ${data.comments || 'N/A'}
+`;
+}
+
+/**
+ * Format a business mission form submission for Telegram
+ */
+export function formatBusinessMissionMessage(data: {
+  name: string;
+  email: string;
+  country: string;
+  comments?: string;
+  exhibition?: string;
+}): string {
+  return `
+<b>🌎 New Business Mission Interest</b>
+${data.exhibition ? `<b>Mission:</b> ${data.exhibition}\n` : ''}
+<b>Name:</b> ${data.name}
+<b>Email:</b> ${data.email}
+<b>Country:</b> ${data.country}
 <b>Comments:</b> ${data.comments || 'N/A'}
 `;
 } 

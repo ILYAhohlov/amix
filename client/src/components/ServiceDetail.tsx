@@ -29,6 +29,16 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
     }, 300);
   };
 
+  // Получаем список функций из переводов или используем оригинальные данные
+  const getFeatures = () => {
+    try {
+      const translatedFeatures = t(`services.items.${service.id}.features`, { returnObjects: true });
+      return Array.isArray(translatedFeatures) ? translatedFeatures : service.features;
+    } catch (error) {
+      return service.features;
+    }
+  };
+
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center bg-primary bg-opacity-90 p-6"
@@ -38,9 +48,10 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
       onClick={onClose}
     >
       <Helmet>
-        <title>{`${service.title} - AMIX International Group`}</title>
-        <meta name="description" content={`${service.subtitle}. ${service.shortDescription}`} />
+        <title>{`${t(`services.items.${service.id}.title`, service.title)} - AMIX International Group`}</title>
+        <meta name="description" content={`${t(`services.items.${service.id}.subtitle`, service.subtitle)}. ${t(`services.items.${service.id}.shortDescription`, service.shortDescription)}`} />
       </Helmet>
+      
       <motion.div
         className="gradient-marine glass rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
         initial={{ scale: 0.9, y: 20 }}
@@ -61,16 +72,16 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
             <div className="md:w-1/2">
               <img
                 src={service.imageUrl}
-                alt={`${service.title} - ${service.subtitle} | AMIX International Group`}
+                alt={`${t(`services.items.${service.id}.title`, service.title)} - ${t(`services.items.${service.id}.subtitle`, service.subtitle)} | AMIX International Group`}
                 className="rounded-lg w-full h-64 object-cover"
               />
             </div>
             <div className="md:w-1/2">
-              <h3 className="text-2xl font-montserrat font-bold mb-3">{service.title}</h3>
-              <h4 className="text-accent text-lg mb-4">{service.subtitle}</h4>
-              <p className="text-slate-300 mb-4">{service.description}</p>
+              <h3 className="text-2xl font-montserrat font-bold mb-3">{t(`services.items.${service.id}.title`, service.title)}</h3>
+              <h4 className="text-accent text-lg mb-4">{t(`services.items.${service.id}.subtitle`, service.subtitle)}</h4>
+              <p className="text-slate-300 mb-4">{t(`services.items.${service.id}.description`, service.description)}</p>
               <ul className="text-slate-300 mb-6 space-y-2">
-                {service.features.map((feature, index) => (
+                {getFeatures().map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <Check className="text-accent mt-1 mr-2 h-4 w-4 flex-shrink-0" />
                     <span>{feature}</span>
@@ -82,13 +93,13 @@ export default function ServiceDetail({ service, onClose }: ServiceDetailProps) 
                   onClick={onClose}
                   className="bg-accent hover:bg-opacity-90 text-white py-2 px-5 rounded-md font-medium transition-all"
                 >
-                  {t('serviceDetail.back')}
+                  {t('serviceDetail.back', 'Back')}
                 </button>
                 <button
                   onClick={scrollToContact}
                   className="glass text-white py-2 px-5 rounded-md font-medium inline-block text-center hover:bg-white hover:bg-opacity-20 transition-all"
                 >
-                  {t('serviceDetail.contactUs')}
+                  {t('serviceDetail.contactUs', 'Contact Us')}
                 </button>
               </div>
             </div>

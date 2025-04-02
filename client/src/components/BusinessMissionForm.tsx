@@ -1,78 +1,62 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { VietbuildExhibitionType, BusinessMissionType } from "../data/exhibitionData";
 import { COUNTRIES } from "../data/countries";
 
-type Exhibition = VietbuildExhibitionType | BusinessMissionType;
-
-interface VisitorFormData {
+export type BusinessMissionFormData = {
   name: string;
   email: string;
   country: string;
-  purpose: string;
   comments: string;
-}
+};
 
-interface VisitorFormProps {
+export type FormStatus = {
+  success?: boolean;
+  message?: string;
+};
+
+export type Exhibition = {
+  id: number;
+  title: string;
+  date: string;
+  location: string;
+};
+
+export type BusinessMissionFormProps = {
   isOpen: boolean;
   onClose: () => void;
-  formData: VisitorFormData;
+  onSubmit: (e: React.FormEvent) => Promise<void>;
+  formData: BusinessMissionFormData;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
-  onSubmit: (e: React.FormEvent) => void;
+  formStatus?: FormStatus;
   selectedExhibition?: Exhibition;
-  formStatus?: {
-    success?: boolean;
-    message?: string;
-  };
-}
-
-const backdropVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
 };
 
-const modalVariants = {
-  hidden: { opacity: 0, y: -20, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    transition: { 
-      duration: 0.3, 
-      type: "spring", 
-      damping: 20,
-      stiffness: 300
-    }
-  },
-  exit: { 
-    opacity: 0, 
-    y: 20,
-    scale: 0.95,
-    transition: { duration: 0.2 }
-  }
-};
-
-const PURPOSES = ["Business Meeting", "Explore Products", "Networking", "Other"];
-
-export default function VisitorForm({
+export function BusinessMissionForm({
   isOpen,
   onClose,
+  onSubmit,
   formData,
   onChange,
-  onSubmit,
+  formStatus,
   selectedExhibition,
-  formStatus
-}: VisitorFormProps) {
+}: BusinessMissionFormProps) {
   const { t } = useTranslation();
+  
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
 
-  if (!isOpen) return null;
+  const modalVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
-  // Helper function to determine button state
   const getSubmitButtonText = () => {
-    if (formStatus?.message === "Submitting...") return t("forms.visitor.submitting");
-    if (formStatus?.success) return t("forms.visitor.success");
-    return t("forms.visitor.submit");
+    if (formStatus?.message === "Submitting...") return t("forms.businessMission.submitting");
+    if (formStatus?.success) return t("forms.businessMission.success");
+    return t("forms.businessMission.submit");
   };
 
   return (
@@ -104,7 +88,7 @@ export default function VisitorForm({
         </button>
 
         <h3 className="text-xl font-bold mb-4">
-          {t("forms.visitor.title")}
+          {t("forms.businessMission.title")}
           {selectedExhibition?.title && (
             <span className="block text-sm text-muted-foreground mt-1">
               {selectedExhibition.title}
@@ -129,7 +113,7 @@ export default function VisitorForm({
           {/* Name Field */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-1">
-              {t("forms.visitor.name")}
+              {t("forms.businessMission.name")}
             </label>
             <input
               id="name"
@@ -144,7 +128,7 @@ export default function VisitorForm({
           {/* Email Field */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium mb-1">
-              {t("forms.visitor.email")}
+              {t("forms.businessMission.email")}
             </label>
             <input
               id="email"
@@ -159,7 +143,7 @@ export default function VisitorForm({
           {/* Country Select */}
           <div>
             <label htmlFor="country" className="block text-sm font-medium mb-1">
-              {t("forms.visitor.country")}
+              {t("forms.businessMission.country")}
             </label>
             <select
               id="country"
@@ -168,7 +152,7 @@ export default function VisitorForm({
               className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent"
               required
             >
-              <option value="" className="bg-gray-800 text-white">{t("forms.visitor.selectCountry")}</option>
+              <option value="" className="bg-gray-800 text-white">{t("forms.businessMission.selectCountry")}</option>
               {COUNTRIES.map((country) => (
                 <option key={country} value={country} className="bg-gray-800 text-white">
                   {country}
@@ -177,31 +161,10 @@ export default function VisitorForm({
             </select>
           </div>
 
-          {/* Purpose */}
-          <div>
-            <label htmlFor="purpose" className="block text-sm font-medium mb-1">
-              {t("forms.visitor.purpose")}
-            </label>
-            <select
-              id="purpose"
-              value={formData.purpose}
-              onChange={onChange}
-              className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-md px-4 py-3 text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-accent"
-              required
-            >
-              <option value="" className="bg-gray-800 text-white">{t("forms.visitor.selectPurpose")}</option>
-              {PURPOSES.map((purpose) => (
-                <option key={purpose} value={purpose} className="bg-gray-800 text-white">
-                  {purpose}
-                </option>
-              ))}
-            </select>
-          </div>
-
           {/* Comments */}
           <div>
             <label htmlFor="comments" className="block text-sm font-medium mb-1">
-              {t("forms.visitor.comments")}
+              {t("forms.businessMission.comments")}
             </label>
             <textarea
               id="comments"
@@ -219,7 +182,7 @@ export default function VisitorForm({
               onClick={onClose}
               className="px-4 py-2 text-sm font-medium rounded-md border"
             >
-              {t("forms.visitor.cancel")}
+              {t("forms.businessMission.cancel")}
             </button>
             <button
               type="submit"
@@ -237,4 +200,4 @@ export default function VisitorForm({
       </motion.div>
     </motion.div>
   );
-}
+} 

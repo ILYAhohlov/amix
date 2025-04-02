@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import GlassCard from "./ui/glass-card";
 import { partners } from "../data/partnerData";
+import { useTranslation } from "react-i18next";
 
 export default function PartnersSection() {
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,7 +32,7 @@ export default function PartnersSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Our Partners
+            {t("partners.title")}
           </motion.h2>
           <motion.p 
             className="text-slate-300 max-w-2xl mx-auto"
@@ -38,7 +41,7 @@ export default function PartnersSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We collaborate with leading organizations across various industries.
+            {t("partners.subtitle")}
           </motion.p>
         </div>
         
