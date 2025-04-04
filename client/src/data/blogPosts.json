@@ -1,0 +1,38 @@
+[
+  {
+    "id": "why-vietnam",
+    "title": "Why Vietnam?",
+    "subtitle": "Vietnam: A Strategic Partner for Global Trade",
+    "slug": "why-vietnam",
+    "publishDate": "2025-04-04T10:00:00+07:00",
+    "excerpt": "Despite recent US tariff changes, Vietnam remains a strong choice for diversifying your supply chain with CPTPP and RCEP benefits.",
+    "content": [
+      "Despite recent US tariff changes (46% on Vietnamese imports as of April 2025), Vietnam remains a strong choice for diversifying your supply chain. As a member of CPTPP and RCEP, Vietnam offers competitive access to markets like Canada, Australia, and the UK with low or no tariffs.",
+      "AMIX International Group leverages our expertise in sourcing (with a dedicated China team) and logistics to help you navigate global trade challenges. We also assist US clients in exploring tariff mitigation strategies, such as re-exporting through third countries.",
+      "Contact us to start importing from Vietnam!"
+    ],
+    "contactEmail": "amixint@gmail.com",
+    "imageUrl": "/assets/vietnam-trade.jpg",
+    "author": "AMIX International Group",
+    "keywords": ["Vietnam", "China+1", "CPTPP", "RCEP", "trade", "tariffs", "supply chain", "ASEAN"]
+  },
+  {
+    "id": "navigating-asean-markets",
+    "title": "Navigating ASEAN Markets",
+    "subtitle": "Opportunities and Challenges in Southeast Asian Trade",
+    "slug": "navigating-asean-markets",
+    "publishDate": "2025-04-01T09:00:00+07:00",
+    "excerpt": "Learn about key strategies for successfully entering and operating in diverse ASEAN markets with their unique business cultures and regulations.",
+    "content": [
+      "The Association of Southeast Asian Nations (ASEAN) represents one of the most dynamic economic regions in the world. With a combined population of over 650 million people and a growing middle class, ASEAN offers tremendous opportunities for businesses looking to expand their global footprint.",
+      "However, each ASEAN country presents unique challenges and opportunities. From Singapore's highly developed economy to Vietnam's emerging manufacturing powerhouse and Indonesia's vast consumer market, business strategies must be tailored to local conditions.",
+      "At AMIX International Group, we specialize in helping companies navigate these diverse markets. Our local expertise and regional networks enable clients to effectively address regulatory complexities, cultural nuances, and logistical challenges that often pose barriers to entry.",
+      "Understanding local business cultures is particularly important. While countries like Singapore offer very transparent business environments, others require more relationship-building and understanding of local protocols. Our team provides cultural guidance alongside technical expertise.",
+      "Contact our ASEAN market specialists today to discuss your expansion strategy!"
+    ],
+    "contactEmail": "asean@amixint.com",
+    "imageUrl": "/assets/asean-markets.jpg",
+    "author": "AMIX International Group",
+    "keywords": ["ASEAN", "Southeast Asia", "market entry", "business culture", "regulations", "trade", "expansion"]
+  }
+] 

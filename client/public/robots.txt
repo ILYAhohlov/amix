@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amixgroup.com/sitemap.xml
+# Sitemap location
+Sitemap: https://amix.pro/sitemap.xml

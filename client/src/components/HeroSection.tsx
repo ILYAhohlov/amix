@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -24,6 +25,16 @@ export default function HeroSection() {
     }
   };
 
+  const scrollToBlog = () => {
+    const blogSection = document.getElementById("blog");
+    if (blogSection) {
+      window.scrollTo({
+        top: blogSection.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section id="hero" className="min-h-screen pt-24 flex items-center relative">
       <div className="container mx-auto px-6 py-20">
@@ -40,6 +51,12 @@ export default function HeroSection() {
             {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
+            <Link 
+              to="/blog/why-vietnam" 
+              className="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md font-montserrat font-medium transition-colors"
+            >
+              Why Vietnam
+            </Link>
             <button 
               onClick={scrollToServices}
               className="btn-primary font-montserrat"

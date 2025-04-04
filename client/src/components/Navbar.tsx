@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 
 interface NavbarProps {
@@ -27,9 +28,9 @@ export default function Navbar({ isScrolled }: NavbarProps) {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="/" className="text-2xl font-montserrat font-bold text-white">
+          <Link to="/" className="text-2xl font-montserrat font-bold text-white">
             AMIX International Group
-          </a>
+          </Link>
 
           <div className="lg:hidden">
             <button
@@ -42,14 +43,17 @@ export default function Navbar({ isScrolled }: NavbarProps) {
 
           <div className="hidden lg:flex items-center space-x-6">
             <div className="flex space-x-6">
-              <a href="#about" className="font-montserrat text-white hover:text-accent transition-colors">
-                {t("navbar.about")}
-              </a>
+              <Link to="/blog" className="font-montserrat text-white hover:text-accent transition-colors">
+                Blog
+              </Link>
               <a href="#services" className="font-montserrat text-white hover:text-accent transition-colors">
                 {t("navbar.services")}
               </a>
               <a href="#partners" className="font-montserrat text-white hover:text-accent transition-colors">
                 {t("navbar.partners")}
+              </a>
+              <a href="#about" className="font-montserrat text-white hover:text-accent transition-colors">
+                {t("navbar.about")}
               </a>
               <a href="#exhibitions" className="font-montserrat text-white hover:text-accent transition-colors">
                 {t("navbar.exhibitions")}
@@ -75,13 +79,13 @@ export default function Navbar({ isScrolled }: NavbarProps) {
               transition={{ duration: 0.3 }}
             >
               <div className="flex flex-col space-y-3">
-                <a
-                  href="#about"
+                <Link
+                  to="/blog"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
-                  {t("navbar.about")}
-                </a>
+                  Blog
+                </Link>
                 <a
                   href="#services"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -95,6 +99,13 @@ export default function Navbar({ isScrolled }: NavbarProps) {
                   className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
                 >
                   {t("navbar.partners")}
+                </a>
+                <a
+                  href="#about"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="font-montserrat text-white hover:text-accent transition-colors text-left py-2"
+                >
+                  {t("navbar.about")}
                 </a>
                 <a
                   href="#exhibitions"
