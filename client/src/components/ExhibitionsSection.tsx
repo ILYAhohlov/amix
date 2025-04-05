@@ -35,7 +35,7 @@ type ModalType = "visitor" | "participant" | "business-mission";
 
 export default function ExhibitionsSection() {
   const { t } = useTranslation();
-  const [activeModal, setActiveModal] = useState<{ type: ModalType; exhibitionId: number } | null>(null);
+  const [activeModal, setActiveModal] = useState<{ type: ModalType; exhibitionId: string } | null>(null);
 
   // Success or error messages
   const [formStatus, setFormStatus] = useState<{
@@ -74,13 +74,13 @@ export default function ExhibitionsSection() {
   const selectedExhibition = activeModal
     ? [...vietbuildExhibitions, ...businessMissions].find(
         (ex) => ex.id === activeModal.exhibitionId
-      )
+      ) || null
     : null;
 
   const openModal = (type: ModalType, exhibitionId: string) => {
     // Reset status when opening a new form
     setFormStatus({});
-    setActiveModal({ type, exhibitionId: parseInt(exhibitionId) });
+    setActiveModal({ type, exhibitionId });
   };
 
   const closeModal = () => {

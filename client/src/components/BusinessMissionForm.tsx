@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { COUNTRIES } from "../data/countries";
+import { VietbuildExhibitionType, BusinessMissionType } from "../data/exhibitionData";
 
 export type BusinessMissionFormData = {
   name: string;
@@ -15,12 +16,7 @@ export type FormStatus = {
   message?: string;
 };
 
-export type Exhibition = {
-  id: number;
-  title: string;
-  date: string;
-  location: string;
-};
+export type Exhibition = VietbuildExhibitionType | BusinessMissionType;
 
 export type BusinessMissionFormProps = {
   isOpen: boolean;
