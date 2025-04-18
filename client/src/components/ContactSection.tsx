@@ -100,7 +100,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-medium mb-1">{t("footer.email")}</h4>
-                  <p className="text-slate-300">amixint@gmail.com</p>
+                  <p className="text-slate-300">office@amix.pro</p>
                 </div>
               </div>
               
