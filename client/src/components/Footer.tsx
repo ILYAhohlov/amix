@@ -52,7 +52,7 @@ export default function Footer() {
               </li>
               <li className="flex">
                 <Mail className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
-                <span className="text-slate-300">amixint@gmail.com</span>
+                <span className="text-slate-300">office@amix.pro</span>
               </li>
               <li className="flex">
                 <Phone className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
