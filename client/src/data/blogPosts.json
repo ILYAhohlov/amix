@@ -1,4 +1,21 @@
 [
+{
+    "id": "Vietnam’s-Trade-Agreements",
+    "title": "Vietnam’s Trade Agreements",
+    "subtitle": "Vietnam and International Trade Agreements",
+    "slug": "vietnam’s-trade-agreements",
+    "publishDate": "2025-04-25T10:00:00+07:00",
+    "excerpt": "Vietnam is boosting its global trade through CPTPP, RCEP, and ASEAN membership. CPTPP unites 11 countries with a 500+ million population and $13 trillion GDP.",
+    "content": [
+      "Vietnam is boosting its global trade through CPTPP, RCEP, and ASEAN membership. CPTPP unites 11 countries with a 500+ million population and $13 trillion GDP, cutting tariffs on 95% of goods and opening markets like Canada, Mexico, and Japan. RCEP, the world’s largest trade deal, spans 15 Asian nations with 2.2 billion people and a $26 trillion GDP, simplifying trade with China and South Korea.",
+      "As an ASEAN member (10 countries, 670 million people), Vietnam plays a key role in regional integration, enjoying low tariffs within the bloc and access to Southeast Asian markets. The VN-EAEU FTA offers benefits for EAEU countries, including Russia, with tariffs as low as 0–5%. Vietnam is a perfect hub for business!",
+      "Contact us to start Global Trdading!"
+    ],
+    "contactEmail": "amixint@gmail.com",
+    "imageUrl": "/assets/vietnam-trade.jpg",
+    "author": "AMIX International Group",
+    "keywords": ["Vietnam", "China+1", "CPTPP", "RCEP", "trade", "tariffs", "supply chain", "ASEAN"]
+  },
   {
     "id": "why-vietnam",
     "title": "Why Vietnam?",
@@ -16,6 +33,7 @@
     "author": "AMIX International Group",
     "keywords": ["Vietnam", "China+1", "CPTPP", "RCEP", "trade", "tariffs", "supply chain", "ASEAN"]
   },
+  
   {
     "id": "navigating-asean-markets",
     "title": "Navigating ASEAN Markets",
