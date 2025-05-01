@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import GlassCard from '@/components/ui/glass-card';
@@ -10,12 +10,14 @@ import Footer from '../components/Footer';
 type PackageType = 'basic' | 'standard' | 'premium';
 
 export default function BusinessTours() {
-  const { t } = useTranslation();
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState<PackageType | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
@@ -25,6 +27,9 @@ export default function BusinessTours() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<PackageType | null>(null);
+
   const handleBookNow = (packageType: PackageType) => {
     setSelectedPackage(packageType);
     setIsFormOpen(true);
@@ -33,8 +38,8 @@ export default function BusinessTours() {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Business Tours - AMIX International Group</title>
-        <meta name="description" content="Discover Vietnam's business potential with AMIX Business Tours. Join us for a 7-day journey to explore trade opportunities and gain expert insights into Vietnam's economy." />
+        <title>{t('businessTours.title')} - AMIX International Group</title>
+        <meta name="description" content={t('businessTours.subtitle')} />
       </Helmet>
 
       <Navbar isScrolled={isScrolled} />
@@ -48,11 +53,10 @@ export default function BusinessTours() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 title-shadow">
-              AMIX Business Tours: Unlock Vietnam & ASEAN Markets
+              {t('businessTours.title')}
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Join our 7-day business discovery tour to Vietnam. Experience Vietbuild, meet potential partners,
-              and explore one of Asia's most dynamic markets.
+              {t('businessTours.subtitle')}
             </p>
           </motion.div>
 
@@ -65,23 +69,19 @@ export default function BusinessTours() {
             >
               <GlassCard className="h-full p-6">
                 <div className="flex flex-col h-full">
-                  <h3 className="text-2xl font-montserrat font-bold mb-2">Basic Package</h3>
-                  <p className="text-xl font-semibold text-accent mb-4">$3,000</p>
-                  <p className="text-slate-300 mb-4">Perfect for startups and small businesses.</p>
+                  <h3 className="text-2xl font-montserrat font-bold mb-2">{t('businessTours.packages.basic.title')}</h3>
+                  <p className="text-xl font-semibold text-accent mb-4">{t('businessTours.packages.basic.price')}</p>
+                  <p className="text-slate-300 mb-4">{t('businessTours.packages.basic.description')}</p>
                   <ul className="text-slate-300 space-y-2 mb-8 flex-grow">
-                    <li>✓ Vietbuild access</li>
-                    <li>✓ 5 B2B meetings</li>
-                    <li>✓ Lectures</li>
-                    <li>✓ Group transfers</li>
-                    <li>✓ Walking tours</li>
-                    <li>✓ Networking</li>
-                    <li>✓ Hotel/restaurant recommendations</li>
+                    {(t('businessTours.packages.basic.features', { returnObjects: true }) as string[]).map((feature: string, index: number) => (
+                      <li key={index}>✓ {feature}</li>
+                    ))}
                   </ul>
                   <button
                     onClick={() => handleBookNow('basic')}
                     className="w-full bg-accent hover:bg-accent/90 text-white py-3 px-6 rounded-md font-medium transition-all"
                   >
-                    Book Now
+                    {t('businessTours.bookNow')}
                   </button>
                 </div>
               </GlassCard>
@@ -95,24 +95,19 @@ export default function BusinessTours() {
             >
               <GlassCard className="h-full p-6">
                 <div className="flex flex-col h-full">
-                  <h3 className="text-2xl font-montserrat font-bold mb-2">Standard Package</h3>
-                  <p className="text-xl font-semibold text-accent mb-4">$5,000</p>
-                  <p className="text-slate-300 mb-4">Ideal for growing businesses.</p>
+                  <h3 className="text-2xl font-montserrat font-bold mb-2">{t('businessTours.packages.standard.title')}</h3>
+                  <p className="text-xl font-semibold text-accent mb-4">{t('businessTours.packages.standard.price')}</p>
+                  <p className="text-slate-300 mb-4">{t('businessTours.packages.standard.description')}</p>
                   <ul className="text-slate-300 space-y-2 mb-8 flex-grow">
-                    <li>✓ Vietbuild access</li>
-                    <li>✓ 8 B2B meetings</li>
-                    <li>✓ Translator</li>
-                    <li>✓ Guest speakers</li>
-                    <li>✓ Comfortable transfers</li>
-                    <li>✓ Guided excursions</li>
-                    <li>✓ Exclusive networking</li>
-                    <li>✓ Hotel/restaurant support</li>
+                    {(t('businessTours.packages.standard.features', { returnObjects: true }) as string[]).map((feature: string, index: number) => (
+                      <li key={index}>✓ {feature}</li>
+                    ))}
                   </ul>
                   <button
                     onClick={() => handleBookNow('standard')}
                     className="w-full bg-accent hover:bg-accent/90 text-white py-3 px-6 rounded-md font-medium transition-all"
                   >
-                    Book Now
+                    {t('businessTours.bookNow')}
                   </button>
                 </div>
               </GlassCard>
@@ -126,24 +121,19 @@ export default function BusinessTours() {
             >
               <GlassCard className="h-full p-6">
                 <div className="flex flex-col h-full">
-                  <h3 className="text-2xl font-montserrat font-bold mb-2">Premium Package</h3>
-                  <p className="text-xl font-semibold text-accent mb-4">$8,000</p>
-                  <p className="text-slate-300 mb-4">Designed for industry leaders.</p>
+                  <h3 className="text-2xl font-montserrat font-bold mb-2">{t('businessTours.packages.premium.title')}</h3>
+                  <p className="text-xl font-semibold text-accent mb-4">{t('businessTours.packages.premium.price')}</p>
+                  <p className="text-slate-300 mb-4">{t('businessTours.packages.premium.description')}</p>
                   <ul className="text-slate-300 space-y-2 mb-8 flex-grow">
-                    <li>✓ VIP Vietbuild access</li>
-                    <li>✓ 10 B2B meetings</li>
-                    <li>✓ Personal translator</li>
-                    <li>✓ Top experts</li>
-                    <li>✓ Luxury transfers</li>
-                    <li>✓ Private excursions</li>
-                    <li>✓ VIP networking</li>
-                    <li>✓ Full concierge service</li>
+                    {(t('businessTours.packages.premium.features', { returnObjects: true }) as string[]).map((feature: string, index: number) => (
+                      <li key={index}>✓ {feature}</li>
+                    ))}
                   </ul>
                   <button
                     onClick={() => handleBookNow('premium')}
                     className="w-full bg-accent hover:bg-accent/90 text-white py-3 px-6 rounded-md font-medium transition-all"
                   >
-                    Book Now
+                    {t('businessTours.bookNow')}
                   </button>
                 </div>
               </GlassCard>
@@ -158,16 +148,13 @@ export default function BusinessTours() {
           >
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-4 title-shadow">
-                Estimated Total Budget
+                {t('businessTours.budget.title')}
               </h2>
               <p className="text-xl text-slate-300 mb-6">
-                Plan Your Investment with AMIX Business Tours
+                {t('businessTours.budget.subtitle')}
               </p>
               <p className="text-slate-300 max-w-4xl mx-auto mb-12">
-                Our tour packages (Basic, Standard, Premium) cover all essential business activities, 
-                while accommodation and dining are tailored to your preferences. Below is an estimated 
-                total budget for a 7-day tour for a delegation of 2–3 people, including additional expenses. 
-                These are approximate costs, and we'll assist you in selecting options that fit your needs and budget.
+                {t('businessTours.budget.description')}
               </p>
             </div>
 
@@ -179,39 +166,39 @@ export default function BusinessTours() {
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <GlassCard className="h-full p-6">
-                  <h3 className="text-2xl font-montserrat font-bold mb-4">Basic Package Budget</h3>
+                  <h3 className="text-2xl font-montserrat font-bold mb-4">{t('businessTours.budget.packages.basic')}</h3>
                   <div className="space-y-3 text-slate-300">
                     <div className="flex justify-between">
-                      <span>Tour Cost:</span>
+                      <span>{t('businessTours.budget.tourCost')}:</span>
                       <span className="font-semibold">$3,000</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Accommodation (3* hotel):</span>
+                      <span>{t('businessTours.budget.accommodation.3star')}:</span>
                       <span>~$630</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Dining (budget):</span>
+                      <span>{t('businessTours.budget.dining.budget')}:</span>
                       <span>~$630</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Flights (round-trip):</span>
+                      <span>{t('businessTours.budget.flights')}:</span>
                       <span>~$2,400</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Visa:</span>
+                      <span>{t('businessTours.budget.visa')}:</span>
                       <span>~$75</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Personal Expenses:</span>
+                      <span>{t('businessTours.budget.personalExpenses')}:</span>
                       <span>~$150</span>
                     </div>
                     <div className="border-t border-white/10 pt-3 mt-4">
                       <div className="flex justify-between font-bold">
-                        <span>Total Estimated Budget:</span>
+                        <span>{t('businessTours.budget.totalBudget')}:</span>
                         <span className="text-accent">$6,885</span>
                       </div>
                       <div className="text-sm text-slate-400 text-right mt-1">
-                        ($2,295/person for 3 people)
+                        ($2,295/{t('businessTours.budget.perPerson')})
                       </div>
                     </div>
                   </div>
@@ -225,39 +212,39 @@ export default function BusinessTours() {
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <GlassCard className="h-full p-6">
-                  <h3 className="text-2xl font-montserrat font-bold mb-4">Standard Package Budget</h3>
+                  <h3 className="text-2xl font-montserrat font-bold mb-4">{t('businessTours.budget.packages.standard')}</h3>
                   <div className="space-y-3 text-slate-300">
                     <div className="flex justify-between">
-                      <span>Tour Cost:</span>
+                      <span>{t('businessTours.budget.tourCost')}:</span>
                       <span className="font-semibold">$5,000</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Accommodation (4* hotel):</span>
+                      <span>{t('businessTours.budget.accommodation.4star')}:</span>
                       <span>~$1,260</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Dining (mid-range):</span>
+                      <span>{t('businessTours.budget.dining.midRange')}:</span>
                       <span>~$1,260</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Flights (round-trip):</span>
+                      <span>{t('businessTours.budget.flights')}:</span>
                       <span>~$2,400</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Visa:</span>
+                      <span>{t('businessTours.budget.visa')}:</span>
                       <span>~$75</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Personal Expenses:</span>
+                      <span>{t('businessTours.budget.personalExpenses')}:</span>
                       <span>~$300</span>
                     </div>
                     <div className="border-t border-white/10 pt-3 mt-4">
                       <div className="flex justify-between font-bold">
-                        <span>Total Estimated Budget:</span>
+                        <span>{t('businessTours.budget.totalBudget')}:</span>
                         <span className="text-accent">$10,295</span>
                       </div>
                       <div className="text-sm text-slate-400 text-right mt-1">
-                        ($3,432/person for 3 people)
+                        ($3,432/{t('businessTours.budget.perPerson')})
                       </div>
                     </div>
                   </div>
@@ -271,39 +258,39 @@ export default function BusinessTours() {
                 transition={{ duration: 0.5, delay: 0.9 }}
               >
                 <GlassCard className="h-full p-6">
-                  <h3 className="text-2xl font-montserrat font-bold mb-4">Premium Package Budget</h3>
+                  <h3 className="text-2xl font-montserrat font-bold mb-4">{t('businessTours.budget.packages.premium')}</h3>
                   <div className="space-y-3 text-slate-300">
                     <div className="flex justify-between">
-                      <span>Tour Cost:</span>
+                      <span>{t('businessTours.budget.tourCost')}:</span>
                       <span className="font-semibold">$8,000</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Accommodation (5* hotel):</span>
+                      <span>{t('businessTours.budget.accommodation.5star')}:</span>
                       <span>~$3,150</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Dining (premium):</span>
+                      <span>{t('businessTours.budget.dining.premium')}:</span>
                       <span>~$3,150</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Flights (round-trip):</span>
+                      <span>{t('businessTours.budget.flights')}:</span>
                       <span>~$2,400</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Visa:</span>
+                      <span>{t('businessTours.budget.visa')}:</span>
                       <span>~$75</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Personal Expenses:</span>
+                      <span>{t('businessTours.budget.personalExpenses')}:</span>
                       <span>~$600</span>
                     </div>
                     <div className="border-t border-white/10 pt-3 mt-4">
                       <div className="flex justify-between font-bold">
-                        <span>Total Estimated Budget:</span>
+                        <span>{t('businessTours.budget.totalBudget')}:</span>
                         <span className="text-accent">$17,375</span>
                       </div>
                       <div className="text-sm text-slate-400 text-right mt-1">
-                        ($5,792/person for 3 people)
+                        ($5,792/{t('businessTours.budget.perPerson')})
                       </div>
                     </div>
                   </div>
@@ -318,13 +305,11 @@ export default function BusinessTours() {
               className="text-slate-300 text-center mt-8 max-w-4xl mx-auto"
             >
               <p className="italic">
-                Note: Costs for accommodation, dining, flights, and personal expenses are estimates based on typical choices. 
-                Prices may vary depending on your preferences, season, and flight availability. AMIX offers complimentary 
-                assistance in selecting hotels and restaurants to match your budget. Contact us at{' '}
+                {t('businessTours.budget.note')}{' '}
                 <a href="mailto:office@amix.pro" className="text-accent hover:underline">
                   office@amix.pro
                 </a>{' '}
-                for a personalized plan!
+                {t('businessTours.budget.contactUs')}
               </p>
             </motion.div>
           </motion.div>

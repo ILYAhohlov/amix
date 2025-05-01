@@ -17,6 +17,11 @@ export default function App() {
     ? services.find((s) => s.id === selectedService)
     : null;
 
+  // Add effect to reset scroll position
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;

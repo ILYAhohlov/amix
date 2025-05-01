@@ -13,6 +13,10 @@ export default function BlogHome() {
   const blogUrl = "https://amix.pro/blog";
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
@@ -122,4 +126,4 @@ export default function BlogHome() {
       <Footer />
     </div>
   );
-} 
+}

@@ -18,10 +18,12 @@ export default function BlogPost() {
   const { slug } = useParams<BlogPostParams>();
   const navigate = useNavigate();
   
-  // Find the post with the matching slug
   const post = blogPosts.find(post => post.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
-  // If post doesn't exist, redirect to blog home
   useEffect(() => {
     if (!post) {
       navigate("/blog");
@@ -183,4 +185,4 @@ export default function BlogPost() {
       <Footer />
     </div>
   );
-} 
+}
