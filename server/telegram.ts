@@ -126,4 +126,23 @@ ${data.exhibition ? `<b>Mission:</b> ${data.exhibition}\n` : ''}
 <b>Country:</b> ${data.country}
 <b>Comments:</b> ${data.comments || 'N/A'}
 `;
-} 
+}
+
+/**
+ * Format a business tour form submission for Telegram
+ */
+export function formatBusinessTourMessage(data: any) {
+  return `
+🎫 New Business Tour Booking
+
+👤 Name: ${data.name}
+📧 Email: ${data.email}
+🏢 Company: ${data.company}
+📱 Phone: ${data.phone}
+🌍 Country: ${data.country}
+📦 Package: ${data.selectedPackage}
+
+💭 Comments:
+${data.comments || 'No comments provided'}
+`;
+}

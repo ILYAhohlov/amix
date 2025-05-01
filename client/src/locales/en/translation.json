@@ -241,5 +241,71 @@
       "selectCountry": "Select Country",
       "submitting": "Submitting..."
     }
+  },
+  "businessTours": {
+    "title": "AMIX Business Tours: Unlock Vietnam & ASEAN Markets",
+    "subtitle": "Join our 7-day business discovery tour to Vietnam. Experience Vietbuild, meet potential partners, and explore one of Asia's most dynamic markets.",
+    "packages": {
+      "basic": {
+        "title": "Basic Package",
+        "price": "$3,000",
+        "description": "Perfect for startups and small businesses.",
+        "features": [
+          "Vietbuild access",
+          "5 B2B meetings",
+          "Lectures",
+          "Group transfers",
+          "Walking tours",
+          "Networking",
+          "Hotel/restaurant recommendations"
+        ]
+      },
+      "standard": {
+        "title": "Standard Package",
+        "price": "$5,000",
+        "description": "Ideal for growing businesses.",
+        "features": [
+          "Vietbuild access",
+          "8 B2B meetings",
+          "Translator",
+          "Guest speakers",
+          "Comfortable transfers",
+          "Guided excursions",
+          "Exclusive networking",
+          "Hotel/restaurant support"
+        ]
+      },
+      "premium": {
+        "title": "Premium Package",
+        "price": "$8,000",
+        "description": "Designed for industry leaders.",
+        "features": [
+          "VIP Vietbuild access",
+          "10 B2B meetings",
+          "Personal translator",
+          "Top experts",
+          "Luxury transfers",
+          "Private excursions",
+          "VIP networking",
+          "Full concierge service"
+        ]
+      }
+    },
+    "bookNow": "Book Now",
+    "form": {
+      "title": "Business Tour Registration",
+      "selectedPackage": "Selected Package",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "phone": "Phone Number",
+      "country": "Country",
+      "comments": "Comments or Special Requirements",
+      "submit": "Submit Registration",
+      "cancel": "Cancel",
+      "success": "Registration successful! We'll contact you shortly with more details.",
+      "error": "An error occurred. Please try again.",
+      "submitting": "Submitting..."
+    }
   }
 }

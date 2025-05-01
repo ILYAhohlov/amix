@@ -7,7 +7,8 @@ import {
   formatContactMessage,
   formatVisitorMessage,
   formatParticipantMessage,
-  formatBusinessMissionMessage
+  formatBusinessMissionMessage,
+  formatBusinessTourMessage
 } from "./telegram";
 
 const contactFormSchema = z.object({
@@ -45,6 +46,16 @@ const businessMissionFormSchema = z.object({
   country: z.string().min(1, "Country is required"),
   comments: z.string().optional(),
   exhibition: z.string().optional(),
+});
+
+const businessTourFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  company: z.string().min(2, "Company name is required"),
+  phone: z.string().min(5, "Phone number is required"),
+  country: z.string().min(1, "Country is required"),
+  comments: z.string().optional(),
+  package: z.enum(['basic', 'standard', 'premium'])
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -180,6 +191,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ 
         success: false, 
         message: "An error occurred while submitting your registration. Please try again later." 
+      });
+    }
+  });
+
+  // Business Tour form submission endpoint
+  app.post("/api/business-tour", async (req: Request, res: Response) => {
+    try {
+      // Validate the request body
+      const validatedData = businessTourFormSchema.parse(req.body);
+      
+      // Send notification to Telegram
+      const telegramMessage = formatBusinessTourMessage(validatedData);
+      await sendTelegramMessage(telegramMessage);
+      
+      // For demo purposes, simulate a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      res.status(200).json({ 
+        success: true, 
+        message: "Thank you for your booking request! We will contact you soon." 
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      }
+      
+      console.error("Business tour form error:", error);
+      res.status(500).json({ 
+        success: false, 
+        message: "An error occurred while submitting your booking request. Please try again later." 
       });
     }
   });

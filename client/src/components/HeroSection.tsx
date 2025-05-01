@@ -50,22 +50,22 @@ export default function HeroSection() {
           <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed">
             {t('hero.subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
             <Link 
               to="/blog/why-vietnam" 
-              className="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md font-montserrat font-medium transition-colors"
+              className="w-full sm:w-auto text-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md font-montserrat font-medium transition-colors"
             >
               Why Vietnam
             </Link>
             <button 
               onClick={scrollToServices}
-              className="btn-primary font-montserrat"
+              className="w-full sm:w-auto btn-primary font-montserrat"
             >
               {t('hero.cta')}
             </button>
             <button 
               onClick={scrollToContact}
-              className="btn-secondary font-montserrat"
+              className="w-full sm:w-auto btn-secondary font-montserrat"
             >
               {t('about.cta')}
             </button>

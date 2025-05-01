@@ -207,5 +207,71 @@
       "selectCountry": "Land auswählen",
       "submitting": "Wird gesendet..."
     }
+  },
+  "businessTours": {
+    "title": "AMIX Business Tours: Erschließen Sie die Märkte Vietnams & der ASEAN",
+    "subtitle": "Nehmen Sie an unserer 7-tägigen Business-Entdeckungsreise nach Vietnam teil. Erleben Sie Vietbuild, treffen Sie potenzielle Partner und erkunden Sie einen der dynamischsten Märkte Asiens.",
+    "packages": {
+      "basic": {
+        "title": "Basis-Paket",
+        "price": "3.000 €",
+        "description": "Perfekt für Startups und kleine Unternehmen.",
+        "features": [
+          "Vietbuild-Zugang",
+          "5 B2B-Meetings",
+          "Vorträge",
+          "Gruppentransfers",
+          "Stadtführungen",
+          "Networking",
+          "Hotel-/Restaurantempfehlungen"
+        ]
+      },
+      "standard": {
+        "title": "Standard-Paket",
+        "price": "5.000 €",
+        "description": "Ideal für wachsende Unternehmen.",
+        "features": [
+          "Vietbuild-Zugang",
+          "8 B2B-Meetings",
+          "Dolmetscher",
+          "Gastredner",
+          "Komfortable Transfers",
+          "Geführte Exkursionen", 
+          "Exklusives Networking",
+          "Hotel-/Restaurantunterstützung"
+        ]
+      },
+      "premium": {
+        "title": "Premium-Paket",
+        "price": "8.000 €",
+        "description": "Entwickelt für Branchenführer.",
+        "features": [
+          "VIP Vietbuild-Zugang",
+          "10 B2B-Meetings",
+          "Persönlicher Dolmetscher",
+          "Top-Experten",
+          "Luxus-Transfers",
+          "Private Exkursionen",
+          "VIP-Networking",
+          "Vollständiger Concierge-Service"
+        ]
+      }
+    },
+    "bookNow": "Jetzt buchen",
+    "form": {
+      "title": "Business Tour Anmeldung",
+      "selectedPackage": "Ausgewähltes Paket",
+      "name": "Name",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "phone": "Telefonnummer",
+      "country": "Land",
+      "comments": "Kommentare oder besondere Anforderungen",
+      "submit": "Anmeldung absenden",
+      "cancel": "Abbrechen",
+      "success": "Anmeldung erfolgreich! Wir werden uns in Kürze mit weiteren Details bei Ihnen melden.",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "submitting": "Wird gesendet..."
+    }
   }
 }

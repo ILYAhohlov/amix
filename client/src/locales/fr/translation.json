@@ -153,7 +153,7 @@
     "vi": "Vietnamien",
     "ru": "Russe",
     "fr": "Français",
-    "de": "Allemand", 
+    "de": "Allemand",
     "pt": "Portugais"
   },
   "forms": {
@@ -206,6 +206,72 @@
       "error": "Une erreur s'est produite. Veuillez réessayer.",
       "selectCountry": "Sélectionner un pays",
       "submitting": "Soumission en cours..."
+    }
+  },
+  "businessTours": {
+    "title": "AMIX Business Tours : Découvrez les marchés du Vietnam et de l'ASEAN",
+    "subtitle": "Rejoignez notre voyage d'affaires de 7 jours au Vietnam. Découvrez Vietbuild, rencontrez des partenaires potentiels et explorez l'un des marchés les plus dynamiques d'Asie.",
+    "packages": {
+      "basic": {
+        "title": "Pack Basique",
+        "price": "3 000 €",
+        "description": "Parfait pour les startups et les petites entreprises.",
+        "features": [
+          "Accès à Vietbuild",
+          "5 réunions B2B",
+          "Conférences",
+          "Transferts en groupe",
+          "Visites à pied",
+          "Réseautage",
+          "Recommandations hôtels/restaurants"
+        ]
+      },
+      "standard": {
+        "title": "Pack Standard",
+        "price": "5 000 €",
+        "description": "Idéal pour les entreprises en croissance.",
+        "features": [
+          "Accès à Vietbuild",
+          "8 réunions B2B",
+          "Traducteur",
+          "Conférenciers invités",
+          "Transferts confortables",
+          "Excursions guidées",
+          "Réseautage exclusif",
+          "Support hôtels/restaurants"
+        ]
+      },
+      "premium": {
+        "title": "Pack Premium",
+        "price": "8 000 €",
+        "description": "Conçu pour les leaders du secteur.",
+        "features": [
+          "Accès VIP à Vietbuild",
+          "10 réunions B2B",
+          "Traducteur personnel",
+          "Experts de premier plan",
+          "Transferts luxueux",
+          "Excursions privées",
+          "Réseautage VIP",
+          "Service conciergerie complet"
+        ]
+      }
+    },
+    "bookNow": "Réserver maintenant",
+    "form": {
+      "title": "Inscription au Business Tour",
+      "selectedPackage": "Pack sélectionné",
+      "name": "Nom",
+      "email": "Email",
+      "company": "Entreprise",
+      "phone": "Numéro de téléphone",
+      "country": "Pays",
+      "comments": "Commentaires ou besoins spéciaux",
+      "submit": "Envoyer l'inscription",
+      "cancel": "Annuler",
+      "success": "Inscription réussie ! Nous vous contacterons bientôt avec plus de détails.",
+      "error": "Une erreur s'est produite. Veuillez réessayer.",
+      "submitting": "Envoi en cours..."
     }
   }
 }

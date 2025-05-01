@@ -207,5 +207,71 @@
       "selectCountry": "Chọn quốc gia",
       "submitting": "Đang gửi..."
     }
+  },
+  "businessTours": {
+    "title": "AMIX Business Tours: Khám phá thị trường Việt Nam & ASEAN",
+    "subtitle": "Tham gia chuyến tham quan kinh doanh 7 ngày tới Việt Nam. Trải nghiệm Vietbuild, gặp gỡ đối tác tiềm năng và khám phá một trong những thị trường năng động nhất châu Á.",
+    "packages": {
+      "basic": {
+        "title": "Gói Cơ Bản",
+        "price": "$3,000",
+        "description": "Phù hợp cho các công ty khởi nghiệp và doanh nghiệp nhỏ.",
+        "features": [
+          "Vé vào Vietbuild",
+          "5 cuộc họp B2B",
+          "Bài giảng",
+          "Di chuyển theo nhóm",
+          "Tour đi bộ",
+          "Kết nối mạng lưới",
+          "Gợi ý khách sạn/nhà hàng"
+        ]
+      },
+      "standard": {
+        "title": "Gói Tiêu Chuẩn",
+        "price": "$5,000",
+        "description": "Lý tưởng cho các doanh nghiệp đang phát triển.",
+        "features": [
+          "Vé vào Vietbuild",
+          "8 cuộc họp B2B",
+          "Phiên dịch viên",
+          "Diễn giả khách mời",
+          "Di chuyển thoải mái",
+          "Tour tham quan có hướng dẫn",
+          "Kết nối mạng lưới độc quyền",
+          "Hỗ trợ khách sạn/nhà hàng"
+        ]
+      },
+      "premium": {
+        "title": "Gói Cao Cấp",
+        "price": "$8,000",
+        "description": "Được thiết kế cho các nhà lãnh đạo ngành.",
+        "features": [
+          "Vé VIP vào Vietbuild",
+          "10 cuộc họp B2B",
+          "Phiên dịch viên riêng",
+          "Chuyên gia hàng đầu",
+          "Di chuyển sang trọng",
+          "Tour tham quan riêng",
+          "Kết nối mạng lưới VIP",
+          "Dịch vụ hỗ trợ toàn diện"
+        ]
+      }
+    },
+    "bookNow": "Đặt Ngay",
+    "form": {
+      "title": "Đăng Ký Business Tour",
+      "selectedPackage": "Gói Đã Chọn",
+      "name": "Họ Tên",
+      "email": "Email",
+      "company": "Công Ty",
+      "phone": "Số Điện Thoại",
+      "country": "Quốc Gia",
+      "comments": "Nhận Xét hoặc Yêu Cầu Đặc Biệt",
+      "submit": "Gửi Đăng Ký",
+      "cancel": "Hủy",
+      "success": "Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm với thêm chi tiết.",
+      "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+      "submitting": "Đang gửi..."
+    }
   }
 }
