@@ -16,7 +16,7 @@ import Footer from "../components/Footer";
 
 import blogPosts from "../data/blogPosts.json";
 
-import "./BlogPost.css"; // Добавляем CSS
+
 
 
 
