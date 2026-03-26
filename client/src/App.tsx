@@ -8,6 +8,7 @@ import BlogHome from "./pages/BlogHome";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/not-found";
 import BusinessTours from "./pages/BusinessTours";
+import ITSolutions from "./pages/ITSolutions";
 import { services } from "./data/serviceData";
 
 export default function App() {
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/blog" element={<BlogHome />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/business-tours" element={<BusinessTours />} />
+          <Route path="/it-solutions" element={<ITSolutions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         
