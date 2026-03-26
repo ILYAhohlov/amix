@@ -57,6 +57,12 @@ export default function HeroSection() {
             >
               Why Vietnam
             </Link>
+            <Link
+              to="/it-solutions"
+              className="w-full sm:w-auto text-center bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-md font-montserrat font-medium transition-colors"
+            >
+              IT-решения
+            </Link>
             <button 
               onClick={scrollToServices}
               className="w-full sm:w-auto btn-primary font-montserrat"
