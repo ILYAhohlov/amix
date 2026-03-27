@@ -90,13 +90,13 @@ export default function ITSolutions() {
             transition={{ duration: 0.7 }}
           >
             <span className="inline-block text-sm font-medium text-accent mb-4 uppercase tracking-widest">
-              B2B Revolution 2024
+              B2B Revolution 2026
             </span>
             <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 leading-tight title-shadow">
-              Ваша прибыль больше не зависит от скорости ответа в WhatsApp
+              Запустите собственную B2B-платформу за 14 дней и 700$
             </h1>
             <p className="text-xl text-slate-300 mb-10">
-              Пока менеджеры копируют цены из Excel, вы теряете сделки. Запустите собственную B2B-платформу за <strong className="text-white">14 дней</strong>, где клиенты видят актуальные остатки и покупают в один клик.
+              Ваша прибыль больше не зависит от скорости ответа в WhatsApp. Клиенты видят актуальные остатки и покупают в один клик, пока конкуренты копируют цены из Excel и теряют сделки.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
