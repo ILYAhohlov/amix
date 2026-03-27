@@ -2,50 +2,28 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { CheckCircle, AlertTriangle, Clock, TrendingUp, Package, User, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import GlassCard from '../components/ui/glass-card';
 
-const painPoints = [
-  {
-    icon: TrendingUp,
-    title: 'Ценовой хаос',
-    text: 'Цены меняются в 1С, но клиент узнает об этом только при выставлении счета. Потеря маржи на каждом звонке.',
-  },
-  {
-    icon: AlertTriangle,
-    title: 'Человеческий фактор',
-    text: 'Ошибки в артикулах, потерянные заказы в чатах и «забывчивые» менеджеры стоят вам лояльности байеров.',
-  },
-  {
-    icon: Clock,
-    title: 'Нет доступа 24/7',
-    text: 'Клиент хочет заказать товар в субботу вечером, но вынужден ждать понедельника. Вы отдаёте заказы конкурентам.',
-  },
-];
-
-const features = [
-  {
-    icon: TrendingUp,
-    title: 'Живые цены',
-    text: 'Прямая синхронизация с остатками. Изменили цену — она тут же обновилась у всех байеров.',
-  },
-  {
-    icon: Package,
-    title: 'Умная логистика',
-    text: 'Автоматический расчёт стоимости доставки в зависимости от веса, объёма и региона.',
-  },
-  {
-    icon: User,
-    title: 'Личный кабинет',
-    text: 'История заказов, акты сверки и индивидуальные скидки доступны 24/7 без звонков.',
-  },
-];
-
 export default function ITSolutions() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [form, setForm] = useState({ name: '', company: '', phone: '', comment: '' });
   const [submitted, setSubmitted] = useState(false);
+
+  const painPoints = [
+    { icon: TrendingUp, title: t('itSolutions.pain1Title'), text: t('itSolutions.pain1Text') },
+    { icon: AlertTriangle, title: t('itSolutions.pain2Title'), text: t('itSolutions.pain2Text') },
+    { icon: Clock, title: t('itSolutions.pain3Title'), text: t('itSolutions.pain3Text') },
+  ];
+
+  const features = [
+    { icon: TrendingUp, title: t('itSolutions.feat1Title'), text: t('itSolutions.feat1Text') },
+    { icon: Package, title: t('itSolutions.feat2Title'), text: t('itSolutions.feat2Text') },
+    { icon: User, title: t('itSolutions.feat3Title'), text: t('itSolutions.feat3Text') },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -90,13 +68,13 @@ export default function ITSolutions() {
             transition={{ duration: 0.7 }}
           >
             <span className="inline-block text-sm font-medium text-accent mb-4 uppercase tracking-widest">
-              B2B Revolution 2026
+              {t('itSolutions.badge')}
             </span>
             <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 leading-tight title-shadow">
-              Запустите собственную B2B-платформу за 14 дней и 700$
+              {t('itSolutions.title')}
             </h1>
             <p className="text-xl text-slate-300 mb-10">
-              Ваша прибыль больше не зависит от скорости ответа в WhatsApp. Клиенты видят актуальные остатки и покупают в один клик, пока конкуренты копируют цены из Excel и теряют сделки.
+              {t('itSolutions.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -105,10 +83,10 @@ export default function ITSolutions() {
                 rel="noopener noreferrer"
                 className="btn-primary font-montserrat text-center"
               >
-                Посмотреть демо-платформу
+                {t('itSolutions.ctaDemo')}
               </a>
               <button onClick={scrollToForm} className="btn-secondary font-montserrat">
-                Обсудить проект
+                {t('itSolutions.ctaDiscuss')}
               </button>
             </div>
           </motion.div>
@@ -122,7 +100,7 @@ export default function ITSolutions() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Устали от «ценового хаоса»?
+            {t('itSolutions.painTitle')}
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-6">
             {painPoints.map((item, i) => (
@@ -151,7 +129,7 @@ export default function ITSolutions() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Весь ваш склад в кармане клиента
+            {t('itSolutions.solutionTitle')}
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-6">
             {features.map((item, i) => (
@@ -183,11 +161,11 @@ export default function ITSolutions() {
               <div className="flex items-start gap-4 mb-4">
                 <Zap className="text-accent shrink-0 mt-1" size={32} />
                 <h2 className="text-3xl font-montserrat font-bold title-shadow">
-                  Запуск за 14 дней — это не метафора
+                  {t('itSolutions.speedTitle')}
                 </h2>
               </div>
               <p className="text-slate-300 text-lg max-w-2xl">
-                Мы используем готовое ядро <strong className="text-white">Amix Engine</strong>, которое адаптируем под вашу специфику. Вы получаете работающий инструмент быстрее, чем конкуренты успеют обновить прайс-листы.
+                {t('itSolutions.speedText')}
               </p>
             </GlassCard>
           </motion.div>
@@ -202,43 +180,43 @@ export default function ITSolutions() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-montserrat font-bold mb-3 title-shadow text-center">
-              Записаться на аудит процессов
+              {t('itSolutions.formTitle')}
             </h2>
             <p className="text-slate-300 text-center mb-8">
-              Перестаньте работать «почтальоном» между Excel и клиентом. Начните масштабировать продажи прямо сейчас.
+              {t('itSolutions.formSubtitle')}
             </p>
 
             {submitted ? (
               <GlassCard className="p-8 text-center">
                 <CheckCircle className="text-green-400 mx-auto mb-4" size={40} />
-                <p className="text-xl font-montserrat font-bold mb-2">Заявка отправлена!</p>
-                <p className="text-slate-300">Свяжемся с вами в течение 1 рабочего дня.</p>
+                <p className="text-xl font-montserrat font-bold mb-2">{t('itSolutions.successTitle')}</p>
+                <p className="text-slate-300">{t('itSolutions.successText')}</p>
               </GlassCard>
             ) : (
               <GlassCard className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm text-slate-300 mb-1">Ваше имя *</label>
+                    <label className="block text-sm text-slate-300 mb-1">{t('itSolutions.fieldName')} *</label>
                     <input
                       required
                       value={form.name}
                       onChange={e => setForm({ ...form, name: e.target.value })}
                       className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-accent"
-                      placeholder="Иван Иванов"
+                      placeholder={t('itSolutions.fieldName')}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-slate-300 mb-1">Компания *</label>
+                    <label className="block text-sm text-slate-300 mb-1">{t('itSolutions.fieldCompany')} *</label>
                     <input
                       required
                       value={form.company}
                       onChange={e => setForm({ ...form, company: e.target.value })}
                       className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-accent"
-                      placeholder="ООО Ромашка"
+                      placeholder={t('itSolutions.fieldCompany')}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-slate-300 mb-1">Телефон / Telegram *</label>
+                    <label className="block text-sm text-slate-300 mb-1">{t('itSolutions.fieldPhone')} *</label>
                     <input
                       required
                       value={form.phone}
@@ -248,17 +226,17 @@ export default function ITSolutions() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-slate-300 mb-1">Комментарий</label>
+                    <label className="block text-sm text-slate-300 mb-1">{t('itSolutions.fieldComment')}</label>
                     <textarea
                       rows={3}
                       value={form.comment}
                       onChange={e => setForm({ ...form, comment: e.target.value })}
                       className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-accent resize-none"
-                      placeholder="Расскажите о вашем бизнесе..."
+                      placeholder={t('itSolutions.fieldCommentPlaceholder')}
                     />
                   </div>
                   <button type="submit" className="w-full btn-primary font-montserrat">
-                    Отправить заявку
+                    {t('itSolutions.submit')}
                   </button>
                 </form>
               </GlassCard>
