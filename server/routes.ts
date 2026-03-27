@@ -8,7 +8,8 @@ import {
   formatVisitorMessage,
   formatParticipantMessage,
   formatBusinessMissionMessage,
-  formatBusinessTourMessage
+  formatBusinessTourMessage,
+  formatITSolutionsMessage
 } from "./telegram";
 
 const contactFormSchema = z.object({
@@ -226,6 +227,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: false, 
         message: "An error occurred while submitting your booking request. Please try again later." 
       });
+    }
+  });
+
+  // IT Solutions form submission endpoint
+  app.post("/api/it-solutions", async (req: Request, res: Response) => {
+    try {
+      const schema = z.object({
+        name: z.string().min(2),
+        company: z.string().min(2),
+        phone: z.string().min(5),
+        comment: z.string().optional(),
+      });
+      const validatedData = schema.parse(req.body);
+      const telegramMessage = formatITSolutionsMessage(validatedData);
+      await sendTelegramMessage(telegramMessage);
+      res.status(200).json({ success: true });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ success: false, errors: error.errors });
+      }
+      res.status(500).json({ success: false });
     }
   });
 

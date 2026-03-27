@@ -65,7 +65,7 @@ export default function ITSolutions() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await fetch('/api/contact', {
+      await fetch('/api/it-solutions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, type: 'it-solutions' }),

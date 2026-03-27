@@ -129,6 +129,25 @@ ${data.exhibition ? `<b>Mission:</b> ${data.exhibition}\n` : ''}
 }
 
 /**
+ * Format an IT Solutions form submission for Telegram
+ */
+export function formatITSolutionsMessage(data: {
+  name: string;
+  company: string;
+  phone: string;
+  comment?: string;
+}): string {
+  return `
+<b>💻 Новая заявка — IT-решения</b>
+
+<b>Имя:</b> ${data.name}
+<b>Компания:</b> ${data.company}
+<b>Телефон/Telegram:</b> ${data.phone}
+<b>Комментарий:</b> ${data.comment || 'Не указан'}
+`;
+}
+
+/**
  * Format a business tour form submission for Telegram
  */
 export function formatBusinessTourMessage(data: any) {
