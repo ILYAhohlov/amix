@@ -171,6 +171,62 @@ export default function ITSolutions() {
           </motion.div>
         </section>
 
+        {/* Pricing */}
+        <section className="container mx-auto px-6 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-montserrat font-bold mb-3 title-shadow">{t('itSolutions.pricingTitle')}</h2>
+            <p className="text-slate-300">{t('itSolutions.pricingSubtitle')}</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {['starter', 'pro', 'marketplace', 'enterprise'].map((plan, i) => (
+              <motion.div
+                key={plan}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <GlassCard className={`p-6 h-full flex flex-col ${plan === 'starter' ? 'border-2 border-accent' : ''}`}>
+                  <h3 className="text-xl font-montserrat font-bold mb-2">{t(`itSolutions.${plan}.name`)}</h3>
+                  <p className="text-sm text-slate-400 mb-4">{t(`itSolutions.${plan}.desc`)}</p>
+                  
+                  <ul className="space-y-2 mb-6 flex-grow">
+                    {[1, 2, 3, 4, 5, 6, 7].map(num => {
+                      const key = `itSolutions.${plan}.feat${num}`;
+                      const text = t(key);
+                      if (text === key) return null;
+                      return (
+                        <li key={num} className="flex items-start gap-2 text-sm">
+                          <CheckCircle className="text-accent shrink-0 mt-0.5" size={16} />
+                          <span className="text-slate-300">{text}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+
+                  <div className="border-t border-white/10 pt-4">
+                    {plan === 'starter' && t('itSolutions.starter.promo') && (
+                      <p className="text-xs text-accent font-bold mb-2">{t('itSolutions.starter.promo')}</p>
+                    )}
+                    <p className="text-2xl font-bold text-accent mb-1">{t(`itSolutions.${plan}.price`)}</p>
+                    <p className="text-xs text-slate-400 mb-2">{t(`itSolutions.${plan}.priceDesc`)}</p>
+                    <p className="text-sm font-medium">{t(`itSolutions.${plan}.monthly`)}</p>
+                    {plan === 'starter' && t('itSolutions.starter.monthlyDesc') && (
+                      <p className="text-xs text-slate-400">{t('itSolutions.starter.monthlyDesc')}</p>
+                    )}
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         {/* Final CTA + Form */}
         <section id="it-contact" className="container mx-auto px-6 py-16">
           <motion.div

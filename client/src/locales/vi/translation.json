@@ -239,7 +239,62 @@
     "fieldCommentPlaceholder": "Hãy cho chúng tôi biết về doanh nghiệp của bạn...",
     "submit": "Gửi yêu cầu",
     "successTitle": "Yêu cầu đã gửi!",
-    "successText": "Chúng tôi sẽ liên hệ trong vòng 1 ngày làm việc."
+    "successText": "Chúng tôi sẽ liên hệ trong vòng 1 ngày làm việc.",
+    "pricingTitle": "Gói giá",
+    "pricingSubtitle": "Chọn gói phù hợp cho doanh nghiệp của bạn",
+    "starter": {
+      "name": "Starter",
+      "desc": "Cho một người bán (WB/Ozon → cửa hàng riêng)",
+      "feat1": "1 người bán + 1 quản trị viên",
+      "feat2": "Tích hợp cổng thanh toán (YuKassa, SBP, Tinkoff, v.v.)",
+      "feat3": "Giá và tồn kho thực tế",
+      "feat4": "Đặt hàng 1 cú nhấp + tài khoản cá nhân",
+      "feat5": "Tính toán giao hàng thông minh",
+      "feat6": "Lịch sử đơn hàng và đối chiếu",
+      "feat7": "REST API mở cho mọi tích hợp",
+      "promo": "ƯU ĐÃI CHO 5 KHÁCH HÀNG ĐẦU TIÊN",
+      "price": "$700",
+      "priceDesc": "giấy phép một lần",
+      "monthly": "+ $90/tháng",
+      "monthlyDesc": "(hosting + hỗ trợ)"
+    },
+    "pro": {
+      "name": "Pro",
+      "desc": "Cho doanh nghiệp đang phát triển (tối đa 5 người bán)",
+      "feat1": "Tất cả từ Starter",
+      "feat2": "Tối đa 5 người bán",
+      "feat3": "Chiết khấu nhiều cấp và giá cá nhân hóa",
+      "feat4": "Phân tích nâng cao",
+      "feat5": "Chat trong tài khoản",
+      "feat6": "Tích hợp 1C cơ bản qua API (tự làm hoặc với chuyên gia 1C của bạn)",
+      "price": "$2,000",
+      "priceDesc": "giấy phép một lần",
+      "monthly": "+ $149/tháng"
+    },
+    "marketplace": {
+      "name": "Marketplace",
+      "desc": "Sàn thương mại nhỏ (nhiều nhà cung cấp)",
+      "feat1": "Số lượng người bán không giới hạn",
+      "feat2": "Tất cả từ Pro",
+      "feat3": "Chế độ đa nhà cung cấp",
+      "feat4": "Phân phối đơn hàng tự động",
+      "feat5": "Tích hợp 1C đầy đủ (UT / KA / ERP) — theo yêu cầu, từ $4,500 (hoặc theo giờ với chuyên gia của bạn)",
+      "price": "$3,500",
+      "priceDesc": "giấy phép một lần",
+      "monthly": "+ $249/tháng"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "desc": "Giải pháp tùy chỉnh cho bán buôn lớn",
+      "feat1": "Tất cả từ Marketplace",
+      "feat2": "Tùy chỉnh theo quy trình của bạn",
+      "feat3": "Tự động hóa 1C + CRM/ERP có sẵn với thỏa thuận bổ sung",
+      "feat4": "White-label",
+      "feat5": "Quản lý cá nhân và SLA",
+      "price": "từ $7,500",
+      "priceDesc": "giấy phép một lần",
+      "monthly": "+ từ $399/tháng"
+    }
   },
   "businessTours": {
     "title": "AMIX Business Tours: Khám phá thị trường Việt Nam & ASEAN",

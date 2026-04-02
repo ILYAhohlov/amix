@@ -273,7 +273,62 @@
     "fieldCommentPlaceholder": "Tell us about your business...",
     "submit": "Submit Request",
     "successTitle": "Request Sent!",
-    "successText": "We will contact you within 1 business day."
+    "successText": "We will contact you within 1 business day.",
+    "pricingTitle": "Pricing Plans",
+    "pricingSubtitle": "Choose the right plan for your business",
+    "starter": {
+      "name": "Starter",
+      "desc": "For one seller (WB/Ozon → your own store)",
+      "feat1": "1 seller + 1 administrator",
+      "feat2": "Payment gateway integration (YuKassa, SBP, Tinkoff, etc.)",
+      "feat3": "Live prices and stock",
+      "feat4": "1-click order + personal account",
+      "feat5": "Smart delivery calculation",
+      "feat6": "Order history and acts",
+      "feat7": "Open REST API for any integration",
+      "promo": "SPECIAL OFFER FOR FIRST 5 CLIENTS",
+      "price": "$700",
+      "priceDesc": "one-time license",
+      "monthly": "+ $90/mo",
+      "monthlyDesc": "(hosting + support)"
+    },
+    "pro": {
+      "name": "Pro",
+      "desc": "For growing business (up to 5 sellers)",
+      "feat1": "Everything from Starter",
+      "feat2": "Up to 5 sellers",
+      "feat3": "Multi-level discounts and personalized pricing",
+      "feat4": "Advanced analytics",
+      "feat5": "In-cabinet chat",
+      "feat6": "Basic 1C integration via API (self-service or with your 1C specialist)",
+      "price": "$2,000",
+      "priceDesc": "one-time license",
+      "monthly": "+ $149/mo"
+    },
+    "marketplace": {
+      "name": "Marketplace",
+      "desc": "Mini-marketplace (multiple suppliers)",
+      "feat1": "Unlimited sellers",
+      "feat2": "Everything from Pro",
+      "feat3": "Multi-vendor mode",
+      "feat4": "Automatic order distribution",
+      "feat5": "Full 1C integration (UT / KA / ERP) — on request, from $4,500 (or hourly with your specialist)",
+      "price": "$3,500",
+      "priceDesc": "one-time license",
+      "monthly": "+ $249/mo"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "desc": "Custom solution for large wholesale",
+      "feat1": "Everything from Marketplace",
+      "feat2": "Custom tailored to your processes",
+      "feat3": "1C + CRM/ERP automation available with additional agreement",
+      "feat4": "White-label",
+      "feat5": "Personal manager and SLA",
+      "price": "from $7,500",
+      "priceDesc": "one-time license",
+      "monthly": "+ from $399/mo"
+    }
   },
   "businessTours": {
     "title": "AMIX Business Tours: Unlock Vietnam & ASEAN Markets",

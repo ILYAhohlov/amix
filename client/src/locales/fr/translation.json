@@ -239,7 +239,62 @@
     "fieldCommentPlaceholder": "Parlez-nous de votre entreprise...",
     "submit": "Envoyer la demande",
     "successTitle": "Demande envoyée!",
-    "successText": "Nous vous contacterons dans 1 jour ouvrable."
+    "successText": "Nous vous contacterons dans 1 jour ouvrable.",
+    "pricingTitle": "Plans tarifaires",
+    "pricingSubtitle": "Choisissez le plan adapté à votre entreprise",
+    "starter": {
+      "name": "Starter",
+      "desc": "Pour un vendeur (WB/Ozon → votre propre boutique)",
+      "feat1": "1 vendeur + 1 administrateur",
+      "feat2": "Intégration de passerelle de paiement (YuKassa, SBP, Tinkoff, etc.)",
+      "feat3": "Prix et stock en temps réel",
+      "feat4": "Commande en 1 clic + compte personnel",
+      "feat5": "Calcul intelligent de livraison",
+      "feat6": "Historique des commandes et actes",
+      "feat7": "API REST ouverte pour toute intégration",
+      "promo": "OFFRE SPÉCIALE POUR LES 5 PREMIERS CLIENTS",
+      "price": "700€",
+      "priceDesc": "licence unique",
+      "monthly": "+ 90€/mois",
+      "monthlyDesc": "(hébergement + support)"
+    },
+    "pro": {
+      "name": "Pro",
+      "desc": "Pour entreprise en croissance (jusqu'à 5 vendeurs)",
+      "feat1": "Tout de Starter",
+      "feat2": "Jusqu'à 5 vendeurs",
+      "feat3": "Remises multi-niveaux et tarification personnalisée",
+      "feat4": "Analytique avancée",
+      "feat5": "Chat dans le compte",
+      "feat6": "Intégration 1C de base via API (en autonomie ou avec votre spécialiste 1C)",
+      "price": "2 000€",
+      "priceDesc": "licence unique",
+      "monthly": "+ 149€/mois"
+    },
+    "marketplace": {
+      "name": "Marketplace",
+      "desc": "Mini-marketplace (plusieurs fournisseurs)",
+      "feat1": "Nombre illimité de vendeurs",
+      "feat2": "Tout de Pro",
+      "feat3": "Mode multi-vendeur",
+      "feat4": "Distribution automatique des commandes",
+      "feat5": "Intégration 1C complète (UT / KA / ERP) — sur demande, à partir de 4 500€ (ou à l'heure avec votre spécialiste)",
+      "price": "3 500€",
+      "priceDesc": "licence unique",
+      "monthly": "+ 249€/mois"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "desc": "Solution personnalisée pour gros grossiste",
+      "feat1": "Tout de Marketplace",
+      "feat2": "Personnalisé selon vos processus",
+      "feat3": "Automatisation 1C + CRM/ERP disponible avec accord supplémentaire",
+      "feat4": "White-label",
+      "feat5": "Manager personnel et SLA",
+      "price": "à partir de 7 500€",
+      "priceDesc": "licence unique",
+      "monthly": "+ à partir de 399€/mois"
+    }
   },
   "businessTours": {
     "title": "AMIX Business Tours : Découvrez les marchés du Vietnam et de l'ASEAN",
