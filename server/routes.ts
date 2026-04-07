@@ -2,6 +2,9 @@ import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
+import { db } from "./db";
+import { blogPosts } from "@shared/schema";
+import { eq } from "drizzle-orm";
 import {
   sendTelegramMessage,
   formatContactMessage,
@@ -11,6 +14,15 @@ import {
   formatBusinessTourMessage,
   formatITSolutionsMessage
 } from "./telegram";
+
+function requireAdmin(req: Request, res: Response): boolean {
+  const token = req.headers["x-admin-token"];
+  if (token !== process.env.ADMIN_PASSWORD) {
+    res.status(401).json({ success: false, message: "Unauthorized" });
+    return false;
+  }
+  return true;
+}
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -248,6 +260,72 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ success: false, errors: error.errors });
       }
       res.status(500).json({ success: false });
+    }
+  });
+
+  // Blog CMS API
+  // Public endpoint to get all posts
+  app.get("/api/posts", async (req: Request, res: Response) => {
+    try {
+      const posts = await db.select().from(blogPosts);
+      res.json(posts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+      res.status(500).json({ success: false, message: "Failed to fetch posts" });
+    }
+  });
+
+  app.get("/api/admin/posts", async (req: Request, res: Response) => {
+    if (!requireAdmin(req, res)) return;
+    try {
+      const posts = await db.select().from(blogPosts);
+      res.json(posts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+      res.status(500).json({ success: false, message: "Failed to fetch posts" });
+    }
+  });
+
+  app.post("/api/admin/posts", async (req: Request, res: Response) => {
+    if (!requireAdmin(req, res)) return;
+    try {
+      const post = { ...req.body, id: req.body.id || req.body.slug };
+      await db.insert(blogPosts).values(post);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error creating post:", error);
+      res.status(500).json({ success: false, message: "Failed to create post" });
+    }
+  });
+
+  app.put("/api/admin/posts/:id", async (req: Request, res: Response) => {
+    if (!requireAdmin(req, res)) return;
+    try {
+      await db.update(blogPosts).set(req.body).where(eq(blogPosts.id, req.params.id));
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error updating post:", error);
+      res.status(500).json({ success: false, message: "Failed to update post" });
+    }
+  });
+
+  app.delete("/api/admin/posts/:id", async (req: Request, res: Response) => {
+    if (!requireAdmin(req, res)) return;
+    try {
+      await db.delete(blogPosts).where(eq(blogPosts.id, req.params.id));
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      res.status(500).json({ success: false, message: "Failed to delete post" });
+    }
+  });
+
+  app.post("/api/admin/login", (req: Request, res: Response) => {
+    const { password } = req.body;
+    if (password === process.env.ADMIN_PASSWORD) {
+      res.json({ success: true, token: process.env.ADMIN_PASSWORD });
+    } else {
+      res.status(401).json({ success: false, message: "Invalid password" });
     }
   });
 

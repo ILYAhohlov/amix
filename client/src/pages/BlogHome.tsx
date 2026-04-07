@@ -3,18 +3,41 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import blogPosts from "../data/blogPosts.json";
+
+type BlogPost = {
+  id: string;
+  title: string;
+  subtitle: string;
+  slug: string;
+  publishDate: string;
+  excerpt: string;
+};
 
 export default function BlogHome() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
   const blogUrl = "https://amix.pro/blog";
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    loadPosts();
   }, []);
+
+  async function loadPosts() {
+    try {
+      const res = await axios.get("/api/posts");
+      setBlogPosts(res.data);
+    } catch (error) {
+      console.error("Failed to load posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,7 +109,12 @@ export default function BlogHome() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 gap-10">
+            {loading ? (
+              <div className="text-center text-slate-400 py-12">Loading posts...</div>
+            ) : blogPosts.length === 0 ? (
+              <div className="text-center text-slate-400 py-12">No posts yet.</div>
+            ) : (
+              <div className="grid grid-cols-1 gap-10">
               {blogPosts.map((post, index) => (
                 <motion.article 
                   key={post.id}
@@ -119,6 +147,7 @@ export default function BlogHome() {
                 </motion.article>
               ))}
             </div>
+            )}
           </div>
         </div>
       </main>

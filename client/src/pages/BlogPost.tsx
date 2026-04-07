@@ -1,93 +1,72 @@
 import { useState, useEffect } from "react";
-
 import { motion } from "framer-motion";
-
 import { Helmet } from "react-helmet-async";
-
 import { useParams, Link, useNavigate } from "react-router-dom";
-
 import { Mail } from "lucide-react";
-
 import { useTranslation } from "react-i18next";
-
+import axios from "axios";
 import Navbar from "../components/Navbar";
-
 import Footer from "../components/Footer";
 
-import blogPosts from "../data/blogPosts.json";
-
-
-
 type BlogPostParams = {
-
   slug: string;
-
 };
 
-
+type Post = {
+  id: string;
+  title: string;
+  subtitle: string;
+  slug: string;
+  publishDate: string;
+  excerpt: string;
+  content: string[];
+  contactEmail?: string;
+  imageUrl?: string;
+  author: string;
+  keywords: string[];
+};
 
 export default function BlogPost() {
-
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [post, setPost] = useState<Post | null>(null);
+  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
-
   const { slug } = useParams<BlogPostParams>();
-
   const navigate = useNavigate();
 
-  
-
-  const post = blogPosts.find(post => post.slug === slug);
-
-
-
   useEffect(() => {
-
     window.scrollTo(0, 0);
+    loadPost();
+  }, [slug]);
 
-  }, []);
-
-  
-
-  useEffect(() => {
-
-    if (!post) {
-
+  async function loadPost() {
+    try {
+      const res = await axios.get("/api/posts");
+      const foundPost = res.data.find((p: Post) => p.slug === slug);
+      if (!foundPost) {
+        navigate("/blog");
+      } else {
+        setPost(foundPost);
+      }
+    } catch (error) {
+      console.error("Failed to load post:", error);
       navigate("/blog");
-
+    } finally {
+      setLoading(false);
     }
-
-  }, [post, navigate]);
-
-
+  }
 
   useEffect(() => {
-
     const handleScroll = () => {
-
       const scrollPosition = window.scrollY;
-
       setIsScrolled(scrollPosition > 50);
-
     };
-
-
-
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
-
   }, []);
 
-
-
-  // If post is not found, show loading or redirect will happen
-
-  if (!post) {
-
-    return <div className="min-h-screen bg-primary"></div>;
-
+  if (loading || !post) {
+    return <div className="min-h-screen bg-primary flex items-center justify-center text-slate-400">Loading...</div>;
   }
 
 

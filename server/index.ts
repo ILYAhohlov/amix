@@ -59,11 +59,7 @@ app.use((req, res, next) => {
 // Use the PORT environment variable provided by the hosting platform,
 // fallback to 8080 for local development.
 const port = process.env.PORT || 8080;
-server.listen({
-  port,
-  host: "0.0.0.0",
-  reusePort: true,
-}, () => {
+server.listen(port, "0.0.0.0", () => {
   log(`serving on port ${port}`);
 });
 })();

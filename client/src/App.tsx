@@ -6,6 +6,7 @@ import ServiceDetail from "./components/ServiceDetail";
 import HomePage from "./pages/HomePage";
 import BlogHome from "./pages/BlogHome";
 import BlogPost from "./pages/BlogPost";
+import AdminBlog from "./pages/AdminBlog";
 import NotFound from "./pages/not-found";
 import BusinessTours from "./pages/BusinessTours";
 import ITSolutions from "./pages/ITSolutions";
@@ -53,6 +54,7 @@ export default function App() {
           />} />
           <Route path="/blog" element={<BlogHome />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/business-tours" element={<BusinessTours />} />
           <Route path="/it-solutions" element={<ITSolutions />} />
           <Route path="*" element={<NotFound />} />
