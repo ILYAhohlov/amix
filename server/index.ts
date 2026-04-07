@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { autoMigratePosts } from "./auto-migrate";
 
 const app = express();
 app.use(express.json());
@@ -37,6 +38,9 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Auto-migrate posts on startup if database is empty
+  await autoMigratePosts();
+  
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
