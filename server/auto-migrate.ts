@@ -6,13 +6,24 @@ import { blogPosts } from "@shared/schema";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { count } from "drizzle-orm";
+import { count, sql } from "drizzle-orm";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BLOG_POSTS_PATH = path.resolve(__dirname, "../client/src/data/blogPosts.json");
 
 export async function autoMigratePosts() {
   try {
+    // First, ensure status column exists
+    try {
+      await db.execute(sql`
+        ALTER TABLE blog_posts 
+        ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'published'
+      `);
+      console.log("✅ Status column check completed");
+    } catch (error) {
+      console.log("ℹ️ Status column already exists or error:", error);
+    }
+    
     // Check if posts already exist
     const result = await db.select({ count: count() }).from(blogPosts);
     const postsCount = result[0]?.count || 0;
