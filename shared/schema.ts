@@ -29,6 +29,7 @@ export const blogPosts = pgTable("blog_posts", {
   imageUrl: text("image_url"),
   author: text("author").notNull(),
   keywords: text("keywords").array().notNull(),
+  status: text("status").notNull().default("published"), // draft, published
 });
 
 export const insertBlogPostSchema = createInsertSchema(blogPosts);

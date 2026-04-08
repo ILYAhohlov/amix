@@ -264,10 +264,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Blog CMS API
-  // Public endpoint to get all posts
+  // Public endpoint to get published posts only
   app.get("/api/posts", async (req: Request, res: Response) => {
     try {
-      const posts = await db.select().from(blogPosts);
+      const posts = await db.select().from(blogPosts).where(eq(blogPosts.status, "published"));
       res.json(posts);
     } catch (error) {
       console.error("Error fetching posts:", error);

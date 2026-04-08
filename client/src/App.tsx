@@ -6,6 +6,7 @@ import ServiceDetail from "./components/ServiceDetail";
 import HomePage from "./pages/HomePage";
 import BlogHome from "./pages/BlogHome";
 import BlogPost from "./pages/BlogPost";
+import BlogPreview from "./pages/BlogPreview";
 import AdminBlog from "./pages/AdminBlog";
 import NotFound from "./pages/not-found";
 import BusinessTours from "./pages/BusinessTours";
@@ -53,6 +54,7 @@ export default function App() {
             handleServiceClick={handleServiceClick} 
           />} />
           <Route path="/blog" element={<BlogHome />} />
+          <Route path="/blog/preview" element={<BlogPreview />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/business-tours" element={<BusinessTours />} />

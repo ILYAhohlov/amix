@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Eye, Sparkles } from "lucide-react";
+import RichTextEditor from "../components/RichTextEditor";
+import { generateSlug } from "../lib/slugify";
 
 type Post = {
   id: string;
@@ -13,6 +16,7 @@ type Post = {
   imageUrl?: string;
   author: string;
   keywords: string[];
+  status?: string;
 };
 
 const STORAGE_KEY = "admin_token";
@@ -28,6 +32,7 @@ const emptyPost = (): Omit<Post, "id"> => ({
   imageUrl: "",
   author: "AMIX International Group",
   keywords: [],
+  status: "draft",
 });
 
 function api(token: string) {
@@ -43,6 +48,7 @@ export default function AdminBlog() {
   const [isNew, setIsNew] = useState(false);
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState("");
+  const [filter, setFilter] = useState<"all" | "published" | "draft">("all");
 
   useEffect(() => {
     if (token) loadPosts();
@@ -55,7 +61,7 @@ export default function AdminBlog() {
       setToken(res.data.token);
       setLoginError("");
     } catch {
-      setLoginError("Неверный пароль");
+      setLoginError("Invalid password");
     }
   }
 
@@ -76,27 +82,27 @@ export default function AdminBlog() {
     setMsg("");
   }
 
-  async function save() {
+  async function save(status: string) {
     if (!editing) return;
     setSaving(true);
     try {
+      const payload = { ...editing, status, id: editing.slug };
       if (isNew) {
-        const payload = { ...editing, id: editing.slug };
         await api(token).post("/api/admin/posts", payload);
       } else {
-        await api(token).put(`/api/admin/posts/${editing.id}`, editing);
+        await api(token).put(`/api/admin/posts/${editing.id}`, payload);
       }
-      setMsg("Сохранено ✓");
+      setMsg(status === "draft" ? "Saved as draft ✓" : "Published ✓");
       setEditing(null);
       loadPosts();
-    } catch {
-      setMsg("Ошибка при сохранении");
+    } catch (error: any) {
+      setMsg(error.response?.data?.message || "Error saving post");
     }
     setSaving(false);
   }
 
   async function deletePost(id: string) {
-    if (!confirm("Удалить пост?")) return;
+    if (!confirm("Delete this post?")) return;
     await api(token).delete(`/api/admin/posts/${id}`);
     loadPosts();
   }
@@ -126,6 +132,24 @@ export default function AdminBlog() {
     });
   }
 
+  function autoGenerateSlug() {
+    if (editing?.title) {
+      const slug = generateSlug(editing.title);
+      updateField("slug", slug);
+    }
+  }
+
+  function openPreview() {
+    if (!editing) return;
+    const previewData = encodeURIComponent(JSON.stringify(editing));
+    window.open(`/blog/preview?data=${previewData}`, "_blank");
+  }
+
+  const filteredPosts = posts.filter((post) => {
+    if (filter === "all") return true;
+    return post.status === filter;
+  });
+
   if (!token) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
@@ -133,7 +157,7 @@ export default function AdminBlog() {
           <h1 className="text-white text-xl font-bold">Admin Login</h1>
           <input
             type="password"
-            placeholder="Пароль"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && login()}
@@ -141,7 +165,7 @@ export default function AdminBlog() {
           />
           {loginError && <p className="text-red-400 text-sm">{loginError}</p>}
           <button onClick={login} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
-            Войти
+            Login
           </button>
         </div>
       </div>
@@ -151,25 +175,148 @@ export default function AdminBlog() {
   if (editing) {
     return (
       <div className="min-h-screen bg-gray-950 text-white p-6">
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold">{isNew ? "Новый пост" : "Редактировать пост"}</h1>
-            <button onClick={() => setEditing(null)} className="text-gray-400 hover:text-white">✕ Отмена</button>
+            <h1 className="text-xl font-bold">{isNew ? "New Post" : "Edit Post"}</h1>
+            <div className="flex gap-2">
+              <button
+                onClick={openPreview}
+                className="flex items-center gap-1 px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm"
+              >
+                <Eye className="w-4 h-4" />
+                Preview
+              </button>
+              <button onClick={() => setEditing(null)} className="text-gray-400 hover:text-white">
+                ✕ Cancel
+              </button>
+            </div>
           </div>
 
-          {(["title", "subtitle", "slug", "excerpt", "author", "imageUrl", "contactEmail"] as (keyof Post)[]).map((field) => (
-            <div key={field}>
-              <label className="text-sm text-gray-400 capitalize">{field}</label>
-              <input
-                value={(editing[field] as string) || ""}
-                onChange={(e) => updateField(field, e.target.value)}
-                className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-          ))}
-
+          {/* Title */}
           <div>
-            <label className="text-sm text-gray-400">publishDate</label>
+            <label className="text-sm text-gray-400">Title *</label>
+            <input
+              value={editing.title}
+              onChange={(e) => updateField("title", e.target.value)}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="Enter post title"
+            />
+          </div>
+
+          {/* Subtitle */}
+          <div>
+            <label className="text-sm text-gray-400">Subtitle *</label>
+            <input
+              value={editing.subtitle}
+              onChange={(e) => updateField("subtitle", e.target.value)}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="Enter subtitle"
+            />
+          </div>
+
+          {/* Slug with auto-generate */}
+          <div>
+            <div className="flex items-center justify-between">
+              <label className="text-sm text-gray-400">Slug (URL) *</label>
+              <button
+                onClick={autoGenerateSlug}
+                className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300"
+              >
+                <Sparkles className="w-3 h-3" />
+                Auto-generate
+              </button>
+            </div>
+            <input
+              value={editing.slug}
+              onChange={(e) => updateField("slug", e.target.value)}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="post-url-slug"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              URL: https://amix.pro/blog/{editing.slug || "your-slug"}
+            </p>
+          </div>
+
+          {/* Excerpt */}
+          <div>
+            <label className="text-sm text-gray-400">Excerpt (Short Description) *</label>
+            <textarea
+              value={editing.excerpt}
+              onChange={(e) => updateField("excerpt", e.target.value)}
+              rows={2}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="Brief summary for blog listing and SEO"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              {editing.excerpt.length} characters (recommended: 150-160)
+            </p>
+          </div>
+
+          {/* Content with Rich Text Editor */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-sm text-gray-400">Content (Paragraphs) *</label>
+              <button onClick={addParagraph} className="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded">
+                + Add Paragraph
+              </button>
+            </div>
+            {editing.content.map((para, i) => (
+              <div key={i} className="mb-4">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs text-gray-500">Paragraph {i + 1}</span>
+                  {editing.content.length > 1 && (
+                    <button
+                      onClick={() => removeParagraph(i)}
+                      className="text-xs text-red-400 hover:text-red-300"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+                <RichTextEditor
+                  content={para}
+                  onChange={(html) => updateContent(i, html)}
+                  placeholder="Write your content here..."
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Author */}
+          <div>
+            <label className="text-sm text-gray-400">Author</label>
+            <input
+              value={editing.author}
+              onChange={(e) => updateField("author", e.target.value)}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          {/* Image URL */}
+          <div>
+            <label className="text-sm text-gray-400">Featured Image URL</label>
+            <input
+              value={editing.imageUrl || ""}
+              onChange={(e) => updateField("imageUrl", e.target.value)}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="/images/blog/my-image.jpg"
+            />
+          </div>
+
+          {/* Contact Email */}
+          <div>
+            <label className="text-sm text-gray-400">Contact Email (optional)</label>
+            <input
+              value={editing.contactEmail || ""}
+              onChange={(e) => updateField("contactEmail", e.target.value)}
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="contact@amix.pro"
+            />
+          </div>
+
+          {/* Publish Date */}
+          <div>
+            <label className="text-sm text-gray-400">Publish Date</label>
             <input
               type="datetime-local"
               value={editing.publishDate?.slice(0, 16) || ""}
@@ -178,42 +325,41 @@ export default function AdminBlog() {
             />
           </div>
 
+          {/* Keywords */}
           <div>
-            <label className="text-sm text-gray-400">keywords (через запятую)</label>
+            <label className="text-sm text-gray-400">Keywords (comma-separated)</label>
             <input
               value={editing.keywords.join(", ")}
-              onChange={(e) => updateField("keywords", e.target.value.split(",").map((k) => k.trim()).filter(Boolean))}
+              onChange={(e) =>
+                updateField(
+                  "keywords",
+                  e.target.value.split(",").map((k) => k.trim()).filter(Boolean)
+                )
+              }
               className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
+              placeholder="vietnam, trade, investment"
             />
           </div>
 
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-sm text-gray-400">content (параграфы)</label>
-              <button onClick={addParagraph} className="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded">+ параграф</button>
-            </div>
-            {editing.content.map((para, i) => (
-              <div key={i} className="flex gap-2 mb-2">
-                <textarea
-                  value={para}
-                  onChange={(e) => updateContent(i, e.target.value)}
-                  rows={3}
-                  className="flex-1 bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 focus:outline-none focus:border-blue-500 text-sm"
-                />
-                <button onClick={() => removeParagraph(i)} className="text-red-400 hover:text-red-300 text-lg px-1">✕</button>
-              </div>
-            ))}
+          {msg && <p className={`text-sm ${msg.includes("Error") ? "text-red-400" : "text-green-400"}`}>{msg}</p>}
+
+          {/* Save buttons */}
+          <div className="flex gap-3 pt-4">
+            <button
+              onClick={() => save("draft")}
+              disabled={saving}
+              className="bg-gray-700 hover:bg-gray-600 disabled:opacity-50 text-white px-6 py-2 rounded"
+            >
+              {saving ? "Saving..." : "Save as Draft"}
+            </button>
+            <button
+              onClick={() => save("published")}
+              disabled={saving}
+              className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-6 py-2 rounded"
+            >
+              {saving ? "Publishing..." : "Publish"}
+            </button>
           </div>
-
-          {msg && <p className="text-green-400 text-sm">{msg}</p>}
-
-          <button
-            onClick={save}
-            disabled={saving}
-            className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-6 py-2 rounded"
-          >
-            {saving ? "Сохранение..." : "Сохранить"}
-          </button>
         </div>
       </div>
     );
@@ -221,39 +367,94 @@ export default function AdminBlog() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold">Blog CMS</h1>
           <div className="flex gap-3">
             <button onClick={startNew} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
-              + Новый пост
+              + New Post
             </button>
             <button
-              onClick={() => { localStorage.removeItem(STORAGE_KEY); setToken(""); }}
+              onClick={() => {
+                localStorage.removeItem(STORAGE_KEY);
+                setToken("");
+              }}
               className="text-gray-400 hover:text-white text-sm"
             >
-              Выйти
+              Logout
             </button>
           </div>
         </div>
 
+        {/* Filter tabs */}
+        <div className="flex gap-2 mb-4">
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-4 py-2 rounded ${
+              filter === "all" ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+            }`}
+          >
+            All ({posts.length})
+          </button>
+          <button
+            onClick={() => setFilter("published")}
+            className={`px-4 py-2 rounded ${
+              filter === "published" ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+            }`}
+          >
+            Published ({posts.filter((p) => p.status === "published").length})
+          </button>
+          <button
+            onClick={() => setFilter("draft")}
+            className={`px-4 py-2 rounded ${
+              filter === "draft" ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+            }`}
+          >
+            Drafts ({posts.filter((p) => p.status === "draft").length})
+          </button>
+        </div>
+
+        {/* Posts list */}
         <div className="space-y-3">
-          {posts.map((post) => (
-            <div key={post.id} className="bg-gray-900 rounded-lg p-4 flex items-center justify-between gap-4">
-              <div className="min-w-0">
-                <p className="font-medium truncate">{post.title}</p>
-                <p className="text-sm text-gray-400">{post.slug} · {new Date(post.publishDate).toLocaleDateString("ru-RU")}</p>
+          {filteredPosts.length === 0 ? (
+            <div className="text-center text-gray-500 py-12">No posts found</div>
+          ) : (
+            filteredPosts.map((post) => (
+              <div key={post.id} className="bg-gray-900 rounded-lg p-4 flex items-center justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className="font-medium truncate">{post.title}</p>
+                    <span
+                      className={`text-xs px-2 py-0.5 rounded ${
+                        post.status === "published"
+                          ? "bg-green-900 text-green-300"
+                          : "bg-yellow-900 text-yellow-300"
+                      }`}
+                    >
+                      {post.status || "published"}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-400">
+                    {post.slug} · {new Date(post.publishDate).toLocaleDateString("en-US")}
+                  </p>
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <button
+                    onClick={() => startEdit(post)}
+                    className="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deletePost(post.id)}
+                    className="text-sm bg-red-900 hover:bg-red-800 px-3 py-1 rounded"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div className="flex gap-2 shrink-0">
-                <button onClick={() => startEdit(post)} className="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">
-                  Редактировать
-                </button>
-                <button onClick={() => deletePost(post.id)} className="text-sm bg-red-900 hover:bg-red-800 px-3 py-1 rounded">
-                  Удалить
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>
