@@ -6,7 +6,7 @@ import { db } from "./db";
 import { blogPosts } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import multer from "multer";
-import { v2 as cloudinary } from "cloudinary";
+import axios from "axios";
 import {
   sendTelegramMessage,
   formatContactMessage,
@@ -17,13 +17,11 @@ import {
   formatITSolutionsMessage
 } from "./telegram";
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 const upload = multer({ storage: multer.memoryStorage() });
+
+const GITHUB_REPO = "ILYAhohlov/amix";
+const GITHUB_BRANCH = "main";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 function requireAdmin(req: Request, res: Response): boolean {
   const token = req.headers["x-admin-token"];
@@ -345,19 +343,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (!req.file) {
         return res.status(400).json({ success: false, message: "No file uploaded" });
       }
-      const result = await new Promise((resolve, reject) => {
-        const uploadStream = cloudinary.uploader.upload_stream(
-          { folder: "amix-blog" },
-          (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
-          }
-        );
-        uploadStream.end(req.file!.buffer);
-      });
-      res.json({ success: true, url: (result as any).secure_url });
-    } catch (error) {
-      console.error("Upload error:", error);
+      
+      const fileName = `${Date.now()}-${req.file.originalname.replace(/\s+/g, "-")}`;
+      const filePath = `client/public/images/blog/${fileName}`;
+      const content = req.file.buffer.toString("base64");
+      
+      // Upload to GitHub
+      const githubUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
+      await axios.put(
+        githubUrl,
+        {
+          message: `Add blog image: ${fileName}`,
+          content,
+          branch: GITHUB_BRANCH,
+        },
+        {
+          headers: {
+            Authorization: `token ${GITHUB_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      
+      const url = `/images/blog/${fileName}`;
+      res.json({ success: true, url });
+    } catch (error: any) {
+      console.error("Upload error:", error.response?.data || error.message);
       res.status(500).json({ success: false, message: "Failed to upload image" });
     }
   });
