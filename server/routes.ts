@@ -7,6 +7,7 @@ import { blogPosts } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import multer from "multer";
 import axios from "axios";
+import FormData from "form-data";
 import {
   sendTelegramMessage,
   formatContactMessage,
@@ -18,10 +19,7 @@ import {
 } from "./telegram";
 
 const upload = multer({ storage: multer.memoryStorage() });
-
-const GITHUB_REPO = "ILYAhohlov/amix";
-const GITHUB_BRANCH = "main";
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const IMGBB_API_KEY = process.env.IMGBB_API_KEY;
 
 function requireAdmin(req: Request, res: Response): boolean {
   const token = req.headers["x-admin-token"];
@@ -344,28 +342,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ success: false, message: "No file uploaded" });
       }
       
-      const fileName = `${Date.now()}-${req.file.originalname.replace(/\s+/g, "-")}`;
-      const filePath = `client/public/images/blog/${fileName}`;
-      const content = req.file.buffer.toString("base64");
+      const formData = new FormData();
+      formData.append("image", req.file.buffer.toString("base64"));
       
-      // Upload to GitHub
-      const githubUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
-      await axios.put(
-        githubUrl,
-        {
-          message: `Add blog image: ${fileName}`,
-          content,
-          branch: GITHUB_BRANCH,
-        },
-        {
-          headers: {
-            Authorization: `token ${GITHUB_TOKEN}`,
-            "Content-Type": "application/json",
-          },
-        }
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
+        formData,
+        { headers: formData.getHeaders() }
       );
       
-      const url = `/images/blog/${fileName}`;
+      const url = response.data.data.url;
       res.json({ success: true, url });
     } catch (error: any) {
       console.error("Upload error:", error.response?.data || error.message);
