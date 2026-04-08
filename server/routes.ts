@@ -5,6 +5,8 @@ import { z } from "zod";
 import { db } from "./db";
 import { blogPosts } from "@shared/schema";
 import { eq } from "drizzle-orm";
+import multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
 import {
   sendTelegramMessage,
   formatContactMessage,
@@ -14,6 +16,14 @@ import {
   formatBusinessTourMessage,
   formatITSolutionsMessage
 } from "./telegram";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 function requireAdmin(req: Request, res: Response): boolean {
   const token = req.headers["x-admin-token"];
@@ -326,6 +336,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true, token: process.env.ADMIN_PASSWORD });
     } else {
       res.status(401).json({ success: false, message: "Invalid password" });
+    }
+  });
+
+  app.post("/api/admin/upload", upload.single("image"), async (req: Request, res: Response) => {
+    if (!requireAdmin(req, res)) return;
+    try {
+      if (!req.file) {
+        return res.status(400).json({ success: false, message: "No file uploaded" });
+      }
+      const result = await new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+          { folder: "amix-blog" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        uploadStream.end(req.file!.buffer);
+      });
+      res.json({ success: true, url: (result as any).secure_url });
+    } catch (error) {
+      console.error("Upload error:", error);
+      res.status(500).json({ success: false, message: "Failed to upload image" });
     }
   });
 

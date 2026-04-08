@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Eye, Sparkles } from "lucide-react";
+import { Eye, Sparkles, Upload } from "lucide-react";
 import RichTextEditor from "../components/RichTextEditor";
 import { generateSlug } from "../lib/slugify";
 
@@ -49,6 +49,7 @@ export default function AdminBlog() {
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState("");
   const [filter, setFilter] = useState<"all" | "published" | "draft">("all");
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (token) loadPosts();
@@ -143,6 +144,23 @@ export default function AdminBlog() {
     if (!editing) return;
     const previewData = encodeURIComponent(JSON.stringify(editing));
     window.open(`/blog/preview?data=${previewData}`, "_blank");
+  }
+
+  async function uploadImage(file: File) {
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      const res = await api(token).post("/api/admin/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      updateField("imageUrl", res.data.url);
+      setMsg("Image uploaded ✓");
+      setTimeout(() => setMsg(""), 3000);
+    } catch (error: any) {
+      setMsg(error.response?.data?.message || "Failed to upload image");
+    }
+    setUploading(false);
   }
 
   const filteredPosts = posts.filter((post) => {
@@ -292,15 +310,35 @@ export default function AdminBlog() {
             />
           </div>
 
-          {/* Image URL */}
+          {/* Image URL with Upload */}
           <div>
-            <label className="text-sm text-gray-400">Featured Image URL</label>
-            <input
-              value={editing.imageUrl || ""}
-              onChange={(e) => updateField("imageUrl", e.target.value)}
-              className="w-full bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 mt-1 focus:outline-none focus:border-blue-500"
-              placeholder="/images/blog/my-image.jpg"
-            />
+            <label className="text-sm text-gray-400">Featured Image</label>
+            <div className="flex gap-2 mt-1">
+              <input
+                value={editing.imageUrl || ""}
+                onChange={(e) => updateField("imageUrl", e.target.value)}
+                className="flex-1 bg-gray-800 text-white px-3 py-2 rounded border border-gray-700 focus:outline-none focus:border-blue-500"
+                placeholder="Image URL or upload below"
+              />
+              <label className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded cursor-pointer">
+                <Upload className="w-4 h-4" />
+                {uploading ? "Uploading..." : "Upload"}
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  disabled={uploading}
+                  onChange={(e) => e.target.files?.[0] && uploadImage(e.target.files[0])}
+                />
+              </label>
+            </div>
+            {editing.imageUrl && (
+              <img
+                src={editing.imageUrl}
+                alt="Preview"
+                className="mt-2 max-w-xs rounded border border-gray-700"
+              />
+            )}
           </div>
 
           {/* Contact Email */}
